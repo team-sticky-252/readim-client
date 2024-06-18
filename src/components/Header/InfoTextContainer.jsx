@@ -1,5 +1,5 @@
 function InfoTextContainer() {
-  return <div></div>;
+  return <div>info container</div>;
 }
 
 export default InfoTextContainer;

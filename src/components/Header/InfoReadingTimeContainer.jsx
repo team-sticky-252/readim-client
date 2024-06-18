@@ -1,11 +1,12 @@
 import PropTypes from "prop-types";
 import InfoReadingTimeText from "./InfoReadingTimeText";
 
-function InfoReadingTimeContainer({ sumReadTime }) {
+function InfoReadingTimeContainer({ totalReadTime }) {
   return (
     <div className="flex items-end justify-center pb-4 text-xl font-thin h-28">
       약&nbsp;
-      <InfoReadingTimeText sumReadTime={sumReadTime} />의 아티클이 모여있어요.
+      <InfoReadingTimeText totalReadTime={totalReadTime} />의 아티클이
+      모여있어요.
     </div>
   );
 }
@@ -13,5 +14,5 @@ function InfoReadingTimeContainer({ sumReadTime }) {
 export default InfoReadingTimeContainer;
 
 InfoReadingTimeContainer.propTypes = {
-  sumReadTime: PropTypes.number.isRequired,
+  totalReadTime: PropTypes.number.isRequired,
 };

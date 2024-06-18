@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
 
-function InfoReadingTimeText({ sumReadTime }) {
-  let readingMinute = Math.floor(sumReadTime / 1000 / 60);
+function InfoReadingTimeText({ totalReadTime }) {
+  let readingMinute = Math.floor(totalReadTime / 1000 / 60);
   let readingSeconds =
-    Math.round((sumReadTime / 1000 - readingMinute * 60) * 0.1) * 10;
+    Math.round((totalReadTime / 1000 - readingMinute * 60) * 0.1) * 10;
 
   if (readingSeconds >= 30) {
     readingMinute += 1;
@@ -22,5 +22,5 @@ function InfoReadingTimeText({ sumReadTime }) {
 export default InfoReadingTimeText;
 
 InfoReadingTimeText.propTypes = {
-  sumReadTime: PropTypes.number.isRequired,
+  totalReadTime: PropTypes.number.isRequired,
 };

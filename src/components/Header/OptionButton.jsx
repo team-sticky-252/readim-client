@@ -3,7 +3,7 @@ import { IoSettingsSharp } from "react-icons/io5";
 function OptionButton() {
   return (
     <button
-      className="fixed p-1 cursor-pointer top-5 right-5 hover:bg-[#E5E5E5] hover:rounded-lg"
+      className="fixed p-1 cursor-pointer top-5 right-5 hover:bg-medium-gray hover:rounded-lg"
       aria-label="open options"
       type="button"
     >

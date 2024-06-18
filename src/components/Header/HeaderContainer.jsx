@@ -4,7 +4,7 @@ import UrlInputContainer from "./UrlInputContainer";
 
 function HeaderContainer() {
   return (
-    <header>
+    <header className="grid w-full text-center text-centerborder-solid grid-row-3 h-60">
       <OptionContainer />
       <InfoTextContainer />
       <UrlInputContainer />

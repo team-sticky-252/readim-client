@@ -11,7 +11,7 @@ function ToastContainer() {
           <span className="text-slate-700">모두 지우기</span>
         </TextButton>
       </div>
-      <ul className="flex flex-col-reverse flex-wrap-reverse items-center flex-nowrap ">
+      <ul className="flex flex-col-reverse flex-wrap-reverse items-center flex-nowrap">
         {messageList.map(({ id, message, link }) => (
           <ToastMessage key={id} message={message} link={link} />
         ))}

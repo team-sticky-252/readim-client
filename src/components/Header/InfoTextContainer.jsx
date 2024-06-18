@@ -3,11 +3,13 @@ import PropTypes from "prop-types";
 import InfoConceptContainer from "./InfoConceptContainer";
 import InfoReadingTimeContainer from "./InfoReadingTimeContainer";
 
-function InfoTextContainer({ sumReadTime = 0 }) {
+function InfoTextContainer({ totalReadTime = 0 }) {
   return (
     <>
-      {sumReadTime && <InfoReadingTimeContainer sumReadTime={sumReadTime} />}
-      {!sumReadTime && <InfoConceptContainer />}
+      {totalReadTime && (
+        <InfoReadingTimeContainer totalReadTime={totalReadTime} />
+      )}
+      {!totalReadTime && <InfoConceptContainer />}
     </>
   );
 }
@@ -15,5 +17,5 @@ function InfoTextContainer({ sumReadTime = 0 }) {
 export default InfoTextContainer;
 
 InfoTextContainer.propTypes = {
-  sumReadTime: PropTypes.number.isRequired,
+  totalReadTime: PropTypes.number.isRequired,
 };

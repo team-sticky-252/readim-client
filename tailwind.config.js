@@ -1,3 +1,5 @@
+import defaultTheme from "tailwindcss/defaultTheme";
+
 /** @type {import("tailwindcss").Config} */
 export default {
   content: ["./index.html", "./src/**/*.{js,jsx}"],
@@ -6,9 +8,16 @@ export default {
       colors: {
         "light-gray": "#FBFBFB",
         gray: "#AFADAD",
+        "medium-gray": "#E5E5E5",
       },
       fontFamily: {
-        pre: ["Pretendard"],
+        sans: ['"Pretendard"', ...defaultTheme.fontFamily.sans],
+      },
+      backgroundImage: {
+        default: "url('./assets/background.png')",
+      },
+      gridTemplateColumns: {
+        10: "repeat(4, minmax(0, 10rem))",
       },
     },
   },

@@ -21,7 +21,7 @@ export default {
         sans: ["Pretendard", ...defaultTheme.fontFamily.sans],
       },
       maxHeight: {
-        "screen-margin-24": "calc(100vh - 6rem)",
+        "screen-margin-24": "calc(100vh - 8rem)",
       },
       width: {
         88: "22rem",

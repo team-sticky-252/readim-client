@@ -3,7 +3,7 @@ import OptionPopUpContainer from "./OptionPopUpContainer";
 
 function OptionContainer() {
   return (
-    <div className="flex justify-end h-0 relatvie">
+    <div className="flex justify-end h-20 relatvie">
       <OptionPopUpContainer />
       <OptionButton />
     </div>

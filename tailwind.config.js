@@ -18,6 +18,13 @@ export default {
       },
       gridTemplateColumns: {
         10: "repeat(4, minmax(0, 10rem))",
+        sans: ["Pretendard", ...defaultTheme.fontFamily.sans],
+      },
+      maxHeight: {
+        "screen-margin-24": "calc(100vh - 6rem)",
+      },
+      width: {
+        88: "22rem",
       },
     },
   },

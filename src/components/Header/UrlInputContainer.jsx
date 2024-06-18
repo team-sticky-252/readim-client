@@ -15,7 +15,7 @@ function UrlInputContainer() {
   };
 
   return (
-    <div className="border-[1px] border-light-gray flex items-center justify-center m-auto mx-auto bg-white shadow-md w-fit rounded-xl">
+    <div className="border-[1px] border-light-gray flex items-center justify-center m-auto mx-auto bg-white shadow-md w-fit rounded-xl mb-10">
       <textarea
         ref={textarea}
         rows={1}

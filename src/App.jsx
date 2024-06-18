@@ -1,11 +1,11 @@
-import Header from "./components/Header/Header";
+import HeaderContainer from "./components/Header/HeaderContainer";
 import CardContainer from "./components/Card/CardContainer";
 import ToastContainer from "./components/Toast/ToastContainer";
 
 function App() {
   return (
     <>
-      <Header />
+      <HeaderContainer />
       <CardContainer />
       <ToastContainer />
     </>

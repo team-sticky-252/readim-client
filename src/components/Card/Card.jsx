@@ -2,7 +2,7 @@ import { FiMinus } from "react-icons/fi";
 import PropTypes from "prop-types";
 
 import ReadingTime from "./ReadingTime";
-import Button from "../shared/Button/Button";
+import IconButton from "../shared/Button/IconButton";
 
 function Card({ favicon, domain, articleTitle, readingTime }) {
   return (
@@ -26,9 +26,9 @@ function Card({ favicon, domain, articleTitle, readingTime }) {
           {articleTitle}
         </p>
       </a>
-      <Button>
+      <IconButton onClick={() => {}} title="카드 삭제">
         <FiMinus color="gray" strokeWidth={4} />
-      </Button>
+      </IconButton>
     </li>
   );
 }

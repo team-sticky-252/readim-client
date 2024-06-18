@@ -36,7 +36,7 @@ function Card({ favicon, domain, articleTitle, readingTime }) {
 export default Card;
 
 Card.propTypes = {
-  favicon: PropTypes.string.isRequired,
+  favicon: PropTypes.string,
   domain: PropTypes.string.isRequired,
   articleTitle: PropTypes.string.isRequired,
   readingTime: PropTypes.number.isRequired,

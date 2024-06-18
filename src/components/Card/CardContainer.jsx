@@ -11,7 +11,7 @@ function CardContainer() {
           domain={article.siteName}
           articleTitle={article.title}
           readingTime={article.readingTime}
-        ></Card>
+        />
       ))}
     </main>
   );

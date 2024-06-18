@@ -1,18 +1,31 @@
 import PropTypes from "prop-types";
 
 function ReadingTime({ readingTime }) {
-  const readingMinute = Math.floor(readingTime / 1000 / 60);
-  const readingSeconds = Math.floor((readingTime / 1000) % 60);
-  const roundedReadingSeconds = Math.round(readingSeconds) >= 30 ? 30 : "";
+  let readingMinute = Math.floor(readingTime / 1000 / 60);
+  let readingSeconds =
+    Math.round((readingTime / 1000 - readingMinute * 60) * 0.1) * 10;
+
+  if (readingSeconds >= 45) {
+    readingMinute += 1;
+    readingSeconds = 0;
+  } else if (readingSeconds >= 15) {
+    readingSeconds = 30;
+  } else {
+    readingSeconds = 0;
+  }
 
   return (
     <div className="my-2">
       <h2 className="inline-block text-4xl font-medium">{readingMinute}</h2>
       <p className="inline-block text-base font-light">분</p>
-      <h2 className="inline-block ml-2 text-4xl font-medium">
-        {roundedReadingSeconds}
-      </h2>
-      <p className="inline-block text-base font-light">초</p>
+      {readingSeconds !== 0 && (
+        <>
+          <h2 className="inline-block ml-2 text-4xl font-medium">
+            {readingSeconds}
+          </h2>
+          <p className="inline-block text-base font-light">초</p>
+        </>
+      )}
     </div>
   );
 }

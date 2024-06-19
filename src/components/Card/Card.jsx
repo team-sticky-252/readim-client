@@ -16,7 +16,7 @@ function Card({ favicon, domain, articleTitle, readingTime }) {
         <div>
           <img
             className="inline-block w-4"
-            src={favicon || "public/favicon.png"}
+            src={favicon || "public/readimLogo.png"}
             alt="favicon"
           />
           <p className="text-[11px] inline-block ml-1 font-medium">{domain}</p>

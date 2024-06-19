@@ -29,34 +29,34 @@ function Modals() {
 
   return (
     <div
-      className={`w-[42rem] ${statement !== "test" ? "h-[18rem]" : "h-[30rem]"} bg-white shadow-md shadow-black/25 rounded-3xl`}
+      className={`w-[42rem] ${statement !== "test" ? "h-72" : "h-[30rem]"} bg-white shadow-md shadow-black/25 rounded-3xl`}
     >
       <button
         onClick={() =>
           statement !== "warning" ? navigate("/modal/warning") : navigate("/")
         }
-        className="rounded-md hover:bg-medium-gray right-[1.25rem] absolute top-[1.25rem]"
+        className="absolute rounded-md hover:bg-medium-gray right-5 top-5"
         aria-label="closeButton"
       >
         <GoX color="#AAAAAA" size={30} />
       </button>
-      <h1 className="w-11/12 p-3.5 relative text-[2.50rem] font-semibold left-[1.25rem] top-[1rem]">
+      <h1 className="w-11/12 p-3.5 relative text-[2.5rem] font-semibold left-5 top-4">
         {modalTitle}
       </h1>
       {statement !== "test" ? (
-        <div className="h-40 mb-4 overflow-y-scroll max-w-none px-[2rem] whitespace-pre-line">
+        <div className="h-40 px-8 mb-4 overflow-y-scroll whitespace-pre-line max-w-none">
           <p className="mt-3 whitespace-pre-line ">
             {CONTENTS.message[statement]}
           </p>
         </div>
       ) : (
-        <div className="px-[2rem] whitespace-pre-line mb-4 overflow-y-scroll prose prose-lg h-72 max-w-none">
+        <div className="px-8 mb-4 overflow-y-scroll prose prose-lg whitespace-pre-line h-72 max-w-none">
           {CONTENTS.message[statement]}
         </div>
       )}
       <button
         onClick={navigateButton}
-        className="right-[1.25rem] absolute bottom-[1.25rem] w-20 bg-white shadow-md h-10 shadow-black/25 rounded-xl hover:bg-medium-gray"
+        className="absolute w-20 h-10 bg-white shadow-md right-5 bottom-5 shadow-black/25 rounded-xl hover:bg-medium-gray"
       >
         {modalbutton}
       </button>

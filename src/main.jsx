@@ -3,9 +3,9 @@ import ReactDOM from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 import App from "./App";
+import ModalWrapper from "./components/Modal/ModalWrapper";
 
 import "./index.css";
-import ModalWrapper from "./components/Modal/ModalWrapper";
 
 const router = createBrowserRouter([
   {

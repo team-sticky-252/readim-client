@@ -41,6 +41,7 @@ module.exports = {
     "react/require-default-props": "warn",
     "react/jsx-filename-extension": ["warn", { extensions: [".js", ".jsx"] }],
     "no-param-reassign": 0,
+    "global-require": 0,
     "no-underscore-dangle": "off",
   },
   settings: {

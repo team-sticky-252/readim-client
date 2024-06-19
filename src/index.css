@@ -75,6 +75,15 @@
 }
 
 @layer components {
+  .modal-position {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@layer components {
   .title-ellipsis {
     text-overflow: ellipsis;
     overflow: hidden;

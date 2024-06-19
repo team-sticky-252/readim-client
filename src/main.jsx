@@ -5,11 +5,18 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import App from "./App";
 
 import "./index.css";
+import ModalWrapper from "./components/Modal/ModalWrapper";
 
 const router = createBrowserRouter([
   {
-    path: "*",
+    path: "/",
     element: <App />,
+    children: [
+      {
+        path: "modal/:modalId",
+        element: <ModalWrapper />,
+      },
+    ],
   },
 ]);
 

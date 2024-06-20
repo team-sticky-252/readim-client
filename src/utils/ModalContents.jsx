@@ -7,7 +7,7 @@ const CONTENTS = {
   },
   button: {
     welcome: "다음",
-    guide: "다음",
+    guide: "시작",
     test: "완료",
     warning: "이전",
   },

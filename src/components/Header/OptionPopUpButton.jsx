@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function OptionPopUpButton({ text, position }) {
   const navigate = useNavigate();
@@ -14,7 +14,7 @@ function OptionPopUpButton({ text, position }) {
     <button
       type="button"
       className={`font-extralight h-8 bg-white ${borderRadius} hover:bg-[#E5E5E5]`}
-      onClick={() => navigate("/modal/welcome")}
+      onClick={() => navigate("/modal/guide")}
     >
       {text}
     </button>

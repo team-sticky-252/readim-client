@@ -77,13 +77,11 @@
 @layer components {
   .modal-position {
     position: fixed;
-    top: 50%;
+    top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
   }
-}
 
-@layer components {
   .title-ellipsis {
     text-overflow: ellipsis;
     overflow: hidden;
@@ -102,10 +100,39 @@
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
   }
+
+  .abled-modal-button {
+    position: absolute;
+    width: 5rem;
+    height: 2.5rem;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.25);
+    right: 1.25rem;
+    bottom: 1.25rem;
+    border-radius: 0.75rem;
+    background-color: #ffffff;
+    color: #000000;
+  }
+
+  .disabled-modal-button {
+    position: absolute;
+    width: 5rem;
+    height: 2.5rem;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.25);
+    right: 1.25rem;
+    bottom: 1.25rem;
+    border-radius: 0.75rem;
+    background-color: #e5e5e5;
+    color: #afadad;
+  }
+
+  .abled-modal-button:hover {
+    background-color: #e5e5e5;
+  }
 }
 
 *::-webkit-scrollbar {
   width: 8px;
+  padding-right: 5px;
 }
 
 *::-webkit-scrollbar-thumb {

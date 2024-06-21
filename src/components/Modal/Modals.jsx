@@ -1,12 +1,24 @@
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+
 import { GoX } from "react-icons/go";
+
 import CONTENTS from "../../utils/ModalContents";
 
 function Modals() {
+  const [readingTimeMs, setReadingTimeMs] = useState();
+  const navigate = useNavigate();
   const { modalId: statement } = useParams();
+
   const modalTitle = CONTENTS.title[statement];
   const modalbutton = CONTENTS.button[statement];
-  const navigate = useNavigate();
+
+  let startReadingTimeMs = 0;
+  let finishReadingTimeMs = 0;
+
+  useEffect(() => {
+    setReadingTimeMs(window.localStorage.getItem("wpm"));
+  }, [readingTimeMs, window.localStorage.getItem("wpm")]);
 
   const navigateButton = () => {
     switch (statement) {
@@ -17,7 +29,12 @@ function Modals() {
         navigate("/modal/test");
         break;
       case "test":
-        navigate("/");
+        finishReadingTimeMs = Date.now();
+        navigate("/", {
+          state: {
+            totalReadingTimeMs: finishReadingTimeMs - startReadingTimeMs,
+          },
+        });
         break;
       case "warning":
         navigate("/modal/guide");
@@ -26,6 +43,10 @@ function Modals() {
         navigate("/");
     }
   };
+
+  if (statement === "test") {
+    startReadingTimeMs = Date.now();
+  }
 
   return (
     <div

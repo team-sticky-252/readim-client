@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 import { GoX } from "react-icons/go";
@@ -7,18 +7,44 @@ import CONTENTS from "../../utils/ModalContents";
 
 function Modals() {
   const [readingTimeMs, setReadingTimeMs] = useState();
+  const [isScrolledToBottom, setIsScrolledToBottom] = useState(false);
+
+  const testTextAreaRef = useRef(null);
   const navigate = useNavigate();
   const { modalId: statement } = useParams();
 
   const modalTitle = CONTENTS.title[statement];
-  const modalbutton = CONTENTS.button[statement];
+  const modalButton = CONTENTS.button[statement];
 
   let startReadingTimeMs = 0;
   let finishReadingTimeMs = 0;
 
   useEffect(() => {
     setReadingTimeMs(window.localStorage.getItem("wpm"));
-  }, [readingTimeMs, window.localStorage.getItem("wpm")]);
+  }, [window.localStorage.getItem("wpm")]);
+
+  const updateScroll = () => {
+    const bottomScrollPosition =
+      testTextAreaRef.current.scrollHeight -
+      testTextAreaRef.current.clientHeight;
+    const currentScrollPosition = testTextAreaRef.current.scrollTop;
+
+    if (bottomScrollPosition === currentScrollPosition) {
+      setIsScrolledToBottom(true);
+    }
+  };
+
+  useEffect(() => {
+    if (testTextAreaRef.current) {
+      testTextAreaRef.current.addEventListener("scroll", updateScroll);
+    }
+
+    return () => {
+      if (testTextAreaRef.current) {
+        testTextAreaRef.current.removeEventListener("scroll", updateScroll);
+      }
+    };
+  }, [testTextAreaRef.current]);
 
   const navigateButton = () => {
     switch (statement) {
@@ -66,20 +92,28 @@ function Modals() {
       </h1>
       {statement !== "test" ? (
         <div className="h-40 px-8 mb-4 overflow-y-scroll whitespace-pre-line max-w-none">
-          <p className="mt-3 whitespace-pre-line ">
+          <p className="mt-3 whitespace-pre-line">
             {CONTENTS.message[statement]}
           </p>
         </div>
       ) : (
-        <div className="px-8 mb-4 overflow-y-scroll prose prose-lg whitespace-pre-line h-72 max-w-none">
+        <div
+          className="px-8 mb-4 overflow-y-scroll prose prose-lg whitespace-pre-line h-72 max-w-none"
+          ref={testTextAreaRef}
+        >
           {CONTENTS.message[statement]}
         </div>
       )}
       <button
         onClick={navigateButton}
-        className="absolute w-20 h-10 bg-white shadow-md right-5 bottom-5 shadow-black/25 rounded-xl hover:bg-medium-gray"
+        disabled={statement === "test" ? !isScrolledToBottom : false}
+        className={
+          statement === "test" && !isScrolledToBottom
+            ? "disabled-modal-button"
+            : "abled-modal-button"
+        }
       >
-        {modalbutton}
+        {modalButton}
       </button>
     </div>
   );

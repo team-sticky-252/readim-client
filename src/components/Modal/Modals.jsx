@@ -6,7 +6,8 @@ import { GoX } from "react-icons/go";
 import CONTENTS from "../../utils/ModalContents";
 
 function Modals() {
-  const [readingTimeMs, setReadingTimeMs] = useState();
+  const [readingTimeMs, setReadingTimeMs] = useState(0);
+  const [textAreaRef, setTextAreaRef] = useState(null);
   const [isScrolledToBottom, setIsScrolledToBottom] = useState(false);
 
   const testTextAreaRef = useRef(null);
@@ -20,14 +21,19 @@ function Modals() {
   let finishReadingTimeMs = 0;
 
   useEffect(() => {
-    setReadingTimeMs(window.localStorage.getItem("wpm"));
+    const storedReadingTimeMs = setReadingTimeMs(
+      window.localStorage.getItem("wpm"),
+    );
+
+    if (storedReadingTimeMs) {
+      setReadingTimeMs(storedReadingTimeMs);
+    }
   }, [window.localStorage.getItem("wpm")]);
 
   const updateScroll = () => {
     const bottomScrollPosition =
-      testTextAreaRef.current.scrollHeight -
-      testTextAreaRef.current.clientHeight;
-    const currentScrollPosition = testTextAreaRef.current.scrollTop;
+      textAreaRef.scrollHeight - textAreaRef.clientHeight;
+    const currentScrollPosition = textAreaRef.scrollTop;
 
     if (bottomScrollPosition === currentScrollPosition) {
       setIsScrolledToBottom(true);
@@ -35,16 +41,16 @@ function Modals() {
   };
 
   useEffect(() => {
-    if (testTextAreaRef.current) {
-      testTextAreaRef.current.addEventListener("scroll", updateScroll);
+    if (textAreaRef) {
+      textAreaRef.addEventListener("scroll", updateScroll);
     }
 
     return () => {
-      if (testTextAreaRef.current) {
-        testTextAreaRef.current.removeEventListener("scroll", updateScroll);
+      if (textAreaRef) {
+        textAreaRef.removeEventListener("scroll", updateScroll);
       }
     };
-  }, [testTextAreaRef.current]);
+  }, [textAreaRef]);
 
   const navigateButton = () => {
     switch (statement) {
@@ -99,7 +105,10 @@ function Modals() {
       ) : (
         <div
           className="px-8 mb-4 overflow-y-scroll prose prose-lg whitespace-pre-line h-72 max-w-none"
-          ref={testTextAreaRef}
+          ref={(textAreaElement) => {
+            testTextAreaRef.current = textAreaElement;
+            setTextAreaRef(testTextAreaRef.current);
+          }}
         >
           {CONTENTS.message[statement]}
         </div>

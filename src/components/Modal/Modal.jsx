@@ -8,7 +8,7 @@ import { allowScroll, preventScroll } from "../../utils/scrollUtils";
 
 function Modals() {
   const [readingTimeMs, setReadingTimeMs] = useState(0);
-  const [textAreaRef, setTextAreaRef] = useState(null);
+  const [textAreaElement, setTextAreaElement] = useState(null);
   const [isScrolledToBottom, setIsScrolledToBottom] = useState(false);
 
   const testTextAreaRef = useRef(null);
@@ -31,8 +31,8 @@ function Modals() {
 
   const updateScroll = () => {
     const bottomScrollPosition =
-      textAreaRef.scrollHeight - textAreaRef.clientHeight;
-    const currentScrollPosition = textAreaRef.scrollTop;
+      textAreaElement.scrollHeight - textAreaElement.clientHeight;
+    const currentScrollPosition = textAreaElement.scrollTop;
 
     if (bottomScrollPosition === currentScrollPosition) {
       setIsScrolledToBottom(true);
@@ -40,16 +40,16 @@ function Modals() {
   };
 
   useEffect(() => {
-    if (textAreaRef) {
-      textAreaRef.addEventListener("scroll", updateScroll);
+    if (textAreaElement) {
+      textAreaElement.addEventListener("scroll", updateScroll);
     }
 
     return () => {
-      if (textAreaRef) {
-        textAreaRef.removeEventListener("scroll", updateScroll);
+      if (textAreaElement) {
+        textAreaElement.removeEventListener("scroll", updateScroll);
       }
     };
-  }, [textAreaRef]);
+  }, [textAreaElement]);
 
   useEffect(() => {
     const prevScrollY = preventScroll();
@@ -107,9 +107,9 @@ function Modals() {
       ) : (
         <div
           className="pr-4 mt-4 mb-4 overflow-y-scroll text-base leading-7 prose prose-lg whitespace-pre-line modal-textarea-shadow-inner h-72 max-w-none"
-          ref={(textAreaElement) => {
-            testTextAreaRef.current = textAreaElement;
-            setTextAreaRef(testTextAreaRef.current);
+          ref={(ref) => {
+            testTextAreaRef.current = ref;
+            setTextAreaElement(testTextAreaRef.current);
           }}
         >
           {CONTENTS.message[statement]}

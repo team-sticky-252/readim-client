@@ -1,11 +1,17 @@
+import { forwardRef } from "react";
 import { IoSettingsSharp } from "react-icons/io5";
 
-function OptionButton() {
+const OptionButton = forwardRef(function OptionButton(
+  { setIsClick },
+  optionButton,
+) {
   return (
     <button
       className="fixed p-1 cursor-pointer top-5 right-5 hover:bg-medium-gray hover:rounded-lg"
       aria-label="open options"
       type="button"
+      onClick={() => setIsClick((prev) => !prev)}
+      ref={optionButton}
     >
       <IoSettingsSharp
         color="white"
@@ -14,6 +20,6 @@ function OptionButton() {
       />
     </button>
   );
-}
+});
 
 export default OptionButton;

@@ -32,7 +32,6 @@ function UrlInputContainer({
       .split(/\s+/)
       .filter((value) => !value.match(/(https?:\/\/[^\s]+)/g));
     const inputValues = [...urls, ...otherValues];
-
     const numOfURL = inputValues.length;
 
     if (numOfURL > 30) {
@@ -88,12 +87,15 @@ function UrlInputContainer({
       const promises = inputValues.map(handleSingleURL);
       const results = await Promise.all(promises);
       const validResults = results.filter((result) => result !== null);
-      const updatedArticleDatas = prevArticleDataList
+      const updatedArticleDataList = prevArticleDataList
         ? [...prevArticleDataList, ...validResults]
         : validResults;
 
-      window.localStorage.setItem("URLs", JSON.stringify(updatedArticleDatas));
-      setPrevArticleDataList(updatedArticleDatas);
+      window.localStorage.setItem(
+        "URLs",
+        JSON.stringify(updatedArticleDataList),
+      );
+      setPrevArticleDataList(updatedArticleDataList);
 
       textarea.current.value = "";
       textarea.current.style.height = "auto";

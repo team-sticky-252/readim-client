@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { GoX } from "react-icons/go";
 
 import CONTENTS from "../../utils/ModalContents";
+import { allowScroll, preventScroll } from "../../utils/scrollUtils";
 
 function Modals() {
   const [readingTimeMs, setReadingTimeMs] = useState(0);
@@ -51,6 +52,13 @@ function Modals() {
       }
     };
   }, [textAreaRef]);
+
+  useEffect(() => {
+    const prevScrollY = preventScroll();
+    return () => {
+      allowScroll(prevScrollY);
+    };
+  }, []);
 
   const navigateButton = () => {
     switch (statement) {

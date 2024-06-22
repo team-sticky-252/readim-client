@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 
 import HeaderContainer from "./components/Header/HeaderContainer";
@@ -39,11 +39,28 @@ function App() {
     }
   }, [totalReadingTimeMs, window.localStorage.getItem("wpm")]);
 
+  const [messageList, setMessageList] = useState([]);
+  const [isDeleteMode, setIsDeleteMode] = useState(false);
+  const [prevArticleDatas, setPrevArticleDatas] = useState([]);
+
+  useEffect(() => {
+    const storedURLs = JSON.parse(window.localStorage.getItem("URLs"));
+
+    if (storedURLs) {
+      setPrevArticleDatas(storedURLs);
+    }
+  }, []);
+
   return (
     <>
-      <HeaderContainer />
-      <CardContainer />
-      <ToastContainer />
+      <HeaderContainer
+        prevArticleDatas={prevArticleDatas}
+        setPrevArticleDatas={setPrevArticleDatas}
+        setMessageList={setMessageList}
+        setIsDeleteMode={setIsDeleteMode}
+      />
+      <CardContainer isDeleteMode={isDeleteMode} />
+      <ToastContainer messageList={messageList} />
       <Outlet />
     </>
   );

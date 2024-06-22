@@ -22,9 +22,7 @@ function Modals() {
   let finishReadingTimeMs = 0;
 
   useEffect(() => {
-    const storedReadingTimeMs = setReadingTimeMs(
-      window.localStorage.getItem("wpm"),
-    );
+    const storedReadingTimeMs = window.localStorage.getItem("wpm");
 
     if (storedReadingTimeMs) {
       setReadingTimeMs(storedReadingTimeMs);

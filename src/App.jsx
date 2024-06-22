@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 
 import HeaderContainer from "./components/Header/HeaderContainer";

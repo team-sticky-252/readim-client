@@ -10,8 +10,8 @@ import {
 } from "../../utils/urlUtils";
 
 function UrlInputContainer({
-  prevArticleDatas,
-  setPrevArticleDatas,
+  prevArticleDataList,
+  setPrevArticleDataList,
   setMessageList,
 }) {
   const textarea = useRef();
@@ -33,20 +33,34 @@ function UrlInputContainer({
       .filter((value) => !value.match(/(https?:\/\/[^\s]+)/g));
     const inputValues = [...urls, ...otherValues];
 
+    const numOfURL = inputValues.length;
+
+    if (numOfURL > 30) {
+      textarea.current.value = "";
+      textarea.current.style.height = "auto";
+
+      alert("URL 입력은 30개 이하로 해주세요");
+
+      return false;
+    }
+
     if (event.keyCode === 13 || pasteValue) {
       const handleSingleURL = async (url) => {
         const articleDatas = await requestURL(url);
         const { statusCode } = articleDatas;
         const isValidResult = isValid(
           url,
-          prevArticleDatas,
+          prevArticleDataList,
           setMessageList,
           textarea,
           message,
-          articleDatas.data ? articleDatas.data.url : null,
+          articleDatas.data?.url,
         );
 
         if (!isValidResult) {
+          textarea.current.value = "";
+          textarea.current.style.height = "auto";
+
           return null;
         }
 
@@ -59,12 +73,14 @@ function UrlInputContainer({
               link: url || null,
             },
           ]);
+
+          textarea.current.value = "";
+          textarea.current.style.height = "auto";
+
           return null;
         }
 
-        articleDatas.createDate = new Date(
-          new Date().toLocaleString("en-US", { timeZone: "Asia/Seoul" }),
-        ).toISOString();
+        articleDatas.createDate = new Date().toISOString();
 
         return articleDatas;
       };
@@ -72,16 +88,17 @@ function UrlInputContainer({
       const promises = inputValues.map(handleSingleURL);
       const results = await Promise.all(promises);
       const validResults = results.filter((result) => result !== null);
-      const updatedArticleDatas = prevArticleDatas
-        ? [...prevArticleDatas, ...validResults]
+      const updatedArticleDatas = prevArticleDataList
+        ? [...prevArticleDataList, ...validResults]
         : validResults;
 
       window.localStorage.setItem("URLs", JSON.stringify(updatedArticleDatas));
-      setPrevArticleDatas(updatedArticleDatas);
+      setPrevArticleDataList(updatedArticleDatas);
 
       textarea.current.value = "";
       textarea.current.style.height = "auto";
     }
+    return null;
   };
 
   return (
@@ -99,7 +116,7 @@ function UrlInputContainer({
 }
 
 UrlInputContainer.propTypes = {
-  prevArticleDatas: PropTypes.arrayOf(
+  prevArticleDataList: PropTypes.arrayOf(
     PropTypes.shape({
       data: PropTypes.shape({
         url: PropTypes.string.isRequired,
@@ -108,7 +125,7 @@ UrlInputContainer.propTypes = {
       statusCode: PropTypes.number,
     }),
   ).isRequired,
-  setPrevArticleDatas: PropTypes.func.isRequired,
+  setPrevArticleDataList: PropTypes.func.isRequired,
   setMessageList: PropTypes.func.isRequired,
 };
 

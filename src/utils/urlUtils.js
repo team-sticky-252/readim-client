@@ -33,24 +33,13 @@ export const isValid = (
   message,
   link = null,
 ) => {
-  const numOfURL = inputValue.split("http").length - 1;
-
-  if (numOfURL > 30) {
-    textarea.current.value = "";
-    textarea.current.style.height = "auto";
-
-    alert("URL 입력은 30개 이하로 해주세요");
-
-    return false;
-  }
-
   if (inputValue.trim() === "") {
     setMessageList((prev) => [
       ...prev,
       {
         id: prev ? prev.length + 1 : 1,
         message: message[0].onlySpace,
-        link: link || null,
+        link,
       },
     ]);
     textarea.current.value = "";
@@ -66,7 +55,7 @@ export const isValid = (
         {
           id: prev ? prev.length + 1 : 1,
           message: message[0].notValidURL,
-          link: link || null,
+          link,
         },
       ];
     });
@@ -84,7 +73,7 @@ export const isValid = (
           {
             id: prev ? prev.length + 1 : 1,
             message: message[0].duplicateURL,
-            link: inputValue || null,
+            link: inputValue,
           },
         ]);
         return true;

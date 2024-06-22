@@ -47,13 +47,9 @@ function Card({
 export default Card;
 
 Card.propTypes = {
-  favicon: PropTypes.string,
+  favicon: PropTypes.string.isRequired,
   domain: PropTypes.string.isRequired,
   articleTitle: PropTypes.string.isRequired,
   readingTime: PropTypes.number.isRequired,
   isDeleteMode: PropTypes.bool.isRequired,
-};
-
-Card.defaultProps = {
-  favicon: "/readimFavicon.png",
 };

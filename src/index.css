@@ -102,24 +102,18 @@
   }
 
   .abled-modal-button {
-    position: absolute;
     width: 5rem;
     height: 2.5rem;
     box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.25);
-    right: 1.25rem;
-    bottom: 1.25rem;
     border-radius: 0.75rem;
     background-color: #ffffff;
     color: #000000;
   }
 
   .disabled-modal-button {
-    position: absolute;
     width: 5rem;
     height: 2.5rem;
     box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.25);
-    right: 1.25rem;
-    bottom: 1.25rem;
     border-radius: 0.75rem;
     background-color: #e5e5e5;
     color: #afadad;
@@ -127,6 +121,13 @@
 
   .abled-modal-button:hover {
     background-color: #e5e5e5;
+  }
+
+  .modal-textarea-shadow-inner {
+    --tw-shadow: inset 0px -36px 59px -67px rgb(0 0 0 / 0.2);
+    --tw-shadow-colored: inset 0 2px 4px 0 var(--tw-shadow-color);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
+      var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
   }
 }
 

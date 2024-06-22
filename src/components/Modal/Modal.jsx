@@ -19,7 +19,9 @@ function Modals() {
   const modalButton = CONTENTS.button[statement];
 
   let startReadingTimeMs = 0;
-  let finishReadingTimeMs = 0;
+  if (statement === "test") {
+    startReadingTimeMs = Date.now();
+  }
 
   useEffect(() => {
     const storedReadingTimeMs = window.localStorage.getItem("wpm");
@@ -66,14 +68,15 @@ function Modals() {
       case "guide":
         navigate("/modal/test");
         break;
-      case "test":
-        finishReadingTimeMs = Date.now();
+      case "test": {
+        const finishReadingTimeMs = Date.now();
         navigate("/", {
           state: {
             totalReadingTimeMs: finishReadingTimeMs - startReadingTimeMs,
           },
         });
         break;
+      }
       case "warning":
         navigate("/modal/guide");
         break;
@@ -81,10 +84,6 @@ function Modals() {
         navigate("/");
     }
   };
-
-  if (statement === "test") {
-    startReadingTimeMs = Date.now();
-  }
 
   return (
     <div className="w-[50rem] h-fit bg-white shadow-md shadow-black/25 rounded-3xl p-10">

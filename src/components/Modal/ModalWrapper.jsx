@@ -1,4 +1,4 @@
-import Modals from "./Modals";
+import Modals from "./Modal";
 
 function ModalWrapper() {
   return (

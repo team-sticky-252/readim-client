@@ -1,39 +1,10 @@
 [
   {
-    "id": 1,
-    "message": "⌛️ 리딩 타임을 측정할 수 없는 URL 이에요.",
-    "link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input"
-  },
-  {
-    "id": 2,
-    "message": "🔗 이미 등록된 URL 이에요.",
-    "link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input"
-  },
-  { "id": 3, "message": "📚 저장한 아티클이 30개가 넘었어요.", "link": null },
-  { "id": 4, "message": "📚 저장한 아티클이 60개가 넘었어요.", "link": null },
-  {
-    "id": 5,
-    "message": "⌛️ 리딩 타임을 측정할 수 없는 URL 이에요.",
-    "link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input"
-  },
-  {
-    "id": 6,
-    "message": "🔗 이미 등록된 URL 이에요.",
-    "link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input"
-  },
-  { "id": 7, "message": "📚 저장한 아티클이 30개가 넘었어요.", "link": null },
-  { "id": 8, "message": "📚 저장한 아티클이 60개가 넘었어요.", "link": null },
-  {
-    "id": 9,
-    "message": "⌛️ 리딩 타임을 측정할 수 없는 URL 이에요.",
-    "link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input"
-  },
-  {
-    "id": 10,
-    "message": "🔗 이미 등록된 URL 이에요.",
-    "link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input"
-  },
-  { "id": 11, "message": "📚 저장한 아티클이 30개가 넘었어요.", "link": null },
-  { "id": 12, "message": "📚 저장한 아티클이 60개가 넘었어요.", "link": null },
-  { "id": 13, "message": "📚 저장한 아티클이 60개가 넘었어요.", "link": null }
+    "onlySpace": "⛓️‍💥 유효하지 않은 URL 이에요.\n      공백은 추가할 수 없어요.",
+    "notValidURL": " ⛓️‍💥 유효하지 않은 URL 이에요.",
+    "duplicateURL": "🔗 이미 등록된 URL 이에요.",
+    "errorCode400": " ⛓️‍💥 유효하지 않은 URL 이에요.",
+    "errorCode512": "⌛️ 리딩 타임을 측정할 수 없는 URL 이에요.",
+    "errorCode500": "⚠️ 서버 에러가 발생했습니다.\n      잠시 후 다시 시도해 주세요."
+  }
 ]

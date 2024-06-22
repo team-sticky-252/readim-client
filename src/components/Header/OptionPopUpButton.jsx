@@ -26,7 +26,7 @@ function OptionPopUpButton({ text, position, setIsDeleteMode, setIsClick }) {
     <button
       type="button"
       className={`font-extralight h-8 bg-white ${borderRadius} hover:bg-[#E5E5E5]`}
-      onClick={() => navigate("/modal/guide")}
+      onClick={handleClick}
     >
       {text}
     </button>

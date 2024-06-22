@@ -42,6 +42,7 @@ export const isValid = (
         link,
       },
     ]);
+
     textarea.current.value = "";
     textarea.current.style.height = "auto";
 
@@ -59,6 +60,7 @@ export const isValid = (
         },
       ];
     });
+
     textarea.current.value = "";
     textarea.current.style.height = "auto";
 
@@ -76,8 +78,10 @@ export const isValid = (
             link: inputValue,
           },
         ]);
+
         return true;
       }
+
       return false;
     });
 

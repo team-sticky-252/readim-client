@@ -81,9 +81,7 @@ function Modals() {
   }
 
   return (
-    <div
-      className={`w-[42rem] ${statement !== "test" ? "h-72" : "h-[30rem]"} bg-white shadow-md shadow-black/25 rounded-3xl`}
-    >
+    <div className="w-[50rem] h-fit bg-white shadow-md shadow-black/25 rounded-3xl p-10">
       <button
         onClick={() =>
           statement !== "warning" ? navigate("/modal/warning") : navigate("/")
@@ -93,18 +91,16 @@ function Modals() {
       >
         <GoX color="#AAAAAA" size={30} />
       </button>
-      <h1 className="w-11/12 p-3.5 relative text-[2.5rem] font-semibold left-5 top-4">
-        {modalTitle}
-      </h1>
+      <h1 className="relative text-[2.5rem] font-semibold">{modalTitle}</h1>
       {statement !== "test" ? (
-        <div className="h-40 px-8 mb-4 overflow-y-scroll whitespace-pre-line max-w-none">
+        <div className="h-40 mb-4 overflow-y-scroll leading-7 whitespace-pre-line max-w-none">
           <p className="mt-3 whitespace-pre-line">
             {CONTENTS.message[statement]}
           </p>
         </div>
       ) : (
         <div
-          className="px-8 mb-4 overflow-y-scroll prose prose-lg whitespace-pre-line h-72 max-w-none"
+          className="pr-4 mt-4 mb-4 overflow-y-scroll text-base leading-7 prose prose-lg whitespace-pre-line modal-textarea-shadow-inner h-72 max-w-none"
           ref={(textAreaElement) => {
             testTextAreaRef.current = textAreaElement;
             setTextAreaRef(testTextAreaRef.current);
@@ -113,17 +109,19 @@ function Modals() {
           {CONTENTS.message[statement]}
         </div>
       )}
-      <button
-        onClick={navigateButton}
-        disabled={statement === "test" ? !isScrolledToBottom : false}
-        className={
-          statement === "test" && !isScrolledToBottom
-            ? "disabled-modal-button"
-            : "abled-modal-button"
-        }
-      >
-        {modalButton}
-      </button>
+      <div className="w-full text-right">
+        <button
+          onClick={navigateButton}
+          disabled={statement === "test" ? !isScrolledToBottom : false}
+          className={
+            statement === "test" && !isScrolledToBottom
+              ? "disabled-modal-button"
+              : "abled-modal-button"
+          }
+        >
+          {modalButton}
+        </button>
+      </div>
     </div>
   );
 }

@@ -3,13 +3,13 @@ import PropTypes from "prop-types";
 import InfoConceptContainer from "./InfoConceptContainer";
 import InfoReadingTimeContainer from "./InfoReadingTimeContainer";
 
-function InfoTextContainer({ totalReadTime = 0 }) {
+function InfoTextContainer({ totalReadTime }) {
   return (
     <>
-      {totalReadTime && (
+      {totalReadTime !== 0 && (
         <InfoReadingTimeContainer totalReadTime={totalReadTime} />
       )}
-      {!totalReadTime && <InfoConceptContainer />}
+      {totalReadTime === 0 && <InfoConceptContainer />}
     </>
   );
 }

@@ -51,6 +51,18 @@ function App() {
     }
   }, []);
 
+  const deleteMessage = (id) => {
+    const filteredMessageList = messageList.filter(
+      (message) => message.id !== id,
+    );
+
+    setMessageList(filteredMessageList);
+  };
+
+  const deleteAllMessages = () => {
+    setMessageList([]);
+  };
+
   return (
     <>
       <HeaderContainer
@@ -60,7 +72,11 @@ function App() {
         setIsDeleteMode={setIsDeleteMode}
       />
       <CardContainer isDeleteMode={isDeleteMode} />
-      <ToastContainer messageList={messageList} />
+      <ToastContainer
+        messageList={messageList}
+        deleteMessage={deleteMessage}
+        deleteAllMessages={deleteAllMessages}
+      />
       <Outlet
         context={
           ([firstClickTimeMs, setFirstClickTimeMs],

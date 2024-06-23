@@ -9,6 +9,7 @@ export default {
         "light-gray": "#FBFBFB",
         gray: "#AFADAD",
         "medium-gray": "#E5E5E5",
+        primary: "#54CABC",
       },
       fontFamily: {
         sans: ['"Pretendard"', ...defaultTheme.fontFamily.sans],
@@ -25,6 +26,11 @@ export default {
       },
       width: {
         88: "22rem",
+        140: "35rem",
+        200: "50rem",
+      },
+      minWidth: {
+        160: "40rem",
       },
       keyframes: {
         "slide-top": {

@@ -25,7 +25,7 @@ function OptionPopUpButton({ text, position, setIsDeleteMode, setIsClick }) {
   return (
     <button
       type="button"
-      className={`font-extralight h-8 bg-white ${borderRadius} hover:bg-[#E5E5E5]`}
+      className={`font-extralight h-8 bg-white ${borderRadius} hover:bg-medium-gray`}
       onClick={handleClick}
     >
       {text}

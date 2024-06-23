@@ -85,7 +85,7 @@ function Modal({
   };
 
   return (
-    <div className="w-[50rem] h-fit bg-white shadow-md shadow-black/25 rounded-3xl p-10">
+    <div className="p-10 bg-white shadow-md w-200 h-fit shadow-black/25 rounded-3xl">
       <button
         onClick={() =>
           statement !== "warning" ? navigate("/modal/warning") : navigate("/")

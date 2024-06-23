@@ -104,14 +104,14 @@ function UrlInputContainer({
   };
 
   return (
-    <div className="border-[1px] border-light-gray flex items-center justify-center m-auto mx-auto bg-white shadow-md w-fit rounded-xl mb-10">
+    <div className="flex items-center justify-center m-auto mx-auto mb-10 bg-white border shadow-md border-light-gray w-fit rounded-xl">
       <textarea
         ref={textarea}
         rows={1}
         onChange={() => handleResizeHeight(textarea)}
         onKeyDown={handleURLInput}
         onPaste={handleURLInput}
-        className="m-3 mx-5 outline-none w-[35rem] font-thin text-base resize-none"
+        className="m-3 mx-5 text-base font-thin outline-none resize-none w-140"
       />
     </div>
   );

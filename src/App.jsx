@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
-import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 
 import HeaderContainer from "./components/Header/HeaderContainer";
 import CardContainer from "./components/Card/CardContainer";
 import ToastContainer from "./components/Toast/ToastContainer";
 
 function App() {
+  const [firstClickTimeMs, setFirstClickTimeMs] = useState(0);
+  const [clickTimeDifferenceMs, setClickTimeDifferenceMs] = useState(0);
   const navigate = useNavigate();
-  const location = useLocation();
-  const totalReadingTimeMs = location.state?.totalReadingTimeMs;
 
   useEffect(() => {
     const storedWpm = window.localStorage.getItem("wpm");
@@ -26,18 +26,18 @@ function App() {
     }
 
     if (
-      totalReadingTimeMs &&
-      totalReadingTimeMs >= MIN_READING_TIME_MS &&
-      totalReadingTimeMs <= MAX_READING_TIME_MS
+      clickTimeDifferenceMs &&
+      clickTimeDifferenceMs >= MIN_READING_TIME_MS &&
+      clickTimeDifferenceMs <= MAX_READING_TIME_MS
     ) {
       const wpm = Math.floor(
-        (ARTICLE_WORD_COUNT / totalReadingTimeMs) * 60 * 1000,
+        (ARTICLE_WORD_COUNT / clickTimeDifferenceMs) * 60 * 1000,
       );
       window.localStorage.setItem("wpm", wpm);
     } else {
       window.localStorage.setItem("wpm", storedWpm);
     }
-  }, [totalReadingTimeMs, window.localStorage.getItem("wpm")]);
+  }, [clickTimeDifferenceMs, window.localStorage.getItem("wpm")]);
 
   const [messageList, setMessageList] = useState([]);
   const [isDeleteMode, setIsDeleteMode] = useState(false);
@@ -61,7 +61,12 @@ function App() {
       />
       <CardContainer isDeleteMode={isDeleteMode} />
       <ToastContainer messageList={messageList} />
-      <Outlet />
+      <Outlet
+        context={
+          ([firstClickTimeMs, setFirstClickTimeMs],
+          [clickTimeDifferenceMs, setClickTimeDifferenceMs])
+        }
+      />
     </>
   );
 }

@@ -6,7 +6,11 @@ import { GoX } from "react-icons/go";
 import CONTENTS from "../../utils/ModalContents";
 import { allowScroll, preventScroll } from "../../utils/scrollUtils";
 
-function Modals() {
+function Modal({
+  firstClickTimeMs,
+  setFirstClickTimeMs,
+  setClickTimeDifferenceMs,
+}) {
   const [readingTimeMs, setReadingTimeMs] = useState(0);
   const [textAreaElement, setTextAreaElement] = useState(null);
   const [isScrolledToBottom, setIsScrolledToBottom] = useState(false);
@@ -17,11 +21,6 @@ function Modals() {
 
   const modalTitle = CONTENTS.title[statement];
   const modalButton = CONTENTS.button[statement];
-
-  let startReadingTimeMs = 0;
-  if (statement === "test") {
-    startReadingTimeMs = Date.now();
-  }
 
   useEffect(() => {
     const storedReadingTimeMs = window.localStorage.getItem("wpm");
@@ -55,6 +54,7 @@ function Modals() {
 
   useEffect(() => {
     const prevScrollY = preventScroll();
+
     return () => {
       allowScroll(prevScrollY);
     };
@@ -65,16 +65,14 @@ function Modals() {
       case "welcome":
         navigate("/modal/guide");
         break;
-      case "guide":
+      case "guide": {
+        setFirstClickTimeMs(new Date().getTime());
         navigate("/modal/test");
         break;
+      }
       case "test": {
-        const finishReadingTimeMs = Date.now();
-        navigate("/", {
-          state: {
-            totalReadingTimeMs: finishReadingTimeMs - startReadingTimeMs,
-          },
-        });
+        setClickTimeDifferenceMs(new Date().getTime() - firstClickTimeMs);
+        navigate("/");
         break;
       }
       case "warning":
@@ -131,4 +129,4 @@ function Modals() {
   );
 }
 
-export default Modals;
+export default Modal;

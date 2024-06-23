@@ -10,8 +10,8 @@ import {
 } from "../../utils/urlUtils";
 
 function UrlInputContainer({
-  prevArticleDataList,
-  setPrevArticleDataList,
+  articleDataList,
+  setArticleDataList,
   setMessageList,
 }) {
   const textarea = useRef();
@@ -49,7 +49,7 @@ function UrlInputContainer({
         const { statusCode } = articleDatas;
         const isValidResult = isValid(
           url,
-          prevArticleDataList,
+          articleDataList,
           setMessageList,
           textarea,
           message,
@@ -87,15 +87,16 @@ function UrlInputContainer({
       const promises = inputValues.map(handleSingleURL);
       const results = await Promise.all(promises);
       const validResults = results.filter((result) => result !== null);
-      const updatedArticleDataList = prevArticleDataList
-        ? [...prevArticleDataList, ...validResults]
+      const updatedArticleDataList = articleDataList
+        ? [...articleDataList, ...validResults]
         : validResults;
 
       window.localStorage.setItem(
         "URLs",
         JSON.stringify(updatedArticleDataList),
       );
-      setPrevArticleDataList(updatedArticleDataList);
+
+      setArticleDataList(updatedArticleDataList);
 
       textarea.current.value = "";
       textarea.current.style.height = "auto";
@@ -118,7 +119,7 @@ function UrlInputContainer({
 }
 
 UrlInputContainer.propTypes = {
-  prevArticleDataList: PropTypes.arrayOf(
+  articleDataList: PropTypes.arrayOf(
     PropTypes.shape({
       data: PropTypes.shape({
         url: PropTypes.string.isRequired,
@@ -127,7 +128,7 @@ UrlInputContainer.propTypes = {
       statusCode: PropTypes.number,
     }),
   ).isRequired,
-  setPrevArticleDataList: PropTypes.func.isRequired,
+  setArticleDataList: PropTypes.func.isRequired,
   setMessageList: PropTypes.func.isRequired,
 };
 

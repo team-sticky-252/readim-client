@@ -34,8 +34,9 @@ function Modal({
     const bottomScrollPosition =
       textAreaElement.scrollHeight - textAreaElement.clientHeight;
     const currentScrollPosition = textAreaElement.scrollTop;
+    const threshold = 1;
 
-    if (bottomScrollPosition === currentScrollPosition) {
+    if (Math.abs(bottomScrollPosition - currentScrollPosition) <= threshold) {
       setIsScrolledToBottom(true);
     }
   };

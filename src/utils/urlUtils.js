@@ -69,7 +69,10 @@ export const isValid = (
 
   if (prevArticleDatas) {
     const isDuplicate = prevArticleDatas.some((articleData) => {
-      if (articleData.data.url === inputValue) {
+      if (
+        articleData.data.url.replace(/^https?:\/\/(www\.)?/, "") ===
+        inputValue.replace(/^https?:\/\/(www\.)?/, "")
+      ) {
         setMessageList((prev) => [
           ...prev,
           {

@@ -41,21 +41,21 @@ function App() {
 
   const [messageList, setMessageList] = useState([]);
   const [isDeleteMode, setIsDeleteMode] = useState(false);
-  const [prevArticleDataList, setPrevArticleDataList] = useState([]);
+  const [articleDataList, setArticleDataList] = useState([]);
 
   useEffect(() => {
     const storedURLs = JSON.parse(window.localStorage.getItem("URLs"));
 
     if (storedURLs) {
-      setPrevArticleDataList(storedURLs);
+      setArticleDataList(storedURLs);
     }
   }, []);
 
   return (
     <>
       <HeaderContainer
-        prevArticleDataList={prevArticleDataList}
-        setPrevArticleDataList={setPrevArticleDataList}
+        articleDataList={articleDataList}
+        setArticleDataList={setArticleDataList}
         setMessageList={setMessageList}
         setIsDeleteMode={setIsDeleteMode}
       />

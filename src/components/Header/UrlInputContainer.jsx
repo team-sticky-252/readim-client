@@ -29,7 +29,7 @@ function UrlInputContainer({
     const trimmedInputValue = inputValue.trim();
     const urls = trimmedInputValue.match(/(https?:\/\/[^\s]+)/g) || [];
     const otherValues = trimmedInputValue
-      .split(/\s+/)
+      .split(/\n+/)
       .filter((value) => !value.match(/(https?:\/\/[^\s]+)/g));
     const inputValues = [...urls, ...otherValues];
     const numOfURL = inputValues.length;

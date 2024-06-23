@@ -5,7 +5,7 @@ import articles from "../../utils/URLs.json";
 
 function CardContainer({ isDeleteMode }) {
   return (
-    <main className="grid min-w-[40rem] justify-center grid-cols-10 gap-6 bg-fixed bg-right-bottom bg-no-repeat justify-items-center bg-default mx-80">
+    <main className="grid justify-center grid-cols-10 gap-6 bg-fixed bg-right-bottom bg-no-repeat min-w-160 justify-items-center bg-default">
       {articles.map((article) => (
         <Card
           key={article.createDate}

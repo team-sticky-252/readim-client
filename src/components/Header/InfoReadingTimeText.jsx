@@ -13,7 +13,7 @@ function InfoReadingTimeText({ totalReadTime }) {
   }
 
   return (
-    <span className="inline-block text-right text-[#54CABC] font-medium">
+    <span className="inline-block font-medium text-right text-primary">
       {`${readingMinute}분`}
     </span>
   );

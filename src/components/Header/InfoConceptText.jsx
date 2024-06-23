@@ -20,7 +20,7 @@ function InfoConceptText() {
 
   return (
     <span
-      className={`whitespace-pre inline-block w-14 text-right text-[#54CABC] ${animate ? "ease-linear duration-300 opacity-0 -translate-y-3" : "ease-linear duration-300 opacity-100"}`}
+      className={`whitespace-pre inline-block w-14 text-right text-primary ease-linear duration-300 ${animate ? "opacity-0 -translate-y-3" : "opacity-100"}`}
     >
       {CONCEPT[index]}
     </span>

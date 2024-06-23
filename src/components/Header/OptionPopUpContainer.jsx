@@ -10,7 +10,7 @@ const OptionPopUpContainer = forwardRef(function OptionPopUpContainer(
   return (
     <div
       ref={popUpButton}
-      className="fixed grid w-24 gap-[1px] bg-gray rounded-lg cursor-pointer top-5 right-14 shadow-md"
+      className="fixed grid w-24 gap-px rounded-lg shadow-md cursor-pointer bg-gray top-5 right-14"
     >
       <OptionPopUpButton
         text="setting"

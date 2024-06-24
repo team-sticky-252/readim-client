@@ -52,6 +52,19 @@ function App() {
     }
   }, []);
 
+  const deleteArticle = (id) => {
+    const filteredArticleDataList = articleDataList.filter(
+      (article) => article.id !== id,
+    );
+
+    window.localStorage.setItem(
+      "URLs",
+      JSON.stringify(filteredArticleDataList),
+    );
+
+    setArticleDataList(filteredArticleDataList);
+  };
+
   const deleteMessage = (id) => {
     const filteredMessageList = messageList.filter(
       (message) => message.id !== id,
@@ -73,7 +86,11 @@ function App() {
           setMessageList={setMessageList}
           setIsDeleteMode={setIsDeleteMode}
         />
-        <CardContainer isDeleteMode={isDeleteMode} />
+        <CardContainer
+          isDeleteMode={isDeleteMode}
+          articleDataList={articleDataList}
+          deleteArticle={deleteArticle}
+        />
         <Footer />
         <ToastContainer
           messageList={messageList}

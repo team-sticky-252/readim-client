@@ -1,7 +1,6 @@
 import { FiMinus } from "react-icons/fi";
 import PropTypes from "prop-types";
 
-import readimFavicon from "../../../public/readimFavicon.png";
 import ReadingTime from "./ReadingTime";
 import IconButton from "../shared/Button/IconButton";
 
@@ -10,24 +9,19 @@ function Card({
   domain,
   articleTitle,
   readingTime,
+  url,
   isDeleteMode,
+  deleteArticle,
 }) {
-  const articleFavicon = favicon || readimFavicon;
+  const animation = isDeleteMode ? "" : "hover:scale-115";
 
   return (
-    <li className="relative flex flex-col content-center w-48 p-5 list-none transition-all bg-white shadow-md h-50 group hover:scale-115 shadow-black/25 rounded-3xl">
-      <a
-        href="https://www.google.com"
-        target="_blank"
-        className="relative"
-        rel="noreferrer"
-      >
+    <li
+      className={`relative flex flex-col content-center w-48 p-5 list-none transition-all bg-white shadow-md h-50 shadow-black/25 rounded-3xl group ${animation}`}
+    >
+      <a href={url} target="_blank" className="relative" rel="noreferrer">
         <div className="flex">
-          <img
-            className="inline-block w-4"
-            src={articleFavicon}
-            alt="favicon"
-          />
+          <img className="inline-block w-4" src={favicon} alt="favicon" />
           <p className="text-[11px] w-4/5 truncate inline-block ml-1 font-medium">
             {domain}
           </p>
@@ -38,7 +32,7 @@ function Card({
         </p>
       </a>
       {isDeleteMode && (
-        <IconButton onClick={() => {}} title="카드 삭제">
+        <IconButton onClick={deleteArticle} title="카드 삭제">
           <FiMinus color="gray" strokeWidth={4} />
         </IconButton>
       )}
@@ -49,9 +43,10 @@ function Card({
 export default Card;
 
 Card.propTypes = {
-  favicon: PropTypes.string.isRequired,
+  favicon: PropTypes.string,
   domain: PropTypes.string.isRequired,
   articleTitle: PropTypes.string.isRequired,
   readingTime: PropTypes.number.isRequired,
   isDeleteMode: PropTypes.bool.isRequired,
+  deleteArticle: PropTypes.func.isRequired,
 };

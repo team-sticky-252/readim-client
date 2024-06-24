@@ -21,16 +21,25 @@ export default {
         10: "repeat(4, minmax(0, 10rem))",
         sans: ["Pretendard", ...defaultTheme.fontFamily.sans],
       },
+      height: {
+        50: "12.5rem",
+      },
       maxHeight: {
         "screen-margin-24": "calc(100vh - 8rem)",
       },
       width: {
+        48: "12rem",
+        50: "12.5rem",
         88: "22rem",
         140: "35rem",
         200: "50rem",
+        216: "54rem",
       },
       minWidth: {
         160: "40rem",
+      },
+      scale: {
+        115: "1.15",
       },
       keyframes: {
         "slide-top": {

@@ -27,7 +27,7 @@ export const errorCase = (statusCode, message) => {
 
 export const isValid = (
   inputValue,
-  prevArticleDatas,
+  articleDataList,
   setMessageList,
   textarea,
   message,
@@ -67,10 +67,10 @@ export const isValid = (
     return false;
   }
 
-  if (prevArticleDatas) {
-    const isDuplicate = prevArticleDatas.some((articleData) => {
+  if (articleDataList) {
+    const isDuplicate = articleDataList.some((articleData) => {
       if (
-        articleData.data.url.replace(/^https?:\/\/(www\.)?/, "") ===
+        articleData.url.replace(/^https?:\/\/(www\.)?/, "") ===
         inputValue.replace(/^https?:\/\/(www\.)?/, "")
       ) {
         setMessageList((prev) => [
@@ -93,13 +93,13 @@ export const isValid = (
     }
   }
 
-  if (prevArticleDatas) {
-    if ((prevArticleDatas.length + 1) % 30 === 0) {
+  if (articleDataList) {
+    if ((articleDataList.length + 1) % 30 === 0) {
       setMessageList((prev) => [
         ...prev,
         {
           id: prev ? prev.length + 1 : 1,
-          message: `📚 저장한 아티클이 ${prevArticleDatas.length + 1}개가 넘었어요.`,
+          message: `📚 저장한 아티클이 ${articleDataList.length + 1}개가 넘었어요.`,
           link: null,
         },
       ]);

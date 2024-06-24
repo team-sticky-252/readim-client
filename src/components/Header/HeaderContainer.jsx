@@ -14,15 +14,11 @@ function HeaderContainer({
   const [totalReadTime, setTotalReadTime] = useState(0);
 
   useEffect(() => {
-    if (articleDataList && articleDataList.length > 0) {
-      let readTime = 0;
+    const readTime = articleDataList.reduce((acc, articleData) => {
+      return acc + articleData.readingTime;
+    }, 0);
 
-      articleDataList.forEach((articleData) => {
-        readTime += Number(articleData?.data?.readingTime);
-      });
-
-      setTotalReadTime(readTime);
-    }
+    setTotalReadTime(readTime);
   }, [articleDataList]);
 
   return (
@@ -41,7 +37,16 @@ function HeaderContainer({
 export default HeaderContainer;
 
 HeaderContainer.propTypes = {
-  articleDataList: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+  articleDataList: PropTypes.arrayOf(
+    PropTypes.shape({
+      createDate: PropTypes.string.isRequired,
+      readingTime: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+      siteName: PropTypes.string.isRequired,
+      url: PropTypes.string.isRequired,
+      faviconUrl: PropTypes.string,
+    }),
+  ).isRequired,
   setArticleDataList: PropTypes.func.isRequired,
   setMessageList: PropTypes.func.isRequired,
   setIsDeleteMode: PropTypes.func.isRequired,

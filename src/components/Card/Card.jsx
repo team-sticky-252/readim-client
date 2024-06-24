@@ -13,11 +13,9 @@ function Card({
   isDeleteMode,
   deleteArticle,
 }) {
-  const animation = isDeleteMode ? "" : "hover:scale-115";
-
   return (
     <li
-      className={`relative flex flex-col content-center w-48 p-5 list-none transition-all bg-white shadow-md h-50 shadow-black/25 rounded-3xl group ${animation}`}
+      className={`relative flex flex-col content-center w-48 p-5 list-none transition-all bg-white shadow-md h-50 shadow-black/25 rounded-3xl ${isDeleteMode || "group hover:scale-115"}`}
     >
       <a href={url} target="_blank" className="relative" rel="noreferrer">
         <div className="flex">
@@ -27,7 +25,7 @@ function Card({
           </p>
         </div>
         <ReadingTime readingTime={readingTime} />
-        <p className="mt-6 mr-1 text-sm leading-sung group-hover:pointed-title font-extralight title-ellipsis">
+        <p className="mt-6 mr-1 text-sm group-hover:pointed-title font-extralight title-ellipsis">
           {articleTitle}
         </p>
       </a>

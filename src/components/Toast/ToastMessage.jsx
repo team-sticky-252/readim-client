@@ -5,10 +5,11 @@ import PropTypes from "prop-types";
 import IconButton from "../shared/Button/IconButton";
 
 function ToastMessage({ message, link, deleteMessage }) {
-  const [animation, setAnimation] = useState("animate-slide-top");
+  const [messageFadeAnimation, setMessageFadeAnimation] =
+    useState("animate-slide-top");
 
   const handleDeleteMessageClick = () => {
-    setAnimation("animate-fade-out-bottom");
+    setMessageFadeAnimation("animate-fade-out-bottom");
 
     const timerId = setTimeout(deleteMessage, 500);
 
@@ -19,7 +20,7 @@ function ToastMessage({ message, link, deleteMessage }) {
 
   return (
     <li
-      className={`box-border relative flex flex-col self-stretch justify-center w-full h-16 p-1 px-5 mt-4 shadow-md select-none rounded-xl bg-white/50 ${animation}`}
+      className={`box-border relative flex flex-col self-stretch justify-center w-full h-16 p-1 px-5 mt-4 shadow-md select-none rounded-xl bg-white/50 ${messageFadeAnimation}`}
     >
       <p>{message}</p>
       {link && (

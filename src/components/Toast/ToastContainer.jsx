@@ -1,11 +1,19 @@
 import PropTypes from "prop-types";
 
+import { useState } from "react";
 import ToastMessage from "./ToastMessage";
 import TextButton from "../shared/Button/TextButton";
 
 function ToastContainer({ messageList, deleteMessage, deleteAllMessages }) {
+  const [animate, setAnimate] = useState("");
+
   const handleDeleteAllMessageClick = () => {
-    const timerId = setTimeout(deleteAllMessages, 500);
+    setAnimate("animate-fade-out-bottom");
+
+    const timerId = setTimeout(() => {
+      deleteAllMessages();
+      setAnimate("");
+    }, 1500);
 
     return () => {
       clearTimeout(timerId);
@@ -13,7 +21,9 @@ function ToastContainer({ messageList, deleteMessage, deleteAllMessages }) {
   };
 
   return (
-    <aside className="fixed p-3 overflow-x-hidden overflow-y-auto max-h-screen-margin-24 bottom-5 right-5 w-88">
+    <aside
+      className={`toast-scroll-container fixed p-3 max-h-screen-margin-24 bottom-5 right-5 w-88 ${animate}`}
+    >
       {messageList.length !== 0 && (
         <div className="h-6">
           <TextButton onClick={handleDeleteAllMessageClick}>

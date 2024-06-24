@@ -79,9 +79,7 @@ function UrlInputContainer({
           return null;
         }
 
-        articleDatas.createDate = new Date().toISOString();
-
-        return articleDatas;
+        return articleDatas.data;
       };
 
       const promises = inputValues.map(handleSingleURL);
@@ -121,11 +119,12 @@ function UrlInputContainer({
 UrlInputContainer.propTypes = {
   articleDataList: PropTypes.arrayOf(
     PropTypes.shape({
-      data: PropTypes.shape({
-        url: PropTypes.string.isRequired,
-      }).isRequired,
-      createDate: PropTypes.string,
-      statusCode: PropTypes.number,
+      createDate: PropTypes.string.isRequired,
+      readingTime: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+      siteName: PropTypes.string.isRequired,
+      url: PropTypes.string.isRequired,
+      faviconUrl: PropTypes.string,
     }),
   ).isRequired,
   setArticleDataList: PropTypes.func.isRequired,

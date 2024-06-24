@@ -15,15 +15,17 @@ function ReadingTime({ readingTime }) {
   }
 
   return (
-    <div className="my-2">
+    <div className="my-3">
       <h2 className="inline-block text-4xl font-medium">{readingMinute}</h2>
-      <p className="inline-block text-base font-light">분</p>
+      <p className="inline-block ml-px text-base font-light tracking-tighter">
+        분
+      </p>
       {readingSeconds !== 0 && (
         <>
-          <h2 className="inline-block ml-2 text-4xl font-medium">
+          <h2 className="inline-block ml-2 text-4xl font-medium tracking-tighter">
             {readingSeconds}
           </h2>
-          <p className="inline-block text-base font-light">초</p>
+          <p className="inline-block ml-px text-base font-light">초</p>
         </>
       )}
     </div>

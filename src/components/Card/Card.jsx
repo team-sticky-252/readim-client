@@ -15,23 +15,25 @@ function Card({
   const articleFavicon = favicon || readimFavicon;
 
   return (
-    <li className="relative content-center w-40 h-40 pl-5 list-none transition-all delay-75 bg-white shadow-md group hover:scale-125 shadow-black/25 rounded-3xl">
+    <li className="relative flex flex-col content-center w-48 p-5 list-none transition-all bg-white shadow-md h-50 group hover:scale-115 shadow-black/25 rounded-3xl">
       <a
         href="https://www.google.com"
         target="_blank"
-        className="relative -top-1"
+        className="relative"
         rel="noreferrer"
       >
-        <div>
+        <div className="flex">
           <img
             className="inline-block w-4"
             src={articleFavicon}
             alt="favicon"
           />
-          <p className="text-[11px] inline-block ml-1 font-medium">{domain}</p>
+          <p className="text-[11px] w-4/5 truncate inline-block ml-1 font-medium">
+            {domain}
+          </p>
         </div>
         <ReadingTime readingTime={readingTime} />
-        <p className="mt-1 mr-5 group-hover:pointed-title font-extralight title-ellipsis">
+        <p className="mt-6 mr-1 text-sm leading-sung group-hover:pointed-title font-extralight title-ellipsis">
           {articleTitle}
         </p>
       </a>
@@ -39,7 +41,7 @@ function Card({
         <IconButton onClick={() => {}} title="카드 삭제">
           <FiMinus color="gray" strokeWidth={4} />
         </IconButton>
-      )}{" "}
+      )}
     </li>
   );
 }

@@ -4,6 +4,7 @@ import { Outlet, useNavigate } from "react-router-dom";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import CardContainer from "./components/Card/CardContainer";
 import ToastContainer from "./components/Toast/ToastContainer";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   const [firstClickTimeMs, setFirstClickTimeMs] = useState(0);
@@ -64,26 +65,29 @@ function App() {
   };
 
   return (
-    <>
-      <HeaderContainer
-        articleDataList={articleDataList}
-        setArticleDataList={setArticleDataList}
-        setMessageList={setMessageList}
-        setIsDeleteMode={setIsDeleteMode}
-      />
-      <CardContainer isDeleteMode={isDeleteMode} />
-      <ToastContainer
-        messageList={messageList}
-        deleteMessage={deleteMessage}
-        deleteAllMessages={deleteAllMessages}
-      />
-      <Outlet
-        context={
-          ([firstClickTimeMs, setFirstClickTimeMs],
-          [clickTimeDifferenceMs, setClickTimeDifferenceMs])
-        }
-      />
-    </>
+    <div className="flex justify-center">
+      <div className="w-216">
+        <HeaderContainer
+          articleDataList={articleDataList}
+          setArticleDataList={setArticleDataList}
+          setMessageList={setMessageList}
+          setIsDeleteMode={setIsDeleteMode}
+        />
+        <CardContainer isDeleteMode={isDeleteMode} />
+        <Footer />
+        <ToastContainer
+          messageList={messageList}
+          deleteMessage={deleteMessage}
+          deleteAllMessages={deleteAllMessages}
+        />
+        <Outlet
+          context={
+            ([firstClickTimeMs, setFirstClickTimeMs],
+            [clickTimeDifferenceMs, setClickTimeDifferenceMs])
+          }
+        />
+      </div>
+    </div>
   );
 }
 

@@ -5,14 +5,14 @@ import ToastMessage from "./ToastMessage";
 import TextButton from "../shared/Button/TextButton";
 
 function ToastContainer({ messageList, deleteMessage, deleteAllMessages }) {
-  const [animate, setAnimate] = useState("");
+  const [containerFadeAnimation, setContainerFadeAnimation] = useState("");
 
   const handleDeleteAllMessageClick = () => {
-    setAnimate("animate-fade-out-bottom");
+    setContainerFadeAnimation("animate-fade-out-bottom");
 
     const timerId = setTimeout(() => {
       deleteAllMessages();
-      setAnimate("");
+      setContainerFadeAnimation("");
     }, 1500);
 
     return () => {
@@ -22,7 +22,7 @@ function ToastContainer({ messageList, deleteMessage, deleteAllMessages }) {
 
   return (
     <aside
-      className={`toast-scroll-container fixed p-3 max-h-screen-margin-24 bottom-5 right-5 w-88 ${animate}`}
+      className={`toast-scroll-container fixed p-3 max-h-screen-margin-24 bottom-5 right-5 w-88 ${containerFadeAnimation}`}
     >
       {messageList.length !== 0 && (
         <div className="h-6">

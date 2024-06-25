@@ -1,3 +1,5 @@
+import ERROR_MESSAGE from "./errorMessage";
+
 export const requestURL = async (inputValue) => {
   const BASE_URL = "http://localhost:3000";
   const requestParam = {
@@ -37,8 +39,9 @@ export const isValid = (
     setMessageList((prev) => [
       ...prev,
       {
-        id: prev ? prev.length + 1 : 1,
-        message: message[0].onlySpace,
+        id: new Date().getTime(),
+        icon: ERROR_MESSAGE.BLANK.icon,
+        messages: ERROR_MESSAGE.BLANK.messages,
         link,
       },
     ]);
@@ -50,16 +53,15 @@ export const isValid = (
   }
 
   if (!inputValue.includes("http")) {
-    setMessageList((prev) => {
-      return [
-        ...prev,
-        {
-          id: prev ? prev.length + 1 : 1,
-          message: message[0].notValidURL,
-          link,
-        },
-      ];
-    });
+    setMessageList((prev) => [
+      ...prev,
+      {
+        id: new Date().getTime(),
+        icon: ERROR_MESSAGE.NOT_VALID_URL.icon,
+        messages: ERROR_MESSAGE.NOT_VALID_URL.messages,
+        link,
+      },
+    ]);
 
     textarea.current.value = "";
     textarea.current.style.height = "auto";
@@ -76,9 +78,10 @@ export const isValid = (
         setMessageList((prev) => [
           ...prev,
           {
-            id: prev ? prev.length + 1 : 1,
-            message: message[0].duplicateURL,
-            link: inputValue,
+            id: new Date().getTime(),
+            icon: ERROR_MESSAGE.DUPLICATE_URL.icon,
+            messages: ERROR_MESSAGE.DUPLICATE_URL.messages,
+            link,
           },
         ]);
 
@@ -98,9 +101,10 @@ export const isValid = (
       setMessageList((prev) => [
         ...prev,
         {
-          id: prev ? prev.length + 1 : 1,
-          message: `📚 저장한 아티클이 ${articleDataList.length + 1}개가 넘었어요.`,
-          link: null,
+          id: new Date().getTime(),
+          icon: "📚",
+          messages: `저장한 아티클이 ${articleDataList.length + 1}개가 넘었어요.`,
+          link,
         },
       ]);
     }

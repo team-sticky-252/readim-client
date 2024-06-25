@@ -32,10 +32,11 @@ function ToastContainer({ messageList, deleteMessage, deleteAllMessages }) {
         </div>
       )}
       <ul className="flex flex-col-reverse items-center whitespace-pre-wrap flex-nowrap">
-        {messageList.map(({ id, message, link }) => (
+        {messageList.map(({ id, icon, messages, link }) => (
           <ToastMessage
             key={id}
-            message={message}
+            icon={icon}
+            messages={messages}
             link={link}
             deleteMessage={() => deleteMessage(id)}
           />
@@ -51,7 +52,7 @@ ToastContainer.propTypes = {
   messageList: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
-      message: PropTypes.string.isRequired,
+      messages: PropTypes.arrayOf(PropTypes.string).isRequired,
       link: PropTypes.string,
     }),
   ).isRequired,

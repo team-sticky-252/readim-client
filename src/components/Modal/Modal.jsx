@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 import { GoX } from "react-icons/go";
@@ -41,14 +41,22 @@ function Modal({
     }
   };
 
+  const debounceScroll = useCallback(() => {
+    if (isScrolledToBottom) {
+      return;
+    }
+    clearTimeout(debounceScroll.timer);
+    debounceScroll.timer = setTimeout(updateScroll, 500);
+  }, [isScrolledToBottom, updateScroll]);
+
   useEffect(() => {
     if (textAreaElement) {
-      textAreaElement.addEventListener("scroll", updateScroll);
+      textAreaElement.addEventListener("scroll", debounceScroll);
     }
 
     return () => {
       if (textAreaElement) {
-        textAreaElement.removeEventListener("scroll", updateScroll);
+        textAreaElement.removeEventListener("scroll", debounceScroll);
       }
     };
   }, [textAreaElement]);

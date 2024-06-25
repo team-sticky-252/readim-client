@@ -45,7 +45,9 @@ function Modal({
     if (isScrolledToBottom) {
       return;
     }
+
     clearTimeout(debounceScroll.timer);
+
     debounceScroll.timer = setTimeout(updateScroll, 500);
   }, [isScrolledToBottom, updateScroll]);
 

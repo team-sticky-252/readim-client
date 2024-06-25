@@ -10,7 +10,7 @@ function InfoReadingTimeText({ totalReadTime }) {
   }
 
   const readingHour = Math.floor(readingMinute / 60);
-  readingMinute -= readingHour * 60;
+  readingMinute %= 60;
 
   return (
     <span className="inline-block font-medium text-right text-primary">

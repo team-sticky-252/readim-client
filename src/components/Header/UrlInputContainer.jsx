@@ -1,16 +1,14 @@
 import { useRef } from "react";
 import PropTypes from "prop-types";
 
-import message from "../../utils/message.json";
-import ERROR_MESSAGE from "../../utils/errorMessage";
-import { requestURL, isValid, handleResizeHeight } from "../../utils/urlUtils";
+import { handleSingleURL, handleResizeHeight } from "../../utils/urlUtils";
 
 function UrlInputContainer({
   articleDataList,
   setArticleDataList,
   setMessageList,
 }) {
-  const textarea = useRef();
+  const textareaRef = useRef();
 
   const handleURLInput = async (event) => {
     let pasteValue = "";
@@ -21,7 +19,7 @@ function UrlInputContainer({
       pasteValue = window.clipboardData.getData("text");
     }
 
-    const inputValue = pasteValue || textarea.current.value;
+    const inputValue = pasteValue || textareaRef.current.value;
     const trimmedInputValue = inputValue.trim();
     const urls = trimmedInputValue.match(/(https?:\/\/[^\s]+)/g) || [];
     const otherValues = trimmedInputValue
@@ -31,55 +29,19 @@ function UrlInputContainer({
     const numOfURL = inputValues.length;
 
     if (numOfURL > 30) {
-      textarea.current.value = "";
-      textarea.current.style.height = "auto";
+      textareaRef.current.value = "";
 
       alert("URL 입력은 30개 이하로 해주세요");
 
-      return false;
+      return null;
     }
 
     if (event.keyCode === 13 || pasteValue) {
-      const handleSingleURL = async (url) => {
-        const articleDatas = await requestURL(url);
-        const { statusCode } = articleDatas;
-        const isValidResult = isValid(
-          url,
-          articleDataList,
-          setMessageList,
-          textarea,
-          message,
-          articleDatas.data?.url,
-        );
+      event.preventDefault();
 
-        if (!isValidResult) {
-          textarea.current.value = "";
-          textarea.current.style.height = "auto";
-
-          return null;
-        }
-
-        if (statusCode !== 200) {
-          setMessageList((prev) => [
-            ...prev,
-            {
-              id: new Date().getTime(),
-              icon: ERROR_MESSAGE[statusCode].icon,
-              messages: ERROR_MESSAGE[statusCode].messages,
-              link: url || null,
-            },
-          ]);
-
-          textarea.current.value = "";
-          textarea.current.style.height = "auto";
-
-          return null;
-        }
-
-        return articleDatas.data;
-      };
-
-      const promises = inputValues.map(handleSingleURL);
+      const promises = inputValues.map((input) =>
+        handleSingleURL(input, articleDataList, setMessageList),
+      );
       const results = await Promise.all(promises);
       const validResults = results.filter((result) => result !== null);
       const updatedArticleDataList = articleDataList
@@ -93,18 +55,18 @@ function UrlInputContainer({
 
       setArticleDataList(updatedArticleDataList);
 
-      textarea.current.value = "";
-      textarea.current.style.height = "auto";
+      textareaRef.current.value = "";
     }
+
     return null;
   };
 
   return (
     <div className="flex items-center justify-center m-auto mx-auto mb-10 bg-white border shadow-md border-light-gray w-fit rounded-xl">
       <textarea
-        ref={textarea}
+        ref={textareaRef}
         rows={1}
-        onChange={() => handleResizeHeight(textarea)}
+        onChange={() => handleResizeHeight(textareaRef)}
         onKeyDown={handleURLInput}
         onPaste={handleURLInput}
         className="m-3 mx-5 text-base font-thin outline-none resize-none w-140"

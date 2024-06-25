@@ -72,8 +72,8 @@ export const handleSingleURL = async (url, articleDataList, setMessageList) => {
     return null;
   }
 
-  const articleDatas = await requestURL(url);
-  const { statusCode } = articleDatas;
+  const articleData = await requestURL(url);
+  const { statusCode } = articleData;
 
   if (statusCode !== 200) {
     setMessageList((prev) => [
@@ -89,7 +89,7 @@ export const handleSingleURL = async (url, articleDataList, setMessageList) => {
     return null;
   }
 
-  return articleDatas.data;
+  return articleData.data;
 };
 
 export const handleResizeHeight = (textarea) => {

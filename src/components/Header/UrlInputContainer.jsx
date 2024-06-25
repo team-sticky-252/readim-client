@@ -38,6 +38,8 @@ function UrlInputContainer({
 
     if (event.keyCode === 13 || pasteValue) {
       event.preventDefault();
+      textareaRef.current.value = "";
+      handleResizeHeight(textareaRef);
 
       const promises = inputValues.map((input) =>
         handleSingleURL(input, articleDataList, setMessageList),
@@ -54,8 +56,6 @@ function UrlInputContainer({
       );
 
       setArticleDataList(updatedArticleDataList);
-
-      textareaRef.current.value = "";
     }
   };
 

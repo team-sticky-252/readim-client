@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 import IconButton from "../shared/Button/IconButton";
 
-function ToastMessage({ message, link, deleteMessage }) {
+function ToastMessage({ icon, messages, link, deleteMessage }) {
   const [messageFadeAnimation, setMessageFadeAnimation] =
     useState("animate-slide-top");
 
@@ -20,19 +20,26 @@ function ToastMessage({ message, link, deleteMessage }) {
 
   return (
     <li
-      className={`box-border relative flex flex-col self-stretch justify-center w-full h-16 p-1 px-5 mt-4 shadow-md select-none rounded-xl bg-white/50 ${messageFadeAnimation}`}
+      className={`box-border relative flex items-start w-full px-5 py-2.5 mt-4 shadow-md select-none rounded-xl bg-white/80 ${messageFadeAnimation}`}
     >
-      <p>{message}</p>
-      {link && (
-        <a
-          href={link}
-          className="underline truncate decoration-solid"
-          target="_blank"
-          rel="noreferrer"
-        >
-          {link}
-        </a>
-      )}
+      <div>
+        <span>{icon}</span>
+      </div>
+      <div className="px-3 w-72">
+        {messages.map((message) => (
+          <p key={message}>{message}</p>
+        ))}
+        {link && (
+          <a
+            href={link}
+            className="block underline truncate decoration-solid"
+            target="_blank"
+            rel="noreferrer"
+          >
+            {link}
+          </a>
+        )}
+      </div>
       <IconButton onClick={handleDeleteMessageClick} title="메시지 삭제">
         <FiMinus color="gray" strokeWidth={4} />
       </IconButton>
@@ -43,7 +50,7 @@ function ToastMessage({ message, link, deleteMessage }) {
 export default ToastMessage;
 
 ToastMessage.propTypes = {
-  message: PropTypes.string.isRequired,
+  messages: PropTypes.arrayOf(PropTypes.string).isRequired,
   link: PropTypes.string,
   deleteMessage: PropTypes.func.isRequired,
 };

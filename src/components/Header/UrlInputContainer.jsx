@@ -2,12 +2,8 @@ import { useRef } from "react";
 import PropTypes from "prop-types";
 
 import message from "../../utils/message.json";
-import {
-  requestURL,
-  errorCase,
-  isValid,
-  handleResizeHeight,
-} from "../../utils/urlUtils";
+import ERROR_MESSAGE from "../../utils/errorMessage";
+import { requestURL, isValid, handleResizeHeight } from "../../utils/urlUtils";
 
 function UrlInputContainer({
   articleDataList,
@@ -67,8 +63,9 @@ function UrlInputContainer({
           setMessageList((prev) => [
             ...prev,
             {
-              id: prev ? prev.length + 1 : 1,
-              message: errorCase(statusCode, message),
+              id: new Date().getTime(),
+              icon: ERROR_MESSAGE[statusCode].icon,
+              messages: ERROR_MESSAGE[statusCode].messages,
               link: url || null,
             },
           ]);

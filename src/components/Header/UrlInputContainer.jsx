@@ -33,7 +33,7 @@ function UrlInputContainer({
 
       alert("URL 입력은 30개 이하로 해주세요");
 
-      return null;
+      return;
     }
 
     if (event.keyCode === 13 || pasteValue) {
@@ -57,8 +57,6 @@ function UrlInputContainer({
 
       textareaRef.current.value = "";
     }
-
-    return null;
   };
 
   return (

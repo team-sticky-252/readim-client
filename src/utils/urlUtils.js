@@ -14,29 +14,22 @@ export const requestURL = async (inputValue) => {
   return articleDatas;
 };
 
-export const isValid = (inputValue, articleDataList, link = null) => {
-  let toastMessage;
-
+export const validateUrl = (inputValue, articleDataList, link = null) => {
   if (inputValue.trim() === "") {
-    toastMessage = {
+    return {
       id: new Date().getTime(),
       icon: ERROR_MESSAGE.BLANK.icon,
       messages: ERROR_MESSAGE.BLANK.messages,
       link,
     };
-
-    return toastMessage;
   }
-
   if (!inputValue.includes("http")) {
-    toastMessage = {
+    return {
       id: new Date().getTime(),
       icon: ERROR_MESSAGE.NOT_VALID_URL.icon,
       messages: ERROR_MESSAGE.NOT_VALID_URL.messages,
       link,
     };
-
-    return toastMessage;
   }
 
   if (
@@ -48,32 +41,28 @@ export const isValid = (inputValue, articleDataList, link = null) => {
       );
     })
   ) {
-    toastMessage = {
+    return {
       id: new Date().getTime(),
       icon: ERROR_MESSAGE.DUPLICATE_URL.icon,
       messages: ERROR_MESSAGE.DUPLICATE_URL.messages,
       link,
     };
-
-    return toastMessage;
   }
 
   if (articleDataList && (articleDataList.length + 1) % 30 === 0) {
-    toastMessage = {
+    return {
       id: new Date().getTime(),
       icon: "📚",
       message: `저장한 아티클이 ${articleDataList.length + 1}개가 넘었어요.`,
       link,
     };
-
-    return toastMessage;
   }
 
-  return false;
+  return null;
 };
 
 export const handleSingleURL = async (url, articleDataList, setMessageList) => {
-  const isValidResult = isValid(url, articleDataList, url);
+  const isValidResult = validateUrl(url, articleDataList, url);
 
   if (isValidResult) {
     const toastMessage = isValidResult;

@@ -14,103 +14,93 @@ export const requestURL = async (inputValue) => {
   return articleDatas;
 };
 
-export const errorCase = (statusCode, message) => {
-  switch (statusCode) {
-    case 400:
-      return message[0].errorCode400;
-    case 512:
-      return message[0].errorCode512;
-    case 500:
-      return message[0].errorCode500;
-    default:
-      return true;
-  }
-};
+export const isValid = (inputValue, articleDataList, link = null) => {
+  let toastMessage;
 
-export const isValid = (
-  inputValue,
-  articleDataList,
-  setMessageList,
-  textarea,
-  message,
-  link = null,
-) => {
   if (inputValue.trim() === "") {
-    setMessageList((prev) => [
-      ...prev,
-      {
-        id: new Date().getTime(),
-        icon: ERROR_MESSAGE.BLANK.icon,
-        messages: ERROR_MESSAGE.BLANK.messages,
-        link,
-      },
-    ]);
+    toastMessage = {
+      id: new Date().getTime(),
+      icon: ERROR_MESSAGE.BLANK.icon,
+      messages: ERROR_MESSAGE.BLANK.messages,
+      link,
+    };
 
-    textarea.current.value = "";
-    textarea.current.style.height = "auto";
-
-    return false;
+    return toastMessage;
   }
 
   if (!inputValue.includes("http")) {
+    toastMessage = {
+      id: new Date().getTime(),
+      icon: ERROR_MESSAGE.NOT_VALID_URL.icon,
+      messages: ERROR_MESSAGE.NOT_VALID_URL.messages,
+      link,
+    };
+
+    return toastMessage;
+  }
+
+  if (
+    articleDataList &&
+    articleDataList.some((articleData) => {
+      return (
+        articleData.url.replace(/^https?:\/\/(www\.)?/, "") ===
+        inputValue.replace(/^https?:\/\/(www\.)?/, "")
+      );
+    })
+  ) {
+    toastMessage = {
+      id: new Date().getTime(),
+      icon: ERROR_MESSAGE.DUPLICATE_URL.icon,
+      messages: ERROR_MESSAGE.DUPLICATE_URL.messages,
+      link,
+    };
+
+    return toastMessage;
+  }
+
+  if (articleDataList && (articleDataList.length + 1) % 30 === 0) {
+    toastMessage = {
+      id: new Date().getTime(),
+      icon: "📚",
+      message: `저장한 아티클이 ${articleDataList.length + 1}개가 넘었어요.`,
+      link,
+    };
+
+    return toastMessage;
+  }
+
+  return false;
+};
+
+export const handleSingleURL = async (url, articleDataList, setMessageList) => {
+  const isValidResult = isValid(url, articleDataList, url);
+
+  if (isValidResult) {
+    const toastMessage = isValidResult;
+
+    setMessageList((prev) => [...prev, toastMessage]);
+
+    return null;
+  }
+
+  const articleDatas = await requestURL(url);
+  const { statusCode } = articleDatas;
+
+  if (statusCode !== 200) {
     setMessageList((prev) => [
       ...prev,
       {
         id: new Date().getTime(),
-        icon: ERROR_MESSAGE.NOT_VALID_URL.icon,
-        messages: ERROR_MESSAGE.NOT_VALID_URL.messages,
-        link,
+        icon: ERROR_MESSAGE[statusCode].icon,
+        messages: ERROR_MESSAGE[statusCode].messages,
+        url,
       },
     ]);
 
-    textarea.current.value = "";
-    textarea.current.style.height = "auto";
-
-    return false;
+    return null;
   }
 
-  if (articleDataList) {
-    const isDuplicate = articleDataList.some((articleData) => {
-      if (
-        articleData.url.replace(/^https?:\/\/(www\.)?/, "") ===
-        inputValue.replace(/^https?:\/\/(www\.)?/, "")
-      ) {
-        setMessageList((prev) => [
-          ...prev,
-          {
-            id: new Date().getTime(),
-            icon: ERROR_MESSAGE.DUPLICATE_URL.icon,
-            messages: ERROR_MESSAGE.DUPLICATE_URL.messages,
-            link,
-          },
-        ]);
-
-        return true;
-      }
-
-      return false;
-    });
-
-    if (isDuplicate) {
-      return false;
-    }
-  }
-
-  if (articleDataList) {
-    if ((articleDataList.length + 1) % 30 === 0) {
-      setMessageList((prev) => [
-        ...prev,
-        {
-          id: new Date().getTime(),
-          icon: "📚",
-          messages: `저장한 아티클이 ${articleDataList.length + 1}개가 넘었어요.`,
-          link,
-        },
-      ]);
-    }
-  }
-
-  return true;
+  return articleDatas.data;
 };
 
 export const handleResizeHeight = (textarea) => {

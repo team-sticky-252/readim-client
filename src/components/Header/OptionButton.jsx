@@ -1,17 +1,14 @@
-import { forwardRef } from "react";
 import { IoSettingsSharp } from "react-icons/io5";
+import { useNavigate } from "react-router-dom";
 
-const OptionButton = forwardRef(function OptionButton(
-  { setIsClick },
-  optionButton,
-) {
+function OptionButton() {
+  const navigate = useNavigate();
   return (
     <button
-      className="fixed p-1 cursor-pointer top-5 right-5 hover:bg-medium-gray hover:rounded-lg"
+      className="fixed p-1 cursor-pointer peer top-5 right-5 hover:bg-medium-gray hover:rounded-lg"
       aria-label="open options"
       type="button"
-      onClick={() => setIsClick((prev) => !prev)}
-      ref={optionButton}
+      onClick={() => navigate("/modal/guide")}
     >
       <IoSettingsSharp
         color="white"
@@ -20,6 +17,6 @@ const OptionButton = forwardRef(function OptionButton(
       />
     </button>
   );
-});
+}
 
 export default OptionButton;

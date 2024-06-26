@@ -1,48 +1,17 @@
-import { useEffect, useState, useRef } from "react";
-import PropTypes from "prop-types";
-
+import TextButton from "../shared/Button/TextButton";
 import OptionButton from "./OptionButton";
-import OptionPopUpContainer from "./OptionPopUpContainer";
 
-function OptionContainer({ setIsDeleteMode }) {
-  const [isClick, setIsClick] = useState(false);
-  const popUpButton = useRef();
-  const optionButton = useRef();
-
-  const isOutsidePopUp = (event) => {
-    if (
-      isClick &&
-      !popUpButton.current.contains(event.target) &&
-      !optionButton.current.contains(event.target)
-    ) {
-      setIsClick(!isClick);
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener("click", isOutsidePopUp);
-
-    return () => {
-      window.removeEventListener("click", isOutsidePopUp);
-    };
-  }, [isClick]);
-
+function OptionContainer() {
   return (
     <div className="flex justify-end h-20 relatvie">
-      {isClick && (
-        <OptionPopUpContainer
-          setIsClick={setIsClick}
-          setIsDeleteMode={setIsDeleteMode}
-          ref={popUpButton}
-        />
-      )}
-      <OptionButton setIsClick={setIsClick} ref={optionButton} />
+      <OptionButton />
+      <span className="absolute hidden min-w-[50%] right-16 top-7 peer-hover:inline-block">
+        <TextButton>
+          <span className="m-2 text-slate-700">읽기 속도 재측정</span>
+        </TextButton>
+      </span>
     </div>
   );
 }
 
 export default OptionContainer;
-
-OptionContainer.propTypes = {
-  setIsDeleteMode: PropTypes.func.isRequired,
-};

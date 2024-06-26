@@ -10,13 +10,10 @@ function Card({
   articleTitle,
   readingTime,
   url,
-  isDeleteMode,
   deleteArticle,
 }) {
   return (
-    <li
-      className={`relative flex flex-col content-center w-48 p-5 list-none transition-all bg-white shadow-md h-50 shadow-black/25 rounded-3xl ${isDeleteMode || "group hover:scale-115"}`}
-    >
+    <li className="relative flex flex-col content-center w-48 p-5 list-none transition-all bg-white shadow-md h-50 shadow-black/25 rounded-3xl group hover:scale-115">
       <a href={url} target="_blank" className="relative" rel="noreferrer">
         <div className="flex">
           <img className="inline-block w-4" src={favicon} alt="favicon" />
@@ -29,11 +26,13 @@ function Card({
           {articleTitle}
         </p>
       </a>
-      {isDeleteMode && (
-        <IconButton onClick={deleteArticle} title="카드 삭제">
-          <FiMinus color="gray" strokeWidth={4} />
-        </IconButton>
-      )}
+      <IconButton
+        className="hidden group-hover:block"
+        onClick={deleteArticle}
+        title="카드 삭제"
+      >
+        <FiMinus color="gray" strokeWidth={4} />
+      </IconButton>
     </li>
   );
 }
@@ -45,6 +44,5 @@ Card.propTypes = {
   domain: PropTypes.string.isRequired,
   articleTitle: PropTypes.string.isRequired,
   readingTime: PropTypes.number.isRequired,
-  isDeleteMode: PropTypes.bool.isRequired,
   deleteArticle: PropTypes.func.isRequired,
 };

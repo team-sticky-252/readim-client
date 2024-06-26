@@ -15,6 +15,10 @@ const ERROR_MESSAGE = {
     icon: "⛓️‍💥",
     messages: ["유효하지 않은 URL 이에요."],
   },
+  408: {
+    icon: "⏰",
+    messages: ["응답 요청 시간이 초과됐습니다.", "URL을 확인해주세요"],
+  },
   512: {
     icon: "⌛️",
     messages: ["리딩 타임을 측정할 수 없는 URL 이에요."],

@@ -77,31 +77,33 @@ function App() {
   };
 
   return (
-    <div className="flex justify-center">
-      <div className="w-216">
-        <HeaderContainer
-          articleDataList={articleDataList}
-          setArticleDataList={setArticleDataList}
-          setMessageList={setMessageList}
-        />
-        <CardContainer
-          articleDataList={articleDataList}
-          deleteArticle={deleteArticle}
-        />
-        <Footer />
-        <ToastContainer
-          messageList={messageList}
-          deleteMessage={deleteMessage}
-          deleteAllMessages={deleteAllMessages}
-        />
-        <Outlet
-          context={
-            ([firstClickTimeMs, setFirstClickTimeMs],
-            [clickTimeDifferenceMs, setClickTimeDifferenceMs])
-          }
-        />
+    <>
+      <div className="flex justify-center">
+        <div className="w-216">
+          <HeaderContainer
+            articleDataList={articleDataList}
+            setArticleDataList={setArticleDataList}
+            setMessageList={setMessageList}
+          />
+          <CardContainer
+            articleDataList={articleDataList}
+            deleteArticle={deleteArticle}
+          />
+          <ToastContainer
+            messageList={messageList}
+            deleteMessage={deleteMessage}
+            deleteAllMessages={deleteAllMessages}
+          />
+          <Outlet
+            context={
+              ([firstClickTimeMs, setFirstClickTimeMs],
+              [clickTimeDifferenceMs, setClickTimeDifferenceMs])
+            }
+          />
+        </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 }
 

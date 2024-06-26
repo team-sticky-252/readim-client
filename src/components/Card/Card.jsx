@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { FiMinus } from "react-icons/fi";
 import PropTypes from "prop-types";
 
@@ -12,8 +13,19 @@ function Card({
   url,
   deleteArticle,
 }) {
+  const [isDeleted, setIsDeleted] = useState();
+
+  const handleClick = () => {
+    setIsDeleted((prev) => !prev);
+    setTimeout(() => {
+      deleteArticle();
+    }, 500);
+  };
+
   return (
-    <li className="relative flex flex-col content-center w-48 p-5 list-none transition-all bg-white shadow-md h-50 shadow-black/25 rounded-3xl group hover:scale-115">
+    <li
+      className={`relative flex flex-col content-center w-48 p-5 list-none transition-all bg-white shadow-md ${isDeleted ? "animate-fade-out" : "animate-scale-in-center"} h-50 shadow-black/25 rounded-3xl group hover:scale-115`}
+    >
       <a href={url} target="_blank" className="relative" rel="noreferrer">
         <div className="flex">
           <img className="inline-block w-4" src={favicon} alt="favicon" />
@@ -28,7 +40,7 @@ function Card({
       </a>
       <IconButton
         className="hidden group-hover:block"
-        onClick={deleteArticle}
+        onClick={handleClick}
         title="카드 삭제"
       >
         <FiMinus color="gray" strokeWidth={4} />

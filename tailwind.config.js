@@ -30,7 +30,7 @@ export default {
       width: {
         48: "12rem",
         50: "12.5rem",
-        88: "22rem",
+        90: "22.5rem",
         140: "35rem",
         200: "50rem",
         216: "54rem",

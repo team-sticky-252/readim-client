@@ -50,6 +50,7 @@ function ToastMessage({ icon, messages, link, deleteMessage }) {
 export default ToastMessage;
 
 ToastMessage.propTypes = {
+  icon: PropTypes.string.isRequired,
   messages: PropTypes.arrayOf(PropTypes.string).isRequired,
   link: PropTypes.string,
   deleteMessage: PropTypes.func.isRequired,

@@ -17,7 +17,7 @@ export const requestURL = async (inputValue) => {
 export const validateUrl = (inputValue, articleDataList, link = null) => {
   if (inputValue.trim() === "") {
     return {
-      id: new Date().getTime(),
+      id: crypto.randomUUID(),
       icon: ERROR_MESSAGE.BLANK.icon,
       messages: ERROR_MESSAGE.BLANK.messages,
       link,
@@ -25,7 +25,7 @@ export const validateUrl = (inputValue, articleDataList, link = null) => {
   }
   if (!inputValue.includes("http")) {
     return {
-      id: new Date().getTime(),
+      id: crypto.randomUUID(),
       icon: ERROR_MESSAGE.NOT_VALID_URL.icon,
       messages: ERROR_MESSAGE.NOT_VALID_URL.messages,
       link,
@@ -42,7 +42,7 @@ export const validateUrl = (inputValue, articleDataList, link = null) => {
     })
   ) {
     return {
-      id: new Date().getTime(),
+      id: crypto.randomUUID(),
       icon: ERROR_MESSAGE.DUPLICATE_URL.icon,
       messages: ERROR_MESSAGE.DUPLICATE_URL.messages,
       link,
@@ -51,7 +51,7 @@ export const validateUrl = (inputValue, articleDataList, link = null) => {
 
   if (articleDataList && (articleDataList.length + 1) % 30 === 0) {
     return {
-      id: new Date().getTime(),
+      id: crypto.randomUUID(),
       icon: "📚",
       message: `저장한 아티클이 ${articleDataList.length + 1}개가 넘었어요.`,
       link,
@@ -79,7 +79,7 @@ export const handleSingleURL = async (url, articleDataList, setMessageList) => {
     setMessageList((prev) => [
       ...prev,
       {
-        id: new Date().getTime(),
+        id: crypto.randomUUID(),
         icon: ERROR_MESSAGE[statusCode].icon,
         messages: ERROR_MESSAGE[statusCode].messages,
         url,

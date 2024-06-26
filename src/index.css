@@ -129,15 +129,6 @@
     box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
       var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
   }
-
-  .toast-scroll-container {
-    overflow: hidden;
-    transition: overflow 0.3s ease;
-  }
-
-  .toast-scroll-container:hover {
-    overflow: auto;
-  }
 }
 
 *::-webkit-scrollbar {

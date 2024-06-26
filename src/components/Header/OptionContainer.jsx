@@ -3,7 +3,7 @@ import OptionButton from "./OptionButton";
 
 function OptionContainer() {
   return (
-    <div className="flex justify-end h-20 relatvie">
+    <div className="flex justify-end h-20">
       <OptionButton />
       <span className="absolute hidden min-w-[50%] right-16 top-7 peer-hover:inline-block">
         <TextButton>

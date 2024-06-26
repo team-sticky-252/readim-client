@@ -1,6 +1,6 @@
 import ERROR_MESSAGE from "./errorMessage";
 
-export const requestURL = async (inputValue) => {
+export const requestURL = async (inputValue, option = {}) => {
   const BASE_URL = "http://localhost:3000";
   const requestParam = {
     url: inputValue,
@@ -8,7 +8,8 @@ export const requestURL = async (inputValue) => {
   };
   const query = new URLSearchParams(requestParam).toString();
   const path = `/articleSummary?${query}`;
-  const response = await fetch(BASE_URL + path);
+
+  const response = await fetch(BASE_URL + path, option);
   const articleDatas = await response.json();
 
   return articleDatas;
@@ -72,24 +73,48 @@ export const handleSingleURL = async (url, articleDataList, setMessageList) => {
     return null;
   }
 
-  const articleData = await requestURL(url);
-  const { statusCode } = articleData;
+  const controlloer = new AbortController();
+  const controlloerOption = {
+    signal: controlloer.signal,
+  };
+  const fetchTimer = setTimeout(() => {
+    controlloer.abort();
+  }, 3000);
 
-  if (statusCode !== 200) {
-    setMessageList((prev) => [
-      ...prev,
-      {
-        id: crypto.randomUUID(),
-        icon: ERROR_MESSAGE[statusCode].icon,
-        messages: ERROR_MESSAGE[statusCode].messages,
-        url,
-      },
-    ]);
+  try {
+    const articleData = await requestURL(url, controlloerOption);
+    const { statusCode } = articleData;
 
-    return null;
+    if (statusCode !== 200) {
+      setMessageList((prev) => [
+        ...prev,
+        {
+          id: crypto.randomUUID(),
+          icon: ERROR_MESSAGE[statusCode].icon,
+          messages: ERROR_MESSAGE[statusCode].messages,
+          link: url,
+        },
+      ]);
+    } else {
+      return articleData.data;
+    }
+  } catch (error) {
+    if (error.name === "AbortError") {
+      setMessageList((prev) => [
+        ...prev,
+        {
+          id: crypto.randomUUID(),
+          icon: ERROR_MESSAGE[408].icon,
+          messages: ERROR_MESSAGE[408].messages,
+          link: url,
+        },
+      ]);
+    }
+  } finally {
+    clearTimeout(fetchTimer);
   }
 
-  return articleData.data;
+  return null;
 };
 
 export const handleResizeHeight = (textarea) => {

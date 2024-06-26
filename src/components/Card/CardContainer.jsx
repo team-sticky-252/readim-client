@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 
 import Card from "./Card";
 
-function CardContainer({ isDeleteMode, articleDataList, deleteArticle }) {
+function CardContainer({ articleDataList, deleteArticle }) {
   return (
     <main className="grid justify-center grid-cols-4 gap-5 bg-fixed bg-right-bottom bg-no-repeat min-w-160 justify-items-center bg-default">
       {articleDataList.map((article) => (
@@ -13,7 +13,6 @@ function CardContainer({ isDeleteMode, articleDataList, deleteArticle }) {
           articleTitle={article.title}
           readingTime={article.readingTime}
           url={article.url}
-          isDeleteMode={isDeleteMode}
           deleteArticle={() => deleteArticle(article.id)}
         />
       ))}
@@ -24,7 +23,6 @@ function CardContainer({ isDeleteMode, articleDataList, deleteArticle }) {
 export default CardContainer;
 
 CardContainer.propTypes = {
-  isDeleteMode: PropTypes.bool.isRequired,
   articleDataList: PropTypes.arrayOf(
     PropTypes.shape({
       createDate: PropTypes.string.isRequired,

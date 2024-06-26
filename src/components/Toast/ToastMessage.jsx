@@ -20,7 +20,7 @@ function ToastMessage({ icon, messages, link, deleteMessage }) {
 
   return (
     <li
-      className={`box-border relative flex items-start w-full px-5 py-2.5 mt-4 shadow-md select-none rounded-xl bg-white/80 ${messageFadeAnimation}`}
+      className={`group hover:scale-50 z-10 transition-all box-border relative flex items-start w-full px-5 py-2.5 mt-4 shadow-md select-none rounded-xl bg-white/80 ${messageFadeAnimation}`}
     >
       <div>
         <span>{icon}</span>

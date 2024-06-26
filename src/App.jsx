@@ -41,7 +41,6 @@ function App() {
   }, [clickTimeDifferenceMs, window.localStorage.getItem("wpm")]);
 
   const [messageList, setMessageList] = useState([]);
-  const [isDeleteMode, setIsDeleteMode] = useState(false);
   const [articleDataList, setArticleDataList] = useState([]);
 
   useEffect(() => {
@@ -84,10 +83,8 @@ function App() {
           articleDataList={articleDataList}
           setArticleDataList={setArticleDataList}
           setMessageList={setMessageList}
-          setIsDeleteMode={setIsDeleteMode}
         />
         <CardContainer
-          isDeleteMode={isDeleteMode}
           articleDataList={articleDataList}
           deleteArticle={deleteArticle}
         />

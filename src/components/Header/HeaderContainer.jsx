@@ -9,7 +9,6 @@ function HeaderContainer({
   articleDataList,
   setArticleDataList,
   setMessageList,
-  setIsDeleteMode,
 }) {
   const [totalReadTime, setTotalReadTime] = useState(0);
 
@@ -23,7 +22,7 @@ function HeaderContainer({
 
   return (
     <header className="grid w-full text-center text-centerborder-solid grid-row-3">
-      <OptionContainer setIsDeleteMode={setIsDeleteMode} />
+      <OptionContainer />
       <InfoTextContainer totalReadTime={totalReadTime} />
       <UrlInputContainer
         articleDataList={articleDataList}
@@ -49,5 +48,4 @@ HeaderContainer.propTypes = {
   ).isRequired,
   setArticleDataList: PropTypes.func.isRequired,
   setMessageList: PropTypes.func.isRequired,
-  setIsDeleteMode: PropTypes.func.isRequired,
 };

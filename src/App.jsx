@@ -9,6 +9,9 @@ import Footer from "./components/Footer/Footer";
 function App() {
   const [firstClickTimeMs, setFirstClickTimeMs] = useState(0);
   const [clickTimeDifferenceMs, setClickTimeDifferenceMs] = useState(0);
+  const [messageList, setMessageList] = useState([]);
+  const [articleDataList, setArticleDataList] = useState([]);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -39,9 +42,6 @@ function App() {
       window.localStorage.setItem("wpm", storedWpm);
     }
   }, [clickTimeDifferenceMs, window.localStorage.getItem("wpm")]);
-
-  const [messageList, setMessageList] = useState([]);
-  const [articleDataList, setArticleDataList] = useState([]);
 
   useEffect(() => {
     const storedURLs = JSON.parse(window.localStorage.getItem("URLs"));

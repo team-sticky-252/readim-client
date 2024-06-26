@@ -51,7 +51,8 @@ export default ToastContainer;
 ToastContainer.propTypes = {
   messageList: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number.isRequired,
+      id: PropTypes.string.isRequired,
+      icon: PropTypes.string.isRequired,
       messages: PropTypes.arrayOf(PropTypes.string).isRequired,
       link: PropTypes.string,
     }),

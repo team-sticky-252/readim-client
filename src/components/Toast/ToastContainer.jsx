@@ -22,7 +22,7 @@ function ToastContainer({ messageList, deleteMessage, deleteAllMessages }) {
 
   return (
     <aside
-      className={`toast-scroll-container fixed p-3 max-h-screen-margin-24 bottom-5 right-5 w-88 ${containerFadeAnimation}`}
+      className={`overflow-y-scroll fixed p-3 max-h-screen-margin-24 bottom-5 right-5 w-88 ${containerFadeAnimation}`}
     >
       {messageList.length !== 0 && (
         <div className="relative h-6">

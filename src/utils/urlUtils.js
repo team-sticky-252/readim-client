@@ -73,12 +73,12 @@ export const handleSingleURL = async (url, articleDataList, setMessageList) => {
     return null;
   }
 
-  const controlloer = new AbortController();
+  const controller = new AbortController();
   const controlloerOption = {
-    signal: controlloer.signal,
+    signal: controller.signal,
   };
   const fetchTimer = setTimeout(() => {
-    controlloer.abort();
+    controller.abort();
   }, 3000);
 
   try {
@@ -109,6 +109,8 @@ export const handleSingleURL = async (url, articleDataList, setMessageList) => {
           link: url,
         },
       ]);
+    } else {
+      throw error;
     }
   } finally {
     clearTimeout(fetchTimer);

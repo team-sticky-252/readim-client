@@ -45,8 +45,9 @@ function UrlInputContainer({
         handleSingleURL(input, articleDataList, setMessageList),
       );
       const results = await Promise.all(promises);
-      const validResults = results.filter((result) => result !== null);
-      const newestArticleDataList = validResults.reverse();
+      const newestArticleDataList = results
+        .filter((result) => result !== null)
+        .reverse();
       const updatedArticleDataList = [
         ...newestArticleDataList,
         ...articleDataList,

@@ -77,8 +77,8 @@ function App() {
   };
 
   return (
-    <>
-      <div className="flex justify-center">
+    <div className="flex flex-col justify-between min-h-screen">
+      <div className="flex justify-center h-auto min-h-full mb-auto">
         <div className="w-216">
           <HeaderContainer
             articleDataList={articleDataList}
@@ -103,7 +103,7 @@ function App() {
         </div>
       </div>
       <Footer />
-    </>
+    </div>
   );
 }
 

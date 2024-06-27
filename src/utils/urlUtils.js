@@ -1,9 +1,7 @@
 import ERROR_MESSAGE from "./errorMessage";
 
 const BASE_URL =
-  window.location.hostname === "localhost"
-    ? "http://localhost:8080"
-    : "http://readimtest03-env.eba-5ebns2mz.ap-northeast-2.elasticbeanstalk.com";
+  window.location.hostname === "localhost" ? "http://localhost:8080" : "/api";
 
 export const requestURL = async (inputValue, option = {}) => {
   const requestParam = {

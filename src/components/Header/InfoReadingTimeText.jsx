@@ -13,7 +13,7 @@ function InfoReadingTimeText({ totalReadTime }) {
   readingMinute %= 60;
 
   return (
-    <span className="inline-block font-medium text-right text-primary">
+    <span className="inline-block font-medium text-right text-transparent bg-gradient-to-r from-primary via-blue-gray to-deep-blue bg-clip-text">
       {readingHour > 0 && `${readingHour}시간 `}
       {readingMinute > 0 && `${readingMinute}분`}
     </span>

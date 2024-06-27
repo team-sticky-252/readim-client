@@ -10,12 +10,11 @@ export default {
         gray: "#AFADAD",
         "medium-gray": "#E5E5E5",
         primary: "#54CABC",
+        "blue-gray": "#6B88C5",
+        "deep-blue": "#4a78d8",
       },
       fontFamily: {
         sans: ['"Pretendard"', ...defaultTheme.fontFamily.sans],
-      },
-      backgroundImage: {
-        default: "url('./assets/background.png')",
       },
       gridTemplateColumns: {
         10: "repeat(4, minmax(0, 10rem))",
@@ -29,9 +28,8 @@ export default {
       },
       width: {
         48: "12rem",
-        50: "12.5rem",
         90: "22.5rem",
-        140: "35rem",
+        118: "29.5rem",
         200: "50rem",
         216: "54rem",
       },

@@ -16,7 +16,7 @@ function ReadingTime({ readingTime }) {
 
   return (
     <div className="my-3">
-      {readingMinute !== 0 && (
+      {readingMinute > 0 && (
         <>
           <h2 className="inline-block text-4xl font-medium">{readingMinute}</h2>
           <p className="inline-block ml-px mr-2 text-base font-light tracking-tighter">
@@ -24,7 +24,7 @@ function ReadingTime({ readingTime }) {
           </p>
         </>
       )}
-      {readingSeconds !== 0 && (
+      {readingSeconds > 0 && (
         <>
           <h2 className="inline-block text-4xl font-medium tracking-tighter">
             {readingSeconds}

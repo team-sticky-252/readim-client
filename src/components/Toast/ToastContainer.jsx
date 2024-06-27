@@ -24,7 +24,7 @@ function ToastContainer({ messageList, deleteMessage, deleteAllMessages }) {
     <aside
       className={`overflow-y-scroll fixed p-3 max-h-screen-margin-24 bottom-5 right-5 w-90 ${containerFadeAnimation}`}
     >
-      {messageList.length !== 0 && (
+      {messageList.length > 0 && (
         <div className="relative h-6">
           <TextButton onClick={handleDeleteAllMessageClick}>
             <span className="text-slate-700">모두 지우기</span>

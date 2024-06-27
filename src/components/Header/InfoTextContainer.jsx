@@ -6,7 +6,7 @@ import InfoReadingTimeContainer from "./InfoReadingTimeContainer";
 function InfoTextContainer({ totalReadTime }) {
   return (
     <>
-      {totalReadTime !== 0 && (
+      {totalReadTime > 0 && (
         <InfoReadingTimeContainer totalReadTime={totalReadTime} />
       )}
       {totalReadTime === 0 && <InfoConceptContainer />}

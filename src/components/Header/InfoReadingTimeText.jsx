@@ -14,8 +14,8 @@ function InfoReadingTimeText({ totalReadTime }) {
 
   return (
     <span className="inline-block font-medium text-right text-primary">
-      {readingHour !== 0 && `${readingHour}시간 `}
-      {readingMinute !== 0 && `${readingMinute}분`}
+      {readingHour > 0 && `${readingHour}시간 `}
+      {readingMinute > 0 && `${readingMinute}분`}
     </span>
   );
 }

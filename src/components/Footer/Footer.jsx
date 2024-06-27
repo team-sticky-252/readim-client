@@ -11,7 +11,7 @@ function Footer() {
   return (
     <footer className="bottom-0 w-full pt-40 mt-auto text-sm font-thin tracking-normal text-center h-80 bg-gradient-to-t from-white">
       <p className="flex items-center justify-center">
-        <span>Readim</span>은 다음 사이트에 최적화 되어 있어요.
+        Readim은 다음 사이트에 최적화 되어 있어요.
         {OPTIMIZED_SITE_LIST.map(({ href, faviconSrc, siteName }) => (
           <OptimizedSiteLink
             key={siteName}

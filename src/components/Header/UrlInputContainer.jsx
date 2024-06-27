@@ -46,9 +46,11 @@ function UrlInputContainer({
       );
       const results = await Promise.all(promises);
       const validResults = results.filter((result) => result !== null);
-      const updatedArticleDataList = articleDataList
-        ? [...articleDataList, ...validResults]
-        : validResults;
+      const newestArticleDataList = validResults.reverse();
+      const updatedArticleDataList = [
+        ...newestArticleDataList,
+        ...articleDataList,
+      ];
 
       window.localStorage.setItem(
         "URLs",

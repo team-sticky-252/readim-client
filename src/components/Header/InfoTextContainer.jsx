@@ -1,16 +1,14 @@
 import PropTypes from "prop-types";
 
-import InfoConceptContainer from "./InfoConceptContainer";
 import InfoReadingTimeContainer from "./InfoReadingTimeContainer";
 
 function InfoTextContainer({ totalReadTime }) {
   return (
-    <>
+    <div className={`flex justify-center ${totalReadTime > 0 && "h-28"}`}>
       {totalReadTime > 0 && (
         <InfoReadingTimeContainer totalReadTime={totalReadTime} />
       )}
-      {totalReadTime === 0 && <InfoConceptContainer />}
-    </>
+    </div>
   );
 }
 

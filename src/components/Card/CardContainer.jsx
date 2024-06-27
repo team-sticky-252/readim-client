@@ -4,7 +4,7 @@ import Card from "./Card";
 
 function CardContainer({ articleDataList, deleteArticle }) {
   return (
-    <main className="grid justify-center grid-cols-4 gap-5 bg-fixed bg-right-bottom bg-no-repeat min-w-160 justify-items-center bg-default">
+    <main className="grid justify-center grid-cols-4 gap-5 bg-fixed bg-right-bottom bg-no-repeat min-w-160 justify-items-center">
       {articleDataList.map((article) => (
         <Card
           key={article.id}

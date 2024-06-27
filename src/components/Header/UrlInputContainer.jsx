@@ -63,14 +63,15 @@ function UrlInputContainer({
   };
 
   return (
-    <div className="flex items-center justify-center m-auto mx-auto mb-10 bg-white border shadow-md border-light-gray w-fit rounded-xl">
+    <div className="flex items-center justify-center m-auto mx-auto mt-4 bg-white border shadow-md mb-14 border-light-gray w-fit rounded-xl">
       <textarea
         ref={textareaRef}
         rows={1}
         onChange={() => handleResizeHeight(textareaRef)}
         onKeyDown={handleURLInput}
         onPaste={handleURLInput}
-        className="m-3 mx-5 text-base font-thin outline-none resize-none w-140"
+        className="m-3 mx-5 text-base font-thin outline-none resize-none w-118"
+        placeholder="URL을 입력해 주세요."
       />
     </div>
   );

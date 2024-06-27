@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
 import InfoTextContainer from "./InfoTextContainer";
@@ -10,15 +9,9 @@ function HeaderContainer({
   setArticleDataList,
   setMessageList,
 }) {
-  const [totalReadTime, setTotalReadTime] = useState(0);
-
-  useEffect(() => {
-    const readTime = articleDataList.reduce((acc, articleData) => {
-      return acc + articleData.readingTime;
-    }, 0);
-
-    setTotalReadTime(readTime);
-  }, [articleDataList]);
+  const totalReadTime = articleDataList.reduce((acc, articleData) => {
+    return acc + articleData.readingTime;
+  }, 0);
 
   return (
     <header className="grid w-full text-center text-centerborder-solid grid-row-3">

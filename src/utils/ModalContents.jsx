@@ -2,7 +2,7 @@ const CONTENTS = {
   title: {
     welcome: "환영합니다!",
     guide: "당신에게 맞춘 리딩 타임",
-    test: "Hellow World!",
+    test: "Hello World!",
     warning: "Readim의 정확한 리딩 타임 제안",
   },
   button: {

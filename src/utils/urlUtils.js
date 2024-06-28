@@ -1,14 +1,17 @@
 import ERROR_MESSAGE from "./errorMessage";
 
+const BASE_URL =
+  window.location.hostname === "localhost"
+    ? "http://readimtest03-env.eba-5ebns2mz.ap-northeast-2.elasticbeanstalk.com"
+    : "/api";
+
 export const requestURL = async (inputValue, option = {}) => {
-  const BASE_URL = "http://localhost:3000";
   const requestParam = {
     url: inputValue,
     wpm: Number(window.localStorage.getItem("wpm")),
   };
   const query = new URLSearchParams(requestParam).toString();
   const path = `/articleSummary?${query}`;
-
   const response = await fetch(BASE_URL + path, option);
   const articleDatas = await response.json();
 

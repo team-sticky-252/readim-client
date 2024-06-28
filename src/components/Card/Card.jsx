@@ -24,7 +24,7 @@ function Card({
 
   return (
     <li
-      className={`relative flex flex-col content-center w-48 p-5 list-none transition-all bg-white shadow-md ${isDeleted ? "animate-fade-out" : "animate-scale-in-center"} h-50 shadow-black/25 rounded-3xl group hover:scale-115`}
+      className={`relative flex flex-col content-center w-48 p-5 list-none transition-all bg-white shadow-md ${isDeleted ? "animate-fade-out" : "animate-scale-in-center"} h-52 shadow-black/25 rounded-3xl group hover:scale-115`}
     >
       <a href={url} target="_blank" className="relative" rel="noreferrer">
         <div className="flex">

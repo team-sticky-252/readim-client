@@ -105,6 +105,7 @@ function App() {
         </div>
       </div>
       <Footer />
+      <div className="absolute block w-full h-20 bg-gradient-to-b from-white -z-10-"></div>
     </div>
   );
 }

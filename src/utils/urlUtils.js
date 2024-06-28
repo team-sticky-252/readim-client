@@ -12,7 +12,7 @@ export const requestURL = async (inputValue, option = {}) => {
   const path = `/articleSummary?${query}`;
   console.log("BASE_URL: ", BASE_URL);
   const response = await fetch(BASE_URL + path, option);
-  console.log("response ", BASE_URL);
+  console.log("response ", response);
   const articleDatas = await response.json();
   console.log("articleDatas: ", articleDatas);
   return articleDatas;

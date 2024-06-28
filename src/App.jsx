@@ -6,6 +6,7 @@ import CardContainer from "./components/Card/CardContainer";
 import ToastContainer from "./components/Toast/ToastContainer";
 import Footer from "./components/Footer/Footer";
 import Welcome from "./components/Welcome";
+import SummaryContainer from "./components/Summary/SummaryContainer";
 
 function App() {
   const [firstClickTimeMs, setFirstClickTimeMs] = useState(0);
@@ -79,10 +80,15 @@ function App() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center justify-between min-h-screen">
+    <div className="relative flex flex-col items-center justify-between min-h-screen">
       <div className="flex justify-center h-auto min-h-full mb-auto">
         <div className="w-216">
           {articleDataList.length === 0 && <Welcome />}
+          <SummaryContainer
+            key={articleSummaryData?.url}
+            articleSummaryData={articleSummaryData}
+            setArticleSummaryData={setArticleSummaryData}
+          />
           <HeaderContainer
             articleDataList={articleDataList}
             setArticleDataList={setArticleDataList}

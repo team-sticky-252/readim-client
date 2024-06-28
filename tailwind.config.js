@@ -9,9 +9,9 @@ export default {
         "light-gray": "#FBFBFB",
         gray: "#AFADAD",
         "medium-gray": "#E5E5E5",
-        primary: "#54CABC",
-        "blue-gray": "#6B88C5",
-        "deep-blue": "#4A78D8",
+        "pastel-purple": "#D2C2F4",
+        "blush-pink": "#FFA2CD",
+        "sunset-orange": "#FFBB9A",
       },
       fontFamily: {
         sans: ['"Pretendard"', ...defaultTheme.fontFamily.sans],

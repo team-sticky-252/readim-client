@@ -10,12 +10,18 @@ export const requestURL = async (inputValue, option = {}) => {
   };
   const query = new URLSearchParams(requestParam).toString();
   const path = `/articleSummary?${query}`;
+
   console.log("path: ", path);
   console.log("BASE_URL: ", BASE_URL);
+
   const response = await fetch(BASE_URL + path, option);
+
   console.log("response: ", response);
+
   const articleDatas = await response.json();
+
   console.log("articleDatas: ", articleDatas);
+
   return articleDatas;
 };
 

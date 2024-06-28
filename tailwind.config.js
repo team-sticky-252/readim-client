@@ -68,6 +68,34 @@ export default {
             opacity: "1",
           },
         },
+        "slide-in-left": {
+          "0%": {
+            transform: "translateX(-1000px)",
+            opacity: "0",
+          },
+          "100%": {
+            transform: "translateX(0)",
+            opacity: "1",
+          },
+        },
+        "slide-out-left": {
+          "0%": {
+            transform: "translateX(0)",
+            opacity: "1",
+          },
+          "100%": {
+            transform: "translateX(-1000px)",
+            opacity: "0",
+          },
+        },
+        "bg-pan-left": {
+          "0%": {
+            "background-position": "100% 50%",
+          },
+          "100%": {
+            "background-position": "0% 50%",
+          },
+        },
       },
       animation: {
         "slide-top":
@@ -76,6 +104,11 @@ export default {
         "fade-out-bottom": "fade-out-bottom 0.3s linear both",
         "scale-in-center":
           "scale-in-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940)",
+        "slide-in-left":
+          "slide-in-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both",
+        "slide-out-left":
+          "slide-out-left 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both",
+        "bg-pan-left": "bg-pan-left 8s both",
       },
     },
   },

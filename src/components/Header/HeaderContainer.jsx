@@ -33,6 +33,7 @@ HeaderContainer.propTypes = {
     PropTypes.shape({
       createDate: PropTypes.string.isRequired,
       readingTime: PropTypes.number.isRequired,
+      mainContent: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired,
       siteName: PropTypes.string.isRequired,
       url: PropTypes.string.isRequired,

@@ -8,22 +8,21 @@ const openai = new OpenAI({
 });
 
 async function generateResponse(prompt) {
-  try {
-    const response = await openai.completions.create({
-      model: "gpt-3.5-turbo-instruct",
-      prompt,
-      max_tokens: 200,
-    });
+  const response = await openai.completions.create({
+    model: "gpt-3.5-turbo-instruct",
+    prompt: `${prompt}
+    ---
+    Please translate the above sentence into Korean using the OpenAI API.
+    Focus strictly on summarizing the core content in the translation within 300 characters.
+    Exclude any unrelated information or filler text, and utilize the provided max_tokens effectively for accuracy.`,
+    max_tokens: 300,
+  });
 
-    if (response && response.choices && response.choices.length > 0) {
-      return response.choices[0].text.trim();
-    }
-
-    throw new Error("Invalid response format or empty choices array");
-  } catch (error) {
-    console.error("요약 생성 중 에러:", error);
-    throw error;
+  if (response && response.choices && response.choices.length > 0) {
+    return response.choices[0].text.trim();
   }
+
+  throw new Error("Invalid response format or empty choices array");
 }
 
 export default generateResponse;

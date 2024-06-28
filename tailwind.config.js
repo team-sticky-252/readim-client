@@ -11,7 +11,7 @@ export default {
         "medium-gray": "#E5E5E5",
         primary: "#54CABC",
         "blue-gray": "#6B88C5",
-        "deep-blue": "#4a78d8",
+        "deep-blue": "#4A78D8",
       },
       fontFamily: {
         sans: ['"Pretendard"', ...defaultTheme.fontFamily.sans],

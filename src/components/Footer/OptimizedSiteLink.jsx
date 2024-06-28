@@ -2,6 +2,8 @@ function OptimizedSiteLink({ href, faviconSrc, siteName }) {
   return (
     <a
       href={href}
+      target="_blank"
+      rel="noopener noreferrer"
       className="flex items-center justify-center ml-1 mr-1 whitespace-nowrap hover:underline"
     >
       <img

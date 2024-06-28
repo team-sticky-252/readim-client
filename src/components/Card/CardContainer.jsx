@@ -41,4 +41,5 @@ CardContainer.propTypes = {
     }),
   ).isRequired,
   deleteArticle: PropTypes.func.isRequired,
+  setArticleSummaryData: PropTypes.func.isRequired,
 };

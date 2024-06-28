@@ -78,4 +78,5 @@ Card.propTypes = {
   articleTitle: PropTypes.string.isRequired,
   readingTime: PropTypes.number.isRequired,
   deleteArticle: PropTypes.func.isRequired,
+  setArticleSummaryData: PropTypes.func.isRequired,
 };

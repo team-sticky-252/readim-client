@@ -1,7 +1,9 @@
+import PropTypes from "prop-types";
+
 import SummaryMessage from "./SummaryMessage";
 import SummarySkeleton from "./SummarySkeleton";
 
-function SummaryResult({ summaryText, summaryError }) {
+function SummaryResult({ summaryText = "", summaryError = "" }) {
   if (summaryError) {
     return <SummaryMessage>{summaryError}</SummaryMessage>;
   }
@@ -19,3 +21,8 @@ function SummaryResult({ summaryText, summaryError }) {
 }
 
 export default SummaryResult;
+
+SummaryResult.propTypes = {
+  summaryText: PropTypes.string,
+  summaryError: PropTypes.string,
+};

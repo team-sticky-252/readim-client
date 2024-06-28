@@ -77,6 +77,8 @@ Card.propTypes = {
   domain: PropTypes.string.isRequired,
   articleTitle: PropTypes.string.isRequired,
   readingTime: PropTypes.number.isRequired,
+  mainContent: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
   deleteArticle: PropTypes.func.isRequired,
   setArticleSummaryData: PropTypes.func.isRequired,
 };

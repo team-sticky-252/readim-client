@@ -3,7 +3,7 @@ import SummarySkeleton from "./SummarySkeleton";
 
 function SummaryResult({ summaryText, summaryError }) {
   if (summaryError) {
-    return <SummaryMessage message={summaryError} />;
+    return <SummaryMessage>{summaryError}</SummaryMessage>;
   }
 
   if (summaryText) {

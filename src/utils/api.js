@@ -18,7 +18,7 @@ async function generateResponse(prompt) {
     max_tokens: 300,
   });
 
-  if (response && response.choices && response.choices.length > 0) {
+  if (response?.choices?.length > 0) {
     return response.choices[0].text.trim();
   }
 

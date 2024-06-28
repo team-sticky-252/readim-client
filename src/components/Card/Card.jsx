@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { FiMinus } from "react-icons/fi";
+import { SiOpenai } from "react-icons/si";
 import PropTypes from "prop-types";
 
-import { SiOpenai } from "react-icons/si";
 import ReadingTime from "./ReadingTime";
 import IconButton from "../shared/Button/IconButton";
 
@@ -25,7 +25,7 @@ function Card({
     }, 500);
   };
 
-  const handleClickShowSummary = () => {
+  const handleShowSummaryClick = () => {
     setArticleSummaryData({
       favicon,
       domain,
@@ -55,7 +55,7 @@ function Card({
       <button
         aria-label="openAI-summary"
         className="absolute bottom-5 right-5 text-gray hover:text-black"
-        onClick={handleClickShowSummary}
+        onClick={handleShowSummaryClick}
       >
         <SiOpenai />
       </button>

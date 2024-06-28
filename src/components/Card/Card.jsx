@@ -2,6 +2,7 @@ import { useState } from "react";
 import { FiMinus } from "react-icons/fi";
 import PropTypes from "prop-types";
 
+import { SiOpenai } from "react-icons/si";
 import ReadingTime from "./ReadingTime";
 import IconButton from "../shared/Button/IconButton";
 
@@ -10,8 +11,10 @@ function Card({
   domain,
   articleTitle,
   readingTime,
+  mainContent,
   url,
   deleteArticle,
+  setArticleSummaryData,
 }) {
   const [isDeleted, setIsDeleted] = useState();
 
@@ -20,6 +23,17 @@ function Card({
     setTimeout(() => {
       deleteArticle();
     }, 500);
+  };
+
+  const handleClickShowSummary = () => {
+    setArticleSummaryData({
+      favicon,
+      domain,
+      articleTitle,
+      readingTime,
+      mainContent,
+      url,
+    });
   };
 
   return (
@@ -38,6 +52,13 @@ function Card({
           {articleTitle}
         </p>
       </a>
+      <button
+        aria-label="openAI-summary"
+        className="absolute bottom-5 right-5 text-gray hover:text-black"
+        onClick={handleClickShowSummary}
+      >
+        <SiOpenai />
+      </button>
       <IconButton
         className="hidden group-hover:block"
         onClick={handleClick}

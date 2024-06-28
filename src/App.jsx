@@ -12,6 +12,7 @@ function App() {
   const [clickTimeDifferenceMs, setClickTimeDifferenceMs] = useState(0);
   const [messageList, setMessageList] = useState([]);
   const [articleDataList, setArticleDataList] = useState([]);
+  const [articleSummaryData, setArticleSummaryData] = useState({});
 
   const navigate = useNavigate();
 
@@ -89,6 +90,7 @@ function App() {
           />
           <CardContainer
             articleDataList={articleDataList}
+            setArticleSummaryData={setArticleSummaryData}
             deleteArticle={deleteArticle}
           />
           <ToastContainer

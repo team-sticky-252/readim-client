@@ -3,6 +3,7 @@ import { FiMinus } from "react-icons/fi";
 
 import IconButton from "../shared/Button/IconButton";
 import SummarySkeleton from "./SummarySkeleton";
+
 import generateResponse from "../../utils/api";
 
 const SummaryResult = lazy(() => import("./SummaryResult"));
@@ -54,11 +55,7 @@ function Summary({ setArticleSummaryData, articleSummaryData }) {
           <span className="flex items-center justify-end w-auto px-5 py-3 mb-3 mr-3 text-base text-white font-extralight max-w-96 rounded-xl bg-gray">
             {articleSummaryData.articleTitle}의 내용을 요약해줘
           </span>
-          <img
-            src={articleSummaryData.favicon}
-            alt="favicon"
-            className="w-8"
-          ></img>
+          <img src={articleSummaryData.favicon} alt="favicon" className="w-8" />
         </div>
         <Suspense fallback={<SummarySkeleton />}>
           <SummaryResult summaryText={summaryText} error={summaryError} />

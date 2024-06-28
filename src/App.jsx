@@ -13,7 +13,14 @@ function App() {
   const [clickTimeDifferenceMs, setClickTimeDifferenceMs] = useState(0);
   const [messageList, setMessageList] = useState([]);
   const [articleDataList, setArticleDataList] = useState([]);
-  const [articleSummaryData, setArticleSummaryData] = useState({});
+  const [articleSummaryData, setArticleSummaryData] = useState({
+    favicon: "",
+    domain: "",
+    articleTitle: "",
+    readingTime: 0,
+    mainContent: "",
+    url: "",
+  });
 
   const navigate = useNavigate();
 

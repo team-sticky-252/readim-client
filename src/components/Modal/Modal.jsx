@@ -102,10 +102,16 @@ function Modal({
         }
         className="absolute rounded-md hover:bg-medium-gray right-5 top-5"
         aria-label="closeButton"
+        data-test="test-close-button"
       >
         <GoX color="#AAAAAA" size={30} />
       </button>
-      <h1 className="relative text-[2.5rem] font-semibold">{modalTitle}</h1>
+      <h1
+        className="relative text-[2.5rem] font-semibold"
+        data-test="test-header"
+      >
+        {modalTitle}
+      </h1>
       {statement !== "test" ? (
         <div className="h-40 mb-4 overflow-y-scroll leading-7 whitespace-pre-line max-w-none">
           <p className="mt-3 whitespace-pre-line">
@@ -119,6 +125,7 @@ function Modal({
             testTextAreaRef.current = ref;
             setTextAreaElement(testTextAreaRef.current);
           }}
+          data-test="test-area"
         >
           {CONTENTS.message[statement]}
         </div>
@@ -132,6 +139,7 @@ function Modal({
               ? "disabled-modal-button"
               : "abled-modal-button"
           }
+          data-test="test-next-button"
         >
           {modalButton}
         </button>

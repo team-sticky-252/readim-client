@@ -20,7 +20,7 @@ function InfoConceptText() {
 
   return (
     <span
-      className={`inline-block w-auto w-14 text-transparent bg-gradient-to-r from-primary via-blue-gray to-deep-blue bg-clip-text ease-linear duration-300 ${rotateAnimation ? "opacity-0 -translate-y-3" : "opacity-100"}`}
+      className={`inline-block w-auto text-transparent bg-gradient-to-r from-pastel-purple via-blush-pink to-sunset-orange bg-clip-text ease-linear duration-300 font-medium ${rotateAnimation ? "opacity-0 -translate-y-3" : "opacity-100"}`}
     >
       {CONCEPT[index]}
     </span>

@@ -1,5 +1,6 @@
 import { Suspense, lazy, useState, useEffect } from "react";
 import { FiMinus } from "react-icons/fi";
+import PropTypes from "prop-types";
 
 import IconButton from "../shared/Button/IconButton";
 import SummarySkeleton from "./SummarySkeleton";
@@ -8,7 +9,17 @@ import generateResponse from "../../utils/api";
 
 const SummaryResult = lazy(() => import("./SummaryResult"));
 
-function Summary({ setArticleSummaryData, articleSummaryData }) {
+function Summary({
+  setArticleSummaryData,
+  articleSummaryData = {
+    favicon: "",
+    domain: "",
+    articleTitle: "",
+    readingTime: 0,
+    mainContent: "",
+    url: "",
+  },
+}) {
   const [messageFadeAnimation, setMessageFadeAnimation] = useState(
     "animate-slide-in-left",
   );
@@ -66,3 +77,15 @@ function Summary({ setArticleSummaryData, articleSummaryData }) {
 }
 
 export default Summary;
+
+Summary.propTypes = {
+  articleSummaryData: PropTypes.shape({
+    favicon: PropTypes.string.isRequired,
+    domain: PropTypes.string.isRequired,
+    articleTitle: PropTypes.string.isRequired,
+    readingTime: PropTypes.number.isRequired,
+    mainContent: PropTypes.string.isRequired,
+    url: PropTypes.string.isRequired,
+  }).isRequired,
+  setArticleSummaryData: PropTypes.func.isRequired,
+};

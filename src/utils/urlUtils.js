@@ -25,14 +25,6 @@ export const validateUrl = (inputValue, articleDataList, link = null) => {
       link,
     };
   }
-  if (!inputValue.includes("http")) {
-    return {
-      id: crypto.randomUUID(),
-      icon: ERROR_MESSAGE.NOT_VALID_URL.icon,
-      messages: ERROR_MESSAGE.NOT_VALID_URL.messages,
-      link,
-    };
-  }
 
   if (
     articleDataList &&
@@ -80,7 +72,7 @@ export const handleSingleURL = async (url, articleDataList, setMessageList) => {
   };
   const fetchTimer = setTimeout(() => {
     controller.abort();
-  }, 3000);
+  }, 8000);
 
   try {
     const articleData = await requestURL(url, controlloerOption);

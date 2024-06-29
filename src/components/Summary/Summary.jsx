@@ -32,7 +32,7 @@ function Summary({
       JSON.parse(window.sessionStorage.getItem("summarys")) || {};
     const articleId = articleSummaryData?.id;
 
-    if (summaryDatas?.[articleId]) {
+    if (summaryDatas[articleId]) {
       setSummaryText(summaryDatas[articleId]);
     } else {
       generateResponse(articleSummaryData.mainContent)

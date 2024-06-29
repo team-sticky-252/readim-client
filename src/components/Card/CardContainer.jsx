@@ -12,6 +12,7 @@ function CardContainer({
       {articleDataList.map((article) => (
         <Card
           key={article.id}
+          id={article.id}
           favicon={article.faviconUrl}
           domain={article.siteName}
           articleTitle={article.title}

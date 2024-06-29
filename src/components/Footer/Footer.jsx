@@ -1,5 +1,6 @@
 import OptimizedSiteLink from "./OptimizedSiteLink";
 import GradientPatchCheckIcon from "../shared/GradientPatchCheckIcon";
+
 import OPTIMIZED_SITE_LIST from "../../utils/optimizedSiteList";
 
 function Footer() {

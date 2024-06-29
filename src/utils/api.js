@@ -8,18 +8,19 @@ const openai = new OpenAI({
 });
 
 async function generateResponse(prompt) {
-  const response = await openai.completions.create({
-    model: "gpt-3.5-turbo-instruct",
-    prompt: `${prompt}
-    ---
-    Please translate the above sentence into Korean using the OpenAI API.
-    Focus strictly on summarizing the core content in the translation within 300 characters.
-    Exclude any unrelated information or filler text, and utilize the provided max_tokens effectively for accuracy.`,
+  const response = await openai.chat.completions.create({
+    model: "gpt-4-turbo",
+    messages: [
+      {
+        role: "user",
+        content: `${prompt} --- Please translate the above sentence into Korean using the OpenAI API. Focus strictly on summarizing the core content in the translation within 300 characters. Exclude any unrelated information or filler text, and utilize the provided max_tokens effectively for accuracy.`,
+      },
+    ],
     max_tokens: 300,
   });
 
   if (response?.choices?.length > 0) {
-    return response.choices[0].text.trim();
+    return response.choices[0].message.content.trim();
   }
 
   throw new Error("Invalid response format or empty choices array");

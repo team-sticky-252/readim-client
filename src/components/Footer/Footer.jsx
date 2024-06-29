@@ -1,5 +1,6 @@
 import OptimizedSiteLink from "./OptimizedSiteLink";
 import OPTIMIZED_SITE_LIST from "../../utils/optimizedSiteList";
+import GradientPatchCheckIcon from "../shared/GradientPatchCheckIcon";
 
 function Footer() {
   const READIM_INFO = {
@@ -14,7 +15,11 @@ function Footer() {
         <span className="font-bold text-transparent bg-gradient-to-r from-pastel-purple via-blush-pink to-sunset-orange bg-clip-text">
           Readim
         </span>
-        은 다음 사이트에 최적화 되어 있어요.
+        은 다음 사이트에 최적화
+        <span>
+          <GradientPatchCheckIcon />
+        </span>
+        &nbsp;되어 있어요.
         {OPTIMIZED_SITE_LIST.map(({ href, faviconSrc, siteName }) => (
           <OptimizedSiteLink
             key={siteName}
@@ -24,6 +29,9 @@ function Footer() {
           />
         ))}
       </p>
+      {/* <p className="flex items-center justify-center">
+        가 표시되지 않은 사이트들은 정확도가 떨어질 수 있어요!
+      </p> */}
       <div className="mt-1">
         피드백이 있으시다면
         <a href="mailto:teamsticky252@gmail.com" className="ml-1 underline">

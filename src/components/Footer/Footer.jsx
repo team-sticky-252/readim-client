@@ -29,9 +29,6 @@ function Footer() {
           />
         ))}
       </p>
-      {/* <p className="flex items-center justify-center">
-        가 표시되지 않은 사이트들은 정확도가 떨어질 수 있어요!
-      </p> */}
       <div className="mt-1">
         피드백이 있으시다면
         <a href="mailto:teamsticky252@gmail.com" className="ml-1 underline">

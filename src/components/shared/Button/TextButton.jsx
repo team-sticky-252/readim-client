@@ -2,13 +2,17 @@ import PropTypes from "prop-types";
 
 function TextButton({ children, onClick = () => {} }) {
   return (
-    <button
-      className="z-10 flex items-center justify-center px-2 text-xs text-center rounded-full h-7 min-w-4 bg-light-gray drop-shadow hover:bg-medium-gray"
-      type="button"
+    <div
+      className="z-10 flex items-center justify-center px-2 text-xs text-center rounded-full w-fit h-7 min-w-4 bg-light-gray drop-shadow hover:bg-medium-gray"
+      role="button"
+      tabIndex={0}
       onClick={onClick}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") onClick(e);
+      }}
     >
       {children}
-    </button>
+    </div>
   );
 }
 

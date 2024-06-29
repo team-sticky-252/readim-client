@@ -18,7 +18,7 @@ function OptionButton() {
           size={22}
           filter="drop-shadow(1px 1px 2px rgb(0 0 0 / 0.25))"
         />
-        <span className="absolute hidden w-40 top-0.5 -right-4 group-hover:block">
+        <span className="absolute w-max hidden top-0.5 right-9 group-hover:block">
           <TextButton>
             <span className="m-2 text-slate-700">읽기 속도 재측정</span>
           </TextButton>

@@ -11,15 +11,7 @@ function UrlInputContainer({
   const textareaRef = useRef();
 
   const handleURLInput = async (event) => {
-    let pasteValue = "";
-
-    if (event.clipboardData) {
-      pasteValue = event.clipboardData.getData("text");
-    } else if (window.clipboardData) {
-      pasteValue = window.clipboardData.getData("text");
-    }
-
-    const inputValue = pasteValue || textareaRef.current.value;
+    const inputValue = textareaRef.current.value;
     const trimmedInputValue = inputValue.trim();
     const urls = trimmedInputValue.match(/(https?:\/\/[^\s]+)/g) || [];
     const otherValues = trimmedInputValue
@@ -36,10 +28,8 @@ function UrlInputContainer({
       return;
     }
 
-    if (event.keyCode === 13 || pasteValue) {
+    if (event.keyCode === 13) {
       event.preventDefault();
-      textareaRef.current.value = "";
-      handleResizeHeight(textareaRef);
 
       const promises = inputValues.map((input) =>
         handleSingleURL(input, articleDataList, setMessageList),
@@ -52,6 +42,9 @@ function UrlInputContainer({
         ...newestArticleDataList,
         ...articleDataList,
       ];
+
+      textareaRef.current.value = "";
+      handleResizeHeight(textareaRef);
 
       window.localStorage.setItem(
         "URLs",

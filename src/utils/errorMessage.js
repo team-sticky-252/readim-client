@@ -3,10 +3,6 @@ const ERROR_MESSAGE = {
     icon: "⛓️‍💥",
     messages: ["유효하지 않은 URL 이에요.", "공백은 추가할 수 없어요."],
   },
-  NOT_VALID_URL: {
-    icon: "⛓️‍💥",
-    messages: ["유효하지 않은 URL 이에요."],
-  },
   DUPLICATE_URL: {
     icon: "🔗",
     messages: ["이미 등록된 URL 이에요."],

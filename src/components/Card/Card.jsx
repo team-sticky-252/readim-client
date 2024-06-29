@@ -3,6 +3,7 @@ import { FiMinus } from "react-icons/fi";
 import { SiOpenai } from "react-icons/si";
 import PropTypes from "prop-types";
 
+import GradientPatchCheckIcon from "../shared/GradientPatchCheckIcon";
 import ReadingTime from "./ReadingTime";
 import IconButton from "../shared/Button/IconButton";
 
@@ -17,6 +18,22 @@ function Card({
   setArticleSummaryData,
 }) {
   const [isDeleted, setIsDeleted] = useState();
+
+  const CERTIFICATED_SITE = [
+    "mozilla.org",
+    "react.dev",
+    "github.com",
+    "medium.com",
+    "velog.io",
+    "tistory.com",
+  ];
+
+  const isCertifiedSite = () => {
+    if (CERTIFICATED_SITE.some((site) => url.includes(site))) {
+      return true;
+    }
+    return false;
+  };
 
   const handleClick = () => {
     setIsDeleted((prev) => !prev);
@@ -41,11 +58,12 @@ function Card({
       className={`relative flex flex-col content-center w-48 p-5 list-none transition-all bg-white shadow-md ${isDeleted ? "animate-fade-out" : "animate-scale-in-center"} h-52 shadow-black/25 rounded-3xl group hover:scale-115`}
     >
       <a href={url} target="_blank" className="relative" rel="noreferrer">
-        <div className="flex">
-          <img className="inline-block w-4" src={favicon} alt="favicon" />
+        <div className="flex items-center">
+          <img className="inline-block w-4 h-4" src={favicon} alt="favicon" />
           <p className="text-[11px] w-4/5 truncate inline-block ml-1 font-medium">
             {domain}
           </p>
+          {isCertifiedSite() && <GradientPatchCheckIcon />}
         </div>
         <ReadingTime readingTime={readingTime} />
         <p className="mt-6 mr-1 text-sm group-hover:pointed-title font-extralight title-ellipsis">

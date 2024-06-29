@@ -1,6 +1,6 @@
 import OptimizedSiteLink from "./OptimizedSiteLink";
-import OPTIMIZED_SITE_LIST from "../../utils/optimizedSiteList";
 import GradientPatchCheckIcon from "../shared/GradientPatchCheckIcon";
+import OPTIMIZED_SITE_LIST from "../../utils/optimizedSiteList";
 
 function Footer() {
   const READIM_INFO = {

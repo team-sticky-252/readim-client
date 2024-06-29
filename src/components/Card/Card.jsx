@@ -29,10 +29,7 @@ function Card({
   ];
 
   const isCertifiedSite = () => {
-    if (CERTIFICATED_SITE.some((site) => url.includes(site))) {
-      return true;
-    }
-    return false;
+    return CERTIFICATED_SITE.some((site) => url.includes(site));
   };
 
   const handleClick = () => {

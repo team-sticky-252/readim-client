@@ -12,6 +12,7 @@ const SummaryResult = lazy(() => import("./SummaryResult"));
 function Summary({
   setArticleSummaryData,
   articleSummaryData = {
+    id: "",
     favicon: "",
     domain: "",
     articleTitle: "",
@@ -27,14 +28,32 @@ function Summary({
   const [summaryError, setSummaryError] = useState(null);
 
   useEffect(() => {
-    generateResponse(articleSummaryData.mainContent)
-      .then((summary) => {
-        setSummaryText(summary);
-      })
-      .catch(() => {
-        setSummaryError("요약 생성 중 에러가 발생했습니다. 다시 시도해주세요.");
-      });
-  }, [articleSummaryData.mainContent]);
+    const summaryDatas =
+      JSON.parse(window.sessionStorage.getItem("summarys")) || {};
+    const articleId = articleSummaryData?.id;
+
+    if (summaryDatas?.[articleId]) {
+      setSummaryText(summaryDatas[articleId]);
+    } else {
+      generateResponse(articleSummaryData.mainContent)
+        .then((summary) => {
+          setSummaryText(summary);
+
+          setTimeout(() => {
+            summaryDatas[articleSummaryData.id] = summary;
+            window.sessionStorage.setItem(
+              "summarys",
+              JSON.stringify(summaryDatas),
+            );
+          }, 0);
+        })
+        .catch(() => {
+          setSummaryError(
+            "요약 생성 중 에러가 발생했습니다. 다시 시도해주세요.",
+          );
+        });
+    }
+  }, [articleSummaryData]);
 
   const handleCloseSummaryClick = () => {
     setMessageFadeAnimation("animate-slide-out-left");

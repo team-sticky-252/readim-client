@@ -4,6 +4,7 @@ import Summary from "./Summary";
 function SummaryContainer({
   setArticleSummaryData,
   articleSummaryData = {
+    id: "",
     favicon: "",
     domain: "",
     articleTitle: "",

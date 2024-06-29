@@ -8,6 +8,7 @@ import ReadingTime from "./ReadingTime";
 import IconButton from "../shared/Button/IconButton";
 
 function Card({
+  id,
   favicon = "/readimFavicon.png",
   domain,
   articleTitle,
@@ -41,6 +42,7 @@ function Card({
 
   const handleShowSummaryClick = () => {
     setArticleSummaryData({
+      id,
       favicon,
       domain,
       articleTitle,
@@ -88,6 +90,7 @@ function Card({
 export default Card;
 
 Card.propTypes = {
+  id: PropTypes.string.isRequired,
   favicon: PropTypes.string,
   domain: PropTypes.string.isRequired,
   articleTitle: PropTypes.string.isRequired,

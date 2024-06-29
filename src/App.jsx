@@ -14,6 +14,7 @@ function App() {
   const [messageList, setMessageList] = useState([]);
   const [articleDataList, setArticleDataList] = useState([]);
   const [articleSummaryData, setArticleSummaryData] = useState({
+    id: "",
     favicon: "",
     domain: "",
     articleTitle: "",

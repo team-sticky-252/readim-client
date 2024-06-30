@@ -95,7 +95,7 @@ function App() {
         <div className="w-216">
           {articleDataList.length === 0 && <Welcome />}
           <SummaryContainer
-            key={articleSummaryData?.url}
+            key={crypto.randomUUID()}
             articleSummaryData={articleSummaryData}
           />
           <HeaderContainer

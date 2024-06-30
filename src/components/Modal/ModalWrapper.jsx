@@ -11,8 +11,8 @@ function ModalWrapper() {
   const navigate = useNavigate();
   const { modalId: statement } = useParams();
 
-  const navigateNextPage = (id) => {
-    switch (id) {
+  const navigateNextPage = (modalStatement) => {
+    switch (modalStatement) {
       case "welcome":
         navigate("/modal/guide");
         break;

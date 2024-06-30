@@ -12,7 +12,7 @@ const describeArc = (x, y, radius, startAngle, endAngle) => {
   const start = polarToCartesian(x, y, radius, endAngle);
   const end = polarToCartesian(x, y, radius, startAngle);
   const largeArcFlag = endAngle - startAngle <= 180 ? "0" : "1";
-  const d = [
+  const pathData = [
     "M",
     start.x,
     start.y,
@@ -25,20 +25,23 @@ const describeArc = (x, y, radius, startAngle, endAngle) => {
     end.x,
     end.y,
   ].join(" ");
-  return d;
+
+  return pathData;
 };
 
 const setValue = (svg, size, strokeWidth, value) => {
   const adjustedWpm = value > 404 ? 404 : value;
   const slice = svg.querySelector(".slice");
   const text = svg.querySelector("text");
-
   const normalizedValue = (adjustedWpm / DEFAULT_WPM) * 100;
-  let c = (normalizedValue / 100) * 180;
-  if (c === 360) c = 359.99;
+  let centralAngel = (normalizedValue / 100) * 180;
+
+  if (centralAngel === 360) centralAngel = 359.99;
+
   const xy = size / 2 - strokeWidth / 2;
-  const d = describeArc(xy, xy, xy, 180, 180 + c);
-  slice.setAttribute("d", d);
+  const pathData = describeArc(xy, xy, xy, 180, 180 + centralAngel);
+  slice.setAttribute("d", pathData);
+
   const tspanSize = size / 3.5 / 3;
   text.innerHTML = `${Math.floor(value)}<tspan font-size="14" dy="${
     -tspanSize * 1.4
@@ -46,19 +49,22 @@ const setValue = (svg, size, strokeWidth, value) => {
 };
 
 const animateStart = (svg, size, strokeWidth, value) => {
-  let v = 0;
+  let currentValue = 0;
 
   const intervalOne = setInterval(() => {
-    const p = +(v / value).toFixed(2);
-    const a = p < 0.95 ? 2 - 2 * p : 0.1;
-    v += a;
+    const progressPercentage = +(currentValue / value).toFixed(2);
+    const incrementAmount =
+      progressPercentage < 0.95 ? 2 - 2 * progressPercentage : 0.1;
 
-    if (v >= +value) {
-      v = value;
+    currentValue += incrementAmount;
+
+    if (currentValue >= +value) {
+      currentValue = value;
+
       clearInterval(intervalOne);
     }
 
-    setValue(svg, size, strokeWidth, v);
+    setValue(svg, size, strokeWidth, currentValue);
   }, 10);
 };
 

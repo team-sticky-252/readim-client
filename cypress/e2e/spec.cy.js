@@ -35,23 +35,23 @@ describe("Readim 첫 방문시 초기화면", () => {
     });
 
     it("읽기 측정 테스트를 30초에 완료하면 wpm은 406이다.", () => {
-      completeReadingTest(30000, "406");
+      completeReadingTest(30000, "406", "/modal/result");
     });
 
     it("읽기 측정 테스트를 24초에 완료하면 wpm은 기본값인 202다.", () => {
-      completeReadingTest(24000, "202");
+      completeReadingTest(24000, "202", "/");
     });
 
     it("읽기 측정 테스트를 2분 25초에 완료하면 wpm은 84이다.", () => {
-      completeReadingTest(145000, "84");
+      completeReadingTest(145000, "84", "/modal/result");
     });
 
     it("읽기 측정 테스트를 2분 26초에 완료하면 wpm은 기본값인 202다.", () => {
-      completeReadingTest(146000, "202");
+      completeReadingTest(146000, "202", "/");
     });
   });
 
-  const completeReadingTest = (tickTime, expectedWpm) => {
+  const completeReadingTest = (tickTime, expectedWpm, path) => {
     cy.visit("/modal/test");
 
     cy.clock();
@@ -64,7 +64,7 @@ describe("Readim 첫 방문시 초기화면", () => {
     cy.getBySel("test-next-button").should("not.be.disabled");
     cy.getBySel("test-next-button").click();
 
-    cy.url().should("eq", `http://localhost:5173/`);
+    cy.url().should("eq", `http://localhost:5173${path}`);
     cy.window()
       .its("localStorage")
       .then((localStorage) => {

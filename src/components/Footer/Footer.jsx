@@ -33,9 +33,9 @@ function Footer() {
       <div className="mt-1">
         피드백이 있으시다면
         <a href="mailto:teamsticky252@gmail.com" className="ml-1 underline">
-          여기
+          teamsticky252@gmail.com
         </a>
-        로 제안해주세요.
+        로 제안해 주세요.
       </div>
       <p className="flex items-center justify-center mt-6">
         Copyright © 2024

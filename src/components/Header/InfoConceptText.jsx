@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const CONCEPT = ["아낄 ", "파악할", "활용할", "계획할"];
+const CONCEPT = ["절약할", "파악할", "활용할", "계획할"];
 
 function InfoConceptText() {
   const [index, setIndex] = useState(0);

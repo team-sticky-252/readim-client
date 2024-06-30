@@ -12,7 +12,7 @@ function Footer() {
 
   return (
     <footer className="bottom-0 w-full mt-auto text-sm font-thin tracking-normal text-center pt-36 h-80 bg-gradient-to-t from-white">
-      <p className="flex items-center justify-center">
+      <div className="flex items-center justify-center">
         <span className="font-bold text-transparent bg-gradient-to-r from-pastel-purple via-blush-pink to-sunset-orange bg-clip-text">
           Readim
         </span>
@@ -29,7 +29,7 @@ function Footer() {
             siteName={siteName}
           />
         ))}
-      </p>
+      </div>
       <div className="mt-1">
         피드백이 있으시다면
         <a href="mailto:teamsticky252@gmail.com" className="ml-1 underline">

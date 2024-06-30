@@ -55,10 +55,16 @@ function Card({
   return (
     <li
       className={`relative flex flex-col content-center w-48 p-5 list-none transition-all bg-white shadow-md ${isDeleted ? "animate-fade-out" : "animate-scale-in-center"} h-52 shadow-black/25 rounded-3xl group hover:scale-115`}
+      data-test="test-articleCard"
     >
       <a href={url} target="_blank" className="relative" rel="noreferrer">
         <div className="flex items-center">
-          <img className="inline-block w-4 h-4" src={favicon} alt="favicon" />
+          <img
+            className="inline-block w-4 h-4"
+            src={favicon}
+            alt="favicon"
+            data-test="test-articleCardFavicon"
+          />
           <p className="text-[11px] w-4/5 truncate inline-block ml-1 font-medium">
             {domain}
           </p>

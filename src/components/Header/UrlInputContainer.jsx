@@ -65,6 +65,7 @@ function UrlInputContainer({
         onPaste={handleURLInput}
         className="m-3 mx-5 text-base font-thin outline-none resize-none w-118"
         placeholder="URL을 입력해 주세요."
+        data-test="test-inputWindow"
       />
     </div>
   );

@@ -8,6 +8,13 @@ import Footer from "./components/Footer/Footer";
 import Welcome from "./components/Welcome";
 import SummaryContainer from "./components/Summary/SummaryContainer";
 
+import {
+  DEFAULT_WPM,
+  ARTICLE_WORD_COUNT,
+  MIN_READING_TIME_MS,
+  MAX_READING_TIME_MS,
+} from "./utils/readTimeTest";
+
 function App() {
   const [firstClickTimeMs, setFirstClickTimeMs] = useState(0);
   const [clickTimeDifferenceMs, setClickTimeDifferenceMs] = useState(0);
@@ -27,11 +34,6 @@ function App() {
 
   useEffect(() => {
     const storedWpm = window.localStorage.getItem("wpm");
-
-    const DEFAULT_WPM = 202;
-    const ARTICLE_WORD_COUNT = 203;
-    const MIN_READING_TIME_MS = 25000;
-    const MAX_READING_TIME_MS = 145000;
 
     if (!storedWpm) {
       window.localStorage.setItem("wpm", DEFAULT_WPM);

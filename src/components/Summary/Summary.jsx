@@ -1,4 +1,4 @@
-import { Suspense, lazy, useState, useEffect } from "react";
+import { Suspense, lazy, useState, useEffect, useRef } from "react";
 import { FiMinus } from "react-icons/fi";
 import PropTypes from "prop-types";
 
@@ -10,7 +10,6 @@ import generateResponse from "../../utils/api";
 const SummaryResult = lazy(() => import("./SummaryResult"));
 
 function Summary({
-  setArticleSummaryData,
   articleSummaryData = {
     id: "",
     favicon: "",
@@ -26,6 +25,17 @@ function Summary({
   );
   const [summaryText, setSummaryText] = useState(null);
   const [summaryError, setSummaryError] = useState(null);
+  const summaryRef = useRef(null);
+
+  const handleCloseSummaryClick = () => {
+    setMessageFadeAnimation("animate-slide-out-left");
+
+    const timerId = setTimeout(() => {}, 500);
+
+    return () => {
+      clearTimeout(timerId);
+    };
+  };
 
   useEffect(() => {
     const summaryDatas =
@@ -53,23 +63,24 @@ function Summary({
           );
         });
     }
-  }, [articleSummaryData]);
 
-  const handleCloseSummaryClick = () => {
-    setMessageFadeAnimation("animate-slide-out-left");
+    function handleOutsideClick(event) {
+      if (summaryRef.current && !summaryRef.current.contains(event.target)) {
+        handleCloseSummaryClick();
+      }
+    }
 
-    const timerId = setTimeout(() => {
-      setArticleSummaryData({});
-    }, 500);
+    document.addEventListener("mousedown", handleOutsideClick);
 
     return () => {
-      clearTimeout(timerId);
+      document.removeEventListener("mousedown", handleOutsideClick);
     };
-  };
+  }, [articleSummaryData]);
 
   return (
     <div
-      className={`relative m-auto flex w-136 flex-col backdrop-blur-sm col-span-4 p-8 transition-all shadow-md rounded-3xl group shadow-black/25 ${messageFadeAnimation}`}
+      className={`relative m-auto flex w-136 flex-col backdrop-blur-xl col-span-4 p-8 transition-all shadow-md rounded-3xl group shadow-black/25 ${messageFadeAnimation}`}
+      ref={summaryRef}
     >
       <div>
         <IconButton
@@ -110,5 +121,4 @@ Summary.propTypes = {
     mainContent: PropTypes.string.isRequired,
     url: PropTypes.string.isRequired,
   }).isRequired,
-  setArticleSummaryData: PropTypes.func.isRequired,
 };

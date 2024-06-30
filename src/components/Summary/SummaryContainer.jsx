@@ -2,7 +2,6 @@ import PropTypes from "prop-types";
 import Summary from "./Summary";
 
 function SummaryContainer({
-  setArticleSummaryData,
   articleSummaryData = {
     id: "",
     favicon: "",
@@ -16,10 +15,7 @@ function SummaryContainer({
   return (
     <aside className="fixed z-50 flex -translate-y-1/2 top-1/2 h-100vh left-7">
       {articleSummaryData?.articleTitle && (
-        <Summary
-          setArticleSummaryData={setArticleSummaryData}
-          articleSummaryData={articleSummaryData}
-        />
+        <Summary articleSummaryData={articleSummaryData} />
       )}
     </aside>
   );
@@ -36,5 +32,4 @@ SummaryContainer.propTypes = {
     mainContent: PropTypes.string.isRequired,
     url: PropTypes.string.isRequired,
   }).isRequired,
-  setArticleSummaryData: PropTypes.func.isRequired,
 };

@@ -97,7 +97,6 @@ function App() {
           <SummaryContainer
             key={articleSummaryData?.url}
             articleSummaryData={articleSummaryData}
-            setArticleSummaryData={setArticleSummaryData}
           />
           <HeaderContainer
             articleDataList={articleDataList}

@@ -12,11 +12,19 @@ function DescriptionModal({ navigateNextPage, statement }) {
   const nextButtonText = CONTENTS.button[statement];
   const message = CONTENTS.message[statement];
 
+  const moveToMainPage = () => {
+    navigate("/");
+  };
+
+  const moveToWaringModal = () => {
+    navigate("/modal/warning");
+  };
+
   const handleCloseButtonClick = () => {
     if (statement === "warning") {
-      navigate("/");
+      moveToMainPage();
     } else {
-      navigate("/modal/warning");
+      moveToWaringModal();
     }
   };
 

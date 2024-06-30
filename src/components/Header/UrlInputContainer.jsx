@@ -1,5 +1,7 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import PropTypes from "prop-types";
+import { ImSpinner3 } from "react-icons/im";
+import { BsArrowReturnLeft } from "react-icons/bs";
 
 import { handleSingleURL, handleResizeHeight } from "../../utils/urlUtils";
 
@@ -8,6 +10,7 @@ function UrlInputContainer({
   setArticleDataList,
   setMessageList,
 }) {
+  const [isLoading, setIsLoading] = useState(false);
   const textareaRef = useRef();
 
   const handleURLInput = async (event) => {
@@ -28,7 +31,8 @@ function UrlInputContainer({
       return;
     }
 
-    if (event.keyCode === 13) {
+    if (event.keyCode === 13 || event.currentTarget.id === "requestButton") {
+      setIsLoading(true);
       event.preventDefault();
 
       const handleSingleResult = (result) => {
@@ -53,6 +57,7 @@ function UrlInputContainer({
         );
 
         handleSingleResult(result);
+        setIsLoading(false);
       });
 
       textareaRef.current.value = "";
@@ -61,17 +66,34 @@ function UrlInputContainer({
   };
 
   return (
-    <div className="flex items-center justify-center m-auto mx-auto mt-4 bg-white border shadow-md mb-14 border-light-gray w-fit rounded-xl">
+    <div
+      className={`flex items-center justify-center m-auto mx-auto mt-4 ${isLoading ? "bg-[#fafafa]" : "bg-white"} border shadow-md mb-14 border-light-gray w-fit rounded-xl`}
+    >
       <textarea
         ref={textareaRef}
         rows={1}
         onChange={() => handleResizeHeight(textareaRef)}
         onKeyDown={handleURLInput}
         onPaste={handleURLInput}
-        className="m-3 mx-5 text-base font-thin outline-none resize-none w-118"
+        className="my-3 ml-5 text-base font-thin outline-none resize-none w-118"
         placeholder="URL을 입력해 주세요."
         data-test="test-inputWindow"
+        disabled={isLoading}
       />
+      <button
+        id="requestButton"
+        className={`h-8 m-2 rounded group ${!isLoading && "hover:bg-zinc-100"}`}
+        aria-label="save url"
+        title="save"
+        onClick={handleURLInput}
+      >
+        {!isLoading && (
+          <BsArrowReturnLeft className="w-8 text-zinc-400 group-hover:text-gray" />
+        )}
+        {isLoading && (
+          <ImSpinner3 size={18} className="w-8 animate-spin text-gray" />
+        )}
+      </button>
     </div>
   );
 }

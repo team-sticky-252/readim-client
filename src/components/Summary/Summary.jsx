@@ -29,12 +29,6 @@ function Summary({
 
   const handleCloseSummaryClick = () => {
     setMessageFadeAnimation("animate-slide-out-left");
-
-    const timerId = setTimeout(() => {}, 500);
-
-    return () => {
-      clearTimeout(timerId);
-    };
   };
 
   useEffect(() => {

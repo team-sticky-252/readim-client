@@ -37,6 +37,9 @@ export default {
       minWidth: {
         160: "40rem",
       },
+      zIndex: {
+        1: 1,
+      },
       scale: {
         115: "1.15",
       },

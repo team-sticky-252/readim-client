@@ -83,8 +83,8 @@ function UrlInputContainer({
       <button
         id="requestButton"
         className={`h-8 m-2 rounded group ${!isLoading && "hover:bg-zinc-100"}`}
-        aria-label="save url"
-        title="save"
+        aria-label="request url"
+        title="request button"
         onClick={handleURLInput}
       >
         {!isLoading && (

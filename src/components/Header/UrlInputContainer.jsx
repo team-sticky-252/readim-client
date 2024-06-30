@@ -31,27 +31,32 @@ function UrlInputContainer({
     if (event.keyCode === 13) {
       event.preventDefault();
 
-      const promises = inputValues.map((input) =>
-        handleSingleURL(input, articleDataList, setMessageList),
-      );
-      const results = await Promise.all(promises);
-      const newestArticleDataList = results
-        .filter((result) => result !== null)
-        .reverse();
-      const updatedArticleDataList = [
-        ...newestArticleDataList,
-        ...articleDataList,
-      ];
+      const handleSingleResult = (result) => {
+        if (result !== null) {
+          const existingData =
+            JSON.parse(window.localStorage.getItem("URLs")) || [];
+          const updatedArticleDataList = [result, ...existingData];
+
+          window.localStorage.setItem(
+            "URLs",
+            JSON.stringify(updatedArticleDataList),
+          );
+          setArticleDataList(updatedArticleDataList);
+        }
+      };
+
+      inputValues.forEach(async (input) => {
+        const result = await handleSingleURL(
+          input,
+          articleDataList,
+          setMessageList,
+        );
+
+        handleSingleResult(result);
+      });
 
       textareaRef.current.value = "";
       handleResizeHeight(textareaRef);
-
-      window.localStorage.setItem(
-        "URLs",
-        JSON.stringify(updatedArticleDataList),
-      );
-
-      setArticleDataList(updatedArticleDataList);
     }
   };
 

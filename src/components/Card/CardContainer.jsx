@@ -8,7 +8,10 @@ function CardContainer({
   setArticleSummaryData,
 }) {
   return (
-    <main className="grid justify-center grid-cols-4 gap-5 bg-fixed bg-right-bottom bg-no-repeat min-w-160 justify-items-center">
+    <main
+      className="grid justify-center grid-cols-4 gap-5 bg-fixed bg-right-bottom bg-no-repeat min-w-160 justify-items-center"
+      data-test="test-cardContainer"
+    >
       {articleDataList.map((article) => (
         <Card
           key={article.id}

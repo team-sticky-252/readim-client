@@ -1,4 +1,4 @@
-describe("Readim 첫 진입시 초기화면", () => {
+describe("Readim 첫 방문시 초기화면", () => {
   beforeEach(() => {
     cy.visit("/");
   });
@@ -74,12 +74,13 @@ describe("Readim 첫 진입시 초기화면", () => {
   };
 });
 
-describe("Readim 첫 진입시 초기화면", () => {
+describe("Readim 메인페이지 초기화면", () => {
   beforeEach(() => {
     const wpm = 202;
 
     cy.session("wpm", () => {
       cy.visit("/");
+      window.localStorage.clear();
       window.localStorage.setItem("wpm", wpm);
     });
   });
@@ -92,4 +93,133 @@ describe("Readim 첫 진입시 초기화면", () => {
         expect(wpm).to.equal("202");
       });
   });
+
+  it("아티클 카드가 없는 경우 컨셉 문구가 순환하고 있어야 한다.", () => {
+    cy.visit("/");
+    cy.clock();
+
+    const conceptTexts = ["절약할", "파악할", "활용할", "계획할"];
+
+    conceptTexts.forEach((text, index) => {
+      if (index > 0) {
+        cy.tick(1900);
+      }
+      cy.getBySel("test-conceptText").should("have.text", text);
+    });
+  });
+
+  it("URL입력 전에는 articleCard가 하나도 없어야 한다.", () => {
+    cy.visit("/");
+    cy.getBySel("test-cardContainer").children().should("not.exist");
+  });
+
+  describe("정확한 URL을 입력하는 경우", () => {
+    const correctUrl = "https://developer.mozilla.org/ko/docs/Web/JavaScript";
+
+    it("입력창에 URL을 입력한 후 Enter를 누르면 API를 요청해야한다.", () => {
+      requestURL(correctUrl);
+    });
+
+    it("API요청 응답이 온 경우, 입력창이 초기화 되고 아티클 카드가 추가돼야 한다.", () => {
+      requestURL(correctUrl);
+
+      cy.getBySel("test-cardContainer").within(() => {
+        cy.getBySel("test-articleCard").should("exist");
+      });
+    });
+
+    it("생성된 카드에는 해당 사이트 명이 포함돼 있어야 합니다.", () => {
+      requestURL(correctUrl);
+
+      cy.window()
+        .its("localStorage")
+        .then((localStorage) => {
+          const articleCardData = JSON.parse(localStorage.getItem("URLs"));
+          return articleCardData;
+        })
+        .then((articleCardData) =>
+          cy
+            .getBySel("test-articleCard")
+            .should("include.text", `${articleCardData[0].siteName}`),
+        );
+    });
+
+    it("생성된 카드에는 해당 아티클 타이틀이 포함돼있어야 합니다.", () => {
+      requestURL(correctUrl);
+
+      cy.window()
+        .its("localStorage")
+        .then((localStorage) => {
+          const articleCardData = JSON.parse(localStorage.getItem("URLs"));
+          return articleCardData;
+        })
+        .then((articleCardData) =>
+          cy
+            .getBySel("test-articleCard")
+            .should("include.text", `${articleCardData[0].title}`),
+        );
+    });
+
+    it("생성된 카드에는 해당 아티클의 리딩 타임이 포함돼있어야 합니다.", () => {
+      requestURL(correctUrl);
+
+      cy.window()
+        .its("localStorage")
+        .then((localStorage) => {
+          const articleCardData = JSON.parse(localStorage.getItem("URLs"));
+          const readingTimeText = getReadingTime(
+            articleCardData[0].readingTime,
+          );
+
+          cy.getBySel("test-articleCard").should(
+            "include.text",
+            readingTimeText,
+          );
+        });
+    });
+
+    it("생성된 카드에는 해당 도메인의 파비콘이 포함돼있어야 합니다.", () => {
+      requestURL(correctUrl);
+
+      cy.window()
+        .its("localStorage")
+        .then((localStorage) => {
+          const articleCardData = JSON.parse(localStorage.getItem("URLs"));
+          const articleFaviconURL = articleCardData[0].faviconUrl;
+
+          cy.getBySel("test-articleCardFavicon")
+            .invoke("attr", "src")
+            .should("equal", articleFaviconURL);
+        });
+    });
+  });
+
+  const requestURL = (url) => {
+    cy.visit("/");
+    cy.intercept(
+      "GET",
+      `http://localhost:8080/articleSummary?url=${encodeURIComponent(url)}&wpm=202`,
+    ).as("getArticleData");
+    cy.getBySel("test-inputWindow").type(`${url}{enter}`);
+    cy.wait("@getArticleData").then((articleData) => {
+      expect(articleData.response.statusCode).to.equal(200);
+    });
+  };
+
+  const getReadingTime = (readingMS) => {
+    let readingMinute = Math.floor(readingMS / 1000 / 60);
+    let readingSeconds =
+      Math.round((readingMS / 1000 - readingMinute * 60) * 0.1) * 10;
+
+    if (readingSeconds >= 45) {
+      readingMinute += 1;
+      readingSeconds = 0;
+    } else if (readingSeconds >= 15) {
+      readingSeconds = 30;
+    } else {
+      readingSeconds = 0;
+    }
+
+    return `${readingMinute}분${readingSeconds}초`;
+  };
 });

@@ -82,10 +82,14 @@ function Summary({
       </div>
       <div className="grid grid-flow-row auto-rows-min">
         <div className="flex items-start content-start justify-end">
-          <span className="flex items-center justify-end w-auto px-5 py-3 mb-3 mr-3 text-base text-white font-extralight max-w-96 rounded-xl bg-gray">
+          <span className="flex items-center justify-end w-auto px-5 py-3 mb-3 mr-3 text-base font-normal text-white max-w-96 rounded-xl bg-gray">
             {articleSummaryData.articleTitle}의 내용을 요약해줘
           </span>
-          <img src={articleSummaryData.favicon} alt="favicon" className="w-8" />
+          <img
+            src={articleSummaryData.favicon}
+            alt="favicon"
+            className="object-cover w-8 rounded-full"
+          />
         </div>
         <Suspense fallback={<SummarySkeleton />}>
           <SummaryResult summaryText={summaryText} error={summaryError} />

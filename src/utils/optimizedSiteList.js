@@ -5,7 +5,7 @@ const OPTIMIZED_SITE_LIST = [
     siteName: "MDN",
   },
   {
-    href: "https://react.dev",
+    href: "https://ko.react.dev",
     faviconSrc: "https://react.dev/favicon-32x32.png",
     siteName: "React",
   },

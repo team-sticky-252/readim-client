@@ -165,7 +165,7 @@ textarea:disabled {
   content: "";
 }
 
-.hovertext::before {
+.hover-text::before {
   content: attr(data-hover);
   font-size: 12px;
   visibility: hidden;
@@ -181,16 +181,14 @@ textarea:disabled {
   position: absolute;
   z-index: 1;
   transform: translate(-135%, -20%);
-  /* right: 120%;
-  bottom: 0%; */
 }
 
-.hovertext:hover::before {
+.hover-text:hover::before {
   opacity: 1;
   visibility: visible;
 }
 
-.hovertext.fixed::before {
+.hover-text.fixed::before {
   left: 80%;
   top: 25%;
 }

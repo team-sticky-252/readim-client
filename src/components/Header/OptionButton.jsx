@@ -6,7 +6,7 @@ function OptionButton() {
   return (
     <div className="real">
       <button
-        className="fixed z-10 p-1 cursor-pointer hovertext group peer top-5 right-5 hover:bg-medium-gray hover:rounded-lg"
+        className="fixed z-10 p-1 cursor-pointer hover-text group peer top-5 right-5 hover:bg-medium-gray hover:rounded-lg"
         aria-label="open options"
         type="button"
         data-hover="읽기 속도 재측정"

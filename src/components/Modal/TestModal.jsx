@@ -32,15 +32,11 @@ function TestModal({ navigateNextPage }) {
   };
 
   useEffect(() => {
-    const prevScrollY = preventScroll();
-
     if (testTextAreaRef.current) {
       testTextAreaRef.current.addEventListener("scroll", updateScroll);
     }
 
     return () => {
-      allowScroll(prevScrollY);
-
       if (testTextAreaRef.current) {
         testTextAreaRef.current.removeEventListener("scroll", updateScroll);
       }

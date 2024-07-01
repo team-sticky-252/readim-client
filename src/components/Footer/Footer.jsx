@@ -32,7 +32,10 @@ function Footer() {
       </div>
       <div className="mt-1">
         피드백이 있으시다면
-        <a href="mailto:teamsticky252@gmail.com" className="ml-1 underline">
+        <a
+          href="mailto:teamsticky252@gmail.com"
+          className="relative ml-1 highlight-gradient"
+        >
           teamsticky252@gmail.com
         </a>
         로 제안해 주세요.

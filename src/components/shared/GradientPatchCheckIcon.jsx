@@ -4,7 +4,7 @@ import { BsPatchCheckFill } from "react-icons/bs";
 
 function GradientPatchCheckIcon() {
   return (
-    <div>
+    <>
       <svg width="0" height="0">
         <defs>
           <linearGradient
@@ -29,7 +29,7 @@ function GradientPatchCheckIcon() {
       <BsPatchCheckFill
         style={{ fill: "url(#gradient1)", width: "1rem", height: "1.5rem" }}
       />
-    </div>
+    </>
   );
 }
 

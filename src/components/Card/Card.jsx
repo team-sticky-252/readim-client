@@ -54,10 +54,15 @@ function Card({
 
   return (
     <li
-      className={`relative flex flex-col content-center w-48 p-5 list-none transition-all bg-white shadow-md ${isDeleted ? "animate-fade-out" : "animate-scale-in-center"} h-52 shadow-black/25 rounded-3xl group hover:scale-115`}
+      className={`relative flex flex-col content-center w-48 list-none transition-all bg-white shadow-md ${isDeleted ? "animate-fade-out" : "animate-scale-in-center"} h-52 shadow-black/25 rounded-3xl group hover:scale-115`}
       data-test="test-articleCard"
     >
-      <a href={url} target="_blank" className="relative" rel="noreferrer">
+      <a
+        href={url}
+        target="_blank"
+        className="relative h-full p-5"
+        rel="noreferrer"
+      >
         <div className="flex items-center">
           <img
             className="inline-block w-4 h-4"
@@ -68,7 +73,11 @@ function Card({
           <p className="text-[11px] w-4/5 truncate inline-block ml-1 font-medium">
             {domain}
           </p>
-          {isCertifiedSite() && <GradientPatchCheckIcon />}
+          {isCertifiedSite() && (
+            <div className="absolute top-4 right-5">
+              <GradientPatchCheckIcon />
+            </div>
+          )}
         </div>
         <ReadingTime readingTime={readingTime} />
         <p className="mt-6 mr-1 text-sm group-hover:pointed-title font-extralight title-ellipsis">
@@ -77,7 +86,7 @@ function Card({
       </a>
       <button
         aria-label="openAI-summary"
-        className="absolute bottom-5 right-5 text-gray hover:text-black"
+        className="absolute p-1 bottom-4 right-4 text-gray hover:text-black"
         onClick={handleShowSummaryClick}
       >
         <SiOpenai />

@@ -77,7 +77,7 @@
 @layer components {
   .modal-position {
     position: fixed;
-    top: 55%;
+    top: 240;
     left: 50%;
     transform: translate(-50%, -50%);
   }

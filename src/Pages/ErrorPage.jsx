@@ -10,9 +10,12 @@ function ErrorPage() {
   useEffect(() => {
     if (messageRef.current) {
       const message = messageRef.current.innerText;
-      setErrorMessage(message);
       const wpm = localStorage.getItem("wpm") || 202;
+
+      setErrorMessage(message);
+
       const readingTime = errorMessage.split(" ").length / (wpm / 60);
+
       setErrorMessageReadingTime(Math.round(readingTime));
     }
   }, [errorMessage, messageRef]);

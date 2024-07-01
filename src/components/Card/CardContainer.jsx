@@ -6,6 +6,8 @@ function CardContainer({
   articleDataList,
   deleteArticle,
   setArticleSummaryData,
+  isSummaryClosed,
+  setIsSummaryClosed,
 }) {
   return (
     <main
@@ -24,6 +26,8 @@ function CardContainer({
           url={article.url}
           deleteArticle={() => deleteArticle(article.id)}
           setArticleSummaryData={setArticleSummaryData}
+          isSummaryClosed={isSummaryClosed}
+          setIsSummaryClosed={setIsSummaryClosed}
         />
       ))}
     </main>

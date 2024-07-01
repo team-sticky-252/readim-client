@@ -17,6 +17,8 @@ function Card({
   url,
   deleteArticle,
   setArticleSummaryData,
+  isSummaryClosed,
+  setIsSummaryClosed,
 }) {
   const [isDeleted, setIsDeleted] = useState();
 
@@ -40,7 +42,8 @@ function Card({
     }, 500);
   };
 
-  const handleShowSummaryClick = () => {
+  const setArticleSummary = () => {
+    setIsSummaryClosed(false);
     setArticleSummaryData({
       id,
       favicon,
@@ -50,6 +53,15 @@ function Card({
       mainContent,
       url,
     });
+  };
+
+  const handleShowSummaryClick = () => {
+    if (!isSummaryClosed) {
+      setIsSummaryClosed(true);
+
+      setTimeout(setArticleSummary, 500);
+    }
+    setArticleSummary();
   };
 
   return (

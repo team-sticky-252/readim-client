@@ -164,3 +164,31 @@ textarea:disabled {
 .code::after {
   content: "";
 }
+
+.hovertext {
+  position: absolute;
+}
+
+.hovertext::before {
+  content: attr(data-hover);
+  font-size: 12px;
+  visibility: hidden;
+  opacity: 0;
+  width: max-content;
+  background-color: rgba(120, 120, 120, 0.646);
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 3px 5px;
+  transition: opacity 0.3s ease-in-out;
+
+  position: absolute;
+  z-index: 1;
+  right: 120%;
+  bottom: 0%;
+}
+
+.hovertext:hover::before {
+  opacity: 1;
+  visibility: visible;
+}

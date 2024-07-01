@@ -86,7 +86,7 @@ function Card({
       </a>
       <button
         aria-label="openAI-summary"
-        className="absolute p-1 bottom-4 right-4 text-gray hover:text-black"
+        className="absolute p-1 bottom-4 right-4 text-gray hover:text-black hover:bg-medium-gray hover:rounded-lg"
         onClick={handleShowSummaryClick}
       >
         <SiOpenai />

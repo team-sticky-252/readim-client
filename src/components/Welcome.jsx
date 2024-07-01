@@ -2,7 +2,7 @@ import InfoConceptText from "./Header/InfoConceptText";
 
 function Welcome() {
   return (
-    <div className="flex justify-center mt-48">
+    <div className="flex justify-center mt-16">
       <div className="w-3/5 font-thin text-7xl text-zinc-600">
         <p className="py-2">
           <span className="font-medium">Readim</span>은 시간을

@@ -5,8 +5,8 @@ function InfoReadingTimeContainer({ totalReadTime }) {
   return (
     <div className="flex items-end justify-center text-xl font-thin">
       약&nbsp;
-      <InfoReadingTimeText totalReadTime={totalReadTime} />의 아티클이
-      모여있어요.
+      <InfoReadingTimeText totalReadTime={totalReadTime} /> &nbsp;분량의
+      아티클이 모여있어요.
     </div>
   );
 }

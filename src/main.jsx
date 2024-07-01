@@ -4,7 +4,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 import App from "./App";
 import ModalWrapper from "./components/Modal/ModalWrapper";
-import ErrorPage from "./Pages/ErrorPage";
+import ErrorPage from "./pages/ErrorPage";
 
 import "./index.css";
 

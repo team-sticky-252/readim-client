@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { FiMinus } from "react-icons/fi";
 import { SiOpenai } from "react-icons/si";
+import { BsChatSquareFill } from "react-icons/bs";
 import PropTypes from "prop-types";
 
 import GradientPatchCheckIcon from "../shared/GradientPatchCheckIcon";
@@ -98,7 +99,8 @@ function Card({
       </a>
       <button
         aria-label="openAI-summary"
-        className="absolute p-1 bottom-4 right-4 text-gray hover:text-black hover:bg-medium-gray hover:rounded-lg"
+        data-hover="세줄 요약"
+        className="absolute p-1 hovertext bottom-4 right-4 text-gray hover:text-black hover:bg-medium-gray hover:rounded-lg"
         onClick={handleShowSummaryClick}
       >
         <SiOpenai />

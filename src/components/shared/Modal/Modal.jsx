@@ -10,7 +10,7 @@ function Modal({
   children,
 }) {
   return (
-    <div className="p-10 shadow-md backdrop-blur-3xl w-200 h-fit shadow-black/25 rounded-3xl">
+    <div className="p-10 bg-white shadow-md w-200 h-fit shadow-black/25 rounded-3xl">
       <button
         onClick={onCloseButtonClick}
         className="absolute rounded-md hover:bg-medium-gray right-5 top-5"

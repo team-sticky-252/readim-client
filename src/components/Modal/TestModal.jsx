@@ -56,7 +56,7 @@ function TestModal({ navigateNextPage }) {
       isDisabledButton={!isScrolledToBottom}
     >
       <div
-        className="pr-4 mt-4 mb-4 overflow-y-scroll text-base leading-7 prose prose-lg whitespace-pre-line modal-textarea-shadow-inner h-72 max-w-none"
+        className="pr-4 mt-4 mb-4 overflow-y-scroll text-base leading-7 prose prose-lg whitespace-pre-line modal-textarea-shadow-inner h-140 max-w-none"
         ref={testTextAreaRef}
         data-test="test-area"
       >

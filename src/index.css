@@ -77,7 +77,7 @@
 @layer components {
   .modal-position {
     position: fixed;
-    top: 240;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
   }
@@ -139,7 +139,6 @@
   @apply content-[""] absolute bottom-0 left-0 -z-1 w-full h-1.5 inline-block bg-gradient-to-r from-pastel-purple via-blush-pink to-sunset-orange;
 }
 
-
 *::-webkit-scrollbar {
   width: 8px;
   padding-right: 5px;
@@ -156,4 +155,12 @@
 
 textarea:disabled {
   background-color: #fafafa;
+}
+
+.code::before {
+  content: "";
+}
+
+.code::after {
+  content: "";
 }

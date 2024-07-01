@@ -1,10 +1,26 @@
 import defaultTheme from "tailwindcss/defaultTheme";
 
+const plugin = require("tailwindcss/plugin");
+
 /** @type {import("tailwindcss").Config} */
 export default {
   content: ["./index.html", "./src/**/*.{js,jsx}"],
   theme: {
     extend: {
+      typography: {
+        default: {
+          css: {
+            code: {
+              "code::before": {
+                content: '""',
+              },
+              "code::after": {
+                content: '""',
+              },
+            },
+          },
+        },
+      },
       colors: {
         "light-gray": "#FBFBFB",
         gray: "#AFADAD",
@@ -22,6 +38,7 @@ export default {
       },
       height: {
         50: "12.5rem",
+        140: "35rem",
       },
       maxHeight: {
         "screen-margin-24": "calc(100vh - 8rem)",
@@ -116,5 +133,45 @@ export default {
       },
     },
   },
-  plugins: [require("@tailwindcss/typography")],
+  plugins: [
+    require("@tailwindcss/typography"),
+    plugin(function customUtilities({ addUtilities }) {
+      addUtilities(
+        {
+          ".code-block": {
+            "background-color": "#252526",
+          },
+          ".code-inline": {
+            margin: "0 0.2rem",
+            padding: "0.2rem 0.5rem",
+            "font-size": "0.8rem",
+            "line-height": "1.25rem",
+            "border-radius": "0.3rem",
+            content: "none",
+            color: "#FF6347",
+            "background-color": "#E5E5E5",
+          },
+          ".code-doc-type": {
+            color: "#b587d5",
+          },
+          ".code-tag-name": {
+            color: "#e36d73",
+          },
+          ".code-html-symbol": {
+            color: "#86d9fb",
+          },
+          ".code-js-symbol": {
+            color: "#d0b613",
+          },
+          ".code-js-func": {
+            color: "#7397df",
+          },
+          ".code-js-string": {
+            color: "#b1d282",
+          },
+        },
+        ["responsive", "hover"],
+      );
+    }),
+  ],
 };

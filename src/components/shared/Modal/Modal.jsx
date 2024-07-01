@@ -1,5 +1,8 @@
+import { useEffect } from "react";
 import { GoX } from "react-icons/go";
 import PropTypes from "prop-types";
+
+import { allowScroll, preventScroll } from "../../../utils/scrollUtils";
 
 function Modal({
   title,
@@ -9,6 +12,14 @@ function Modal({
   isDisabledButton,
   children,
 }) {
+  useEffect(() => {
+    const prevScrollY = preventScroll();
+
+    return () => {
+      allowScroll(prevScrollY);
+    };
+  }, []);
+
   return (
     <div className="p-10 bg-white shadow-md w-200 h-fit shadow-black/25 rounded-3xl">
       <button

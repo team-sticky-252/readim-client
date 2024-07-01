@@ -92,19 +92,17 @@ export const handleSingleURL = async (url, articleDataList, setMessageList) => {
       return articleData.data;
     }
   } catch (error) {
-    if (error.name === "AbortError") {
-      setMessageList((prev) => [
-        ...prev,
-        {
-          id: crypto.randomUUID(),
-          icon: ERROR_MESSAGE[408].icon,
-          messages: ERROR_MESSAGE[408].messages,
-          link: url,
-        },
-      ]);
-    } else {
-      throw error;
-    }
+    const errorCode = error.name === "AbortError" ? 408 : 500;
+
+    setMessageList((prev) => [
+      ...prev,
+      {
+        id: crypto.randomUUID(),
+        icon: ERROR_MESSAGE[errorCode].icon,
+        messages: ERROR_MESSAGE[errorCode].messages,
+        ...(errorCode === 408 && { link: url }),
+      },
+    ]);
   } finally {
     clearTimeout(fetchTimer);
   }

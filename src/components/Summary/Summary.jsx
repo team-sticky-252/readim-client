@@ -19,6 +19,7 @@ function Summary({
     mainContent: "",
     url: "",
   },
+  setIsClosed,
 }) {
   const [messageFadeAnimation, setMessageFadeAnimation] = useState(
     "animate-slide-in-left",
@@ -29,6 +30,10 @@ function Summary({
 
   const handleCloseSummaryClick = () => {
     setMessageFadeAnimation("animate-slide-out-left");
+
+    setTimeout(() => {
+      setIsClosed(true);
+    }, 500);
   };
 
   useEffect(() => {

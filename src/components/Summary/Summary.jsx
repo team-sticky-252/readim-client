@@ -120,4 +120,5 @@ Summary.propTypes = {
     mainContent: PropTypes.string.isRequired,
     url: PropTypes.string.isRequired,
   }).isRequired,
+  setIsSummaryClosed: PropTypes.func.isRequired,
 };

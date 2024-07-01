@@ -37,7 +37,7 @@ function ModalWrapper() {
   return (
     <>
       <div className="fixed top-0 left-0 w-full h-full opacity-60" />
-      <div className="modal-position">
+      <div className="z-10 modal-position">
         {statement === "test" && (
           <TestModal
             firstClickTimeMs={firstClickTimeMs}

@@ -4,6 +4,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 import App from "./App";
 import ModalWrapper from "./components/Modal/ModalWrapper";
+import ErrorPage from "./ErrorPage";
 
 import "./index.css";
 
@@ -11,6 +12,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "modal/:modalId",

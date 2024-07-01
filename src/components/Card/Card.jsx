@@ -126,4 +126,6 @@ Card.propTypes = {
   url: PropTypes.string.isRequired,
   deleteArticle: PropTypes.func.isRequired,
   setArticleSummaryData: PropTypes.func.isRequired,
+  isSummaryClosed: PropTypes.bool.isRequired,
+  setIsSummaryClosed: PropTypes.func.isRequired,
 };

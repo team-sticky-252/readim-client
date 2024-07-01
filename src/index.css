@@ -165,17 +165,13 @@ textarea:disabled {
   content: "";
 }
 
-.hovertext {
-  position: absolute;
-}
-
 .hovertext::before {
   content: attr(data-hover);
   font-size: 12px;
   visibility: hidden;
   opacity: 0;
   width: max-content;
-  background-color: rgba(120, 120, 120, 0.646);
+  background-color: rgba(104, 102, 102, 0.646);
   color: #fff;
   text-align: center;
   border-radius: 5px;
@@ -184,11 +180,18 @@ textarea:disabled {
 
   position: absolute;
   z-index: 1;
-  right: 120%;
-  bottom: 0%;
+  transform: translate(-135%, -20%);
+  /* right: 120%;
+  bottom: 0%; */
 }
 
 .hovertext:hover::before {
   opacity: 1;
   visibility: visible;
 }
+
+.hovertext.fixed::before {
+  left: 80%;
+  top: 25%;
+}
+

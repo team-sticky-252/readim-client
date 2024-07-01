@@ -19,7 +19,7 @@ function Summary({
     mainContent: "",
     url: "",
   },
-  setIsClosed,
+  setIsSummaryClosed,
 }) {
   const [messageFadeAnimation, setMessageFadeAnimation] = useState(
     "animate-slide-in-left",
@@ -32,7 +32,7 @@ function Summary({
     setMessageFadeAnimation("animate-slide-out-left");
 
     setTimeout(() => {
-      setIsClosed(true);
+      setIsSummaryClosed(true);
     }, 500);
   };
 

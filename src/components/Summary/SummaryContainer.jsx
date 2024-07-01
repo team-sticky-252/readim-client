@@ -1,5 +1,4 @@
 import PropTypes from "prop-types";
-import React, { useState } from "react";
 import Summary from "./Summary";
 
 function SummaryContainer({
@@ -12,16 +11,17 @@ function SummaryContainer({
     mainContent: "",
     url: "",
   },
+  isSummaryClosed,
+  setIsSummaryClosed,
 }) {
-  const [isClosed, setIsClosed] = useState(false);
   return (
     <div>
-      {!isClosed && (
+      {!isSummaryClosed && (
         <aside className="fixed z-50 flex -translate-y-1/2 top-1/2 h-100vh left-7">
           {articleSummaryData?.articleTitle && (
             <Summary
               articleSummaryData={articleSummaryData}
-              setIsClosed={setIsClosed}
+              setIsSummaryClosed={setIsSummaryClosed}
             />
           )}
         </aside>

@@ -29,6 +29,7 @@ function App() {
     mainContent: "",
     url: "",
   });
+  const [isSummaryClosed, setIsSummaryClosed] = useState(true);
 
   const navigate = useNavigate();
 
@@ -95,8 +96,9 @@ function App() {
         <div className="w-216">
           {articleDataList.length === 0 && <Welcome />}
           <SummaryContainer
-            key={crypto.randomUUID()}
             articleSummaryData={articleSummaryData}
+            isSummaryClosed={isSummaryClosed}
+            setIsSummaryClosed={setIsSummaryClosed}
           />
           <HeaderContainer
             articleDataList={articleDataList}
@@ -107,6 +109,8 @@ function App() {
             articleDataList={articleDataList}
             setArticleSummaryData={setArticleSummaryData}
             deleteArticle={deleteArticle}
+            isSummaryClosed={isSummaryClosed}
+            setIsSummaryClosed={setIsSummaryClosed}
           />
           <ToastContainer
             messageList={messageList}

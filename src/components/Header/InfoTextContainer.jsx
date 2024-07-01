@@ -4,7 +4,9 @@ import InfoReadingTimeContainer from "./InfoReadingTimeContainer";
 
 function InfoTextContainer({ totalReadTime }) {
   return (
-    <div className={`flex justify-center ${totalReadTime > 0 && "h-28"}`}>
+    <div
+      className={`flex relative bottom-6 justify-center ${totalReadTime > 0 && "h-28"}`}
+    >
       {totalReadTime > 0 && (
         <InfoReadingTimeContainer totalReadTime={totalReadTime} />
       )}

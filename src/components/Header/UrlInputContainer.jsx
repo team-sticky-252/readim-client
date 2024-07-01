@@ -67,7 +67,7 @@ function UrlInputContainer({
 
   return (
     <div
-      className={`flex items-center justify-center m-auto mx-auto mt-4 ${isLoading ? "bg-[#fafafa]" : "bg-white"} border shadow-md mb-14 border-light-gray w-fit rounded-xl`}
+      className={`flex relative items-center justify-center m-auto mx-auto bottom-4 ${isLoading ? "bg-[#fafafa]" : "bg-white"} border shadow-md mb-14 border-light-gray w-fit rounded-xl`}
     >
       <textarea
         ref={textareaRef}

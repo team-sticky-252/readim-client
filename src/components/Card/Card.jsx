@@ -98,7 +98,7 @@ function Card({
       </a>
       <button
         aria-label="openAI-summary"
-        data-hover="세줄 요약"
+        data-hover="본문 요약"
         className="absolute p-1 hover-text bottom-4 right-4 text-gray hover:text-black hover:bg-medium-gray hover:rounded-lg"
         onClick={handleShowSummaryClick}
       >

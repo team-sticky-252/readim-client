@@ -6,8 +6,8 @@ import ToastMessage from "../components/Toast/ToastMessage";
 import App from "../App";
 import ToastContainer from "../components/Toast/ToastContainer";
 
-describe("토스트 메시지 검사", () => {
-  it("토스트 메시지는 아이콘, 메시지, 또 경우에 따라 입력값을 출력해야합니다", () => {
+describe("Test ToastMessage Component", () => {
+  it("Toast Mesaage should show its props's texts", () => {
     render(
       <ToastMessage
         icon="✅"
@@ -28,7 +28,7 @@ describe("토스트 메시지 검사", () => {
     expect(messages.length).toBeGreaterThan(0);
   });
 
-  it("메시지가를 삭제하면 0.5초간 애니메이션이 실행되고 삭제되야 합니다.", () => {
+  it("When delete the message, Should play fade-out-animation during 0.5s", () => {
     const deleteMessageMock = vi.fn();
 
     const { container } = render(

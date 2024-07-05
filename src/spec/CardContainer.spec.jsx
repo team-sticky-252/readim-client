@@ -40,7 +40,7 @@ describe("CardContainer", () => {
     );
   });
 
-  it("들어온 아티클 데이터의 리스트의 길이와 Card 컴포넌트의 갯수가 같아야 한다.", () => {
+  it("Card components count should match the length of the incoming article data list.", () => {
     const parentElement = document.querySelector(
       '[data-test="test-cardContainer"]',
     );

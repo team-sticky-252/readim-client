@@ -27,7 +27,7 @@ describe("Card", () => {
     rerender = resultRender.rerender;
   });
 
-  it("삭제버튼을 누른 경우 카드 해당 컴포넌트는 삭제되어야 합니다.", () => {
+  it("The card component should be deleted when the delete button is clicked.", () => {
     const deleteButton = screen.getByTitle("카드 삭제");
     const articleCard = screen.queryByTestId(
       "b9d83fd8-219e-49e9-be73-689fb48654ce",
@@ -38,7 +38,7 @@ describe("Card", () => {
     expect(articleCard).toBeNull();
   });
 
-  it("Prop으로 넘겨받은 정보가 Card 컴포넌트에 제대로 렌더링 되어야합니다.", () => {
+  it("Card component should render the information passed via props correctly.", () => {
     const domain = screen.getByText("GitHub");
     const title = screen.getByText(
       "GitHub - facebook/react: The library for web and native user interfaces.",
@@ -57,13 +57,13 @@ describe("Card", () => {
     expect(readingSecondText).toBeInTheDocument();
   });
 
-  it("지원하는 사이트인 경우 인증마크를 보여주어야 한다.", () => {
+  it("Should display the certification mark for supported sites.", () => {
     const certifiedSite = document.getElementById("gradient1");
 
     expect(certifiedSite).toBeInTheDocument();
   });
 
-  it("지원하지 않는 사이트인 경우 인증마크를 보여주지 말아야 한다.", () => {
+  it("Should not display the certification mark for unsupported sites.", () => {
     rerender(
       <Card
         id="7bc44162-8310-4191-9522-165555b3d06e"

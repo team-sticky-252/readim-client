@@ -13,7 +13,7 @@ function ToastContainer({ messageList, deleteMessage, deleteAllMessages }) {
     setTimeout(() => {
       deleteAllMessages();
       setContainerFadeAnimation("");
-    }, 1500);
+    }, 500);
   };
 
   return (

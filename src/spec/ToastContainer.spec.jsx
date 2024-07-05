@@ -1,8 +1,8 @@
+import { act } from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { describe, it, expect, vi } from "vitest";
 
 import ToastContainer from "../components/Toast/ToastContainer";
-import { act } from "react";
 
 describe("Test ToastMessage Component", () => {
   it("Toast Mesaage should show its props's texts", () => {
@@ -30,7 +30,7 @@ describe("Test ToastMessage Component", () => {
     expect(linkElement).toBeInTheDocument();
   });
 
-  it("When delete Allmessages, Should play fade-out-animation during 0.5s and completly empty the messages", () => {
+  it("When delete Allmessages, Should play fade-out-animation during 0.5s", () => {
     const deleteAllMessagesMock = vi.fn();
 
     const { container } = render(
@@ -59,7 +59,7 @@ describe("Test ToastMessage Component", () => {
     expect(container.firstChild).toHaveClass("animate-fade-out-bottom");
 
     act(() => {
-      vi.advanceTimersByTime(1500);
+      vi.advanceTimersByTime(500);
     });
 
     expect(deleteAllMessagesMock).toHaveBeenCalled();

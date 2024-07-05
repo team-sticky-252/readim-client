@@ -11,11 +11,7 @@ function ToastMessage({ icon, messages, link, deleteMessage }) {
   const handleDeleteMessageClick = () => {
     setMessageFadeAnimation("animate-fade-out-bottom");
 
-    const timerId = setTimeout(deleteMessage, 500);
-
-    return () => {
-      clearTimeout(timerId);
-    };
+    setTimeout(deleteMessage, 500);
   };
 
   return (

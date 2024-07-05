@@ -22,7 +22,7 @@ describe("Test ToastMessage Component", () => {
       );
     });
 
-    expect(messages.length).toBeGreaterThan(0);
+    expect(messages.length).toBe(3);
   });
 
   it("When delete the message, Should play fade-out-animation during 0.5s", () => {

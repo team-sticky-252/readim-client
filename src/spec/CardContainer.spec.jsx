@@ -1,5 +1,5 @@
-import { render, screen } from "@testing-library/react";
-import { describe, expect, test } from "vitest";
+import { render } from "@testing-library/react";
+import { describe, expect } from "vitest";
 import CardContainer from "../components/Card/CardContainer";
 
 describe("CardContainer", () => {

@@ -1,7 +1,5 @@
-// Card.test.js
-import React from "react";
 import { render, screen } from "@testing-library/react";
-import { describe, expect, test } from "vitest";
+import { describe, expect } from "vitest";
 import Card from "../components/Card/Card";
 
 describe("Card", () => {

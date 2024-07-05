@@ -45,7 +45,7 @@ describe("CardContainer", () => {
       '[data-test="test-cardContainer"]',
     );
     const childElements = parentElement.children;
-    console.log(parentElement);
+
     expect(childElements.length).toBe(2);
   });
 });

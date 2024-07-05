@@ -17,7 +17,8 @@
     "preview": "vite preview",
     "test": "vitest",
     "cypress": "cypress run",
-    "cypress:open": "cypress open"
+    "cypress:open": "cypress open",
+    "coverage": "vitest run --coverage"
   },
   "lint-staged": {
     "**/*.{js,jsx,html}": [

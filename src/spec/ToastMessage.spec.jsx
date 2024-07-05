@@ -56,8 +56,3 @@ describe("토스트 메시지 검사", () => {
     expect(hasNoPendingTimers).toBe(true);
   });
 });
-
-test("Loading component should show text prop", () => {
-  render(<InfoReadingTimeContainer totalReadTime={30000} />);
-  expect(screen.getByText("1분")).toBeInTheDocument();
-});

@@ -1,10 +1,7 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import { describe, it, expect, vi } from "vitest";
 
-import InfoReadingTimeContainer from "../components/Header/InfoReadingTimeContainer";
 import ToastMessage from "../components/Toast/ToastMessage";
-import App from "../App";
-import ToastContainer from "../components/Toast/ToastContainer";
 
 describe("Test ToastMessage Component", () => {
   it("Toast Mesaage should show its props's texts", () => {

@@ -10,14 +10,10 @@ function ToastContainer({ messageList, deleteMessage, deleteAllMessages }) {
   const handleDeleteAllMessageClick = () => {
     setContainerFadeAnimation("animate-fade-out-bottom");
 
-    const timerId = setTimeout(() => {
+    setTimeout(() => {
       deleteAllMessages();
       setContainerFadeAnimation("");
     }, 1500);
-
-    return () => {
-      clearTimeout(timerId);
-    };
   };
 
   return (

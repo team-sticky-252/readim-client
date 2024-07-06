@@ -48,12 +48,12 @@ describe("Test ToastMessage Component", () => {
       />,
     );
 
-    const deleteAllbutton = screen.getByText("모두 지우기").parentElement;
+    const deleteAllButton = screen.getByText("모두 지우기").parentElement;
 
     vi.useFakeTimers();
 
     act(() => {
-      fireEvent.click(deleteAllbutton);
+      fireEvent.click(deleteAllButton);
     });
 
     expect(container.firstChild).toHaveClass("animate-fade-out-bottom");

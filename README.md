@@ -15,23 +15,38 @@
 
 
 ## 🗂️ Index
-
-- [**Motivation**](https://github.com/team-sticky-252/readim-client/edit/main/README.md#motivation)
-- [**Tech Stacks**](https://github.com/team-sticky-252/readim-client/edit/main/README.md#%EF%B8%8Ftech-stacks)
-- [**Features**](https://github.com/team-sticky-252/readim-client/edit/main/README.md#features)
-    - [모달창](https://github.com/team-sticky-252/readim-client/edit/main/README.md#%EB%AA%A8%EB%8B%AC%EC%B0%BD)
-    - [메인페이지](https://github.com/team-sticky-252/readim-client/edit/main/README.md#%EB%A9%94%EC%9D%B8-%ED%8E%98%EC%9D%B4%EC%A7%80)
-    - [아티클 카드](https://github.com/team-sticky-252/readim-client/edit/main/README.md#%EC%95%84%ED%8B%B0%ED%81%B4-%EC%B9%B4%EB%93%9C)
-    - [Footer 콘텐츠](https://github.com/team-sticky-252/readim-client/edit/main/README.md#footer-%EC%BD%98%ED%85%90%EC%B8%A0)
-- [**Improvement**](https://github.com/team-sticky-252/readim-client/edit/main/README.md#improvements)
-  - [UI, UX 선정 과정](https://github.com/team-sticky-252/readim-client/edit/main/README.md#ui-ux-%EC%84%A0%EC%A0%95%EA%B3%BC%EC%A0%95)
-  - [읽기 속도 기준](https://github.com/team-sticky-252/readim-client/edit/main/README.md#2-%EC%9D%BD%EA%B8%B0-%EC%86%8D%EB%8F%84-%EA%B8%B0%EC%A4%80)
-- [**Challenges**](https://github.com/team-sticky-252/readim-client/edit/main/README.md#challenges)
-  - [1. 어떻게 단일 테스트로 다양한 사용자들의 읽기속도를 특정할 수 있을까?](https://github.com/team-sticky-252/readim-client/edit/main/README.md#%EC%96%B4%EB%96%BB%EA%B2%8C-%EB%8B%A8%EC%9D%BC-%ED%85%8C%EC%8A%A4%ED%8A%B8%EB%A1%9C-%EB%8B%A4%EC%96%91%ED%95%9C-%EC%82%AC%EC%9A%A9%EC%9E%90%EB%93%A4%EC%9D%98-%EC%9D%BD%EA%B8%B0%EC%86%8D%EB%8F%84%EB%A5%BC-%ED%8A%B9%EC%A0%95%ED%95%A0-%EC%88%98-%EC%9E%88%EC%9D%84%EA%B9%8C)
-  - [2. 어떻게 시멘틱 구조의 페이지에서 본문에 해당하는 텍스트만 추출할 수 있을까?](https://github.com/team-sticky-252/readim-client/edit/main/README.md#1-%EC%96%B4%EB%96%BB%EA%B2%8C-%EC%8B%9C%EB%A9%98%ED%8B%B1-%EA%B5%AC%EC%A1%B0%EC%9D%98-%ED%8E%98%EC%9D%B4%EC%A7%80%EC%97%90%EC%84%9C-%EB%B3%B8%EB%AC%B8%EC%97%90-%ED%95%B4%EB%8B%B9%ED%95%98%EB%8A%94-%ED%85%8D%EC%8A%A4%ED%8A%B8%EB%A7%8C-%EC%B6%94%EC%B6%9C%ED%95%A0-%EC%88%98-%EC%9E%88%EC%9D%84%EA%B9%8C)
-  - [3. 시멘틱 태그가 없는 사이트의 스크래핑 방법?](https://github.com/team-sticky-252/readim-client/edit/main/README.md#3%EC%8B%9C%EB%A9%98%ED%8B%B1-%ED%83%9C%EA%B7%B8%EA%B0%80-%EC%97%86%EB%8A%94-%EC%82%AC%EC%9D%B4%ED%8A%B8%EC%9D%98-%EC%8A%A4%ED%81%AC%EB%9E%98%ED%95%91-%EB%B0%A9%EB%B2%95)
-- [**Schedule**](https://github.com/team-sticky-252/readim-client/edit/main/README.md#%EF%B8%8Fschedule)
-- [**Memoir**](https://github.com/team-sticky-252/readim-client/edit/main/README.md#memoir)
+- [ Readim](#-readim)
+- [🔗 Links](#links)
+- [🗂️ Index](#️index)
+- [🧲 Motivation](#motivation)
+- [⚒️ Tech Stacks](#️tech-stacks)
+  - [Client](#client)
+  - [Server](#server)
+  - [Test](#test)
+  - [Deployment](#deployment)
+  - [Third party API](#third-party-api)
+- [🔍 Features](#features)
+  - [1. 모달창](#1-모달창)
+  - [2. 메인 페이지](#2-메인-페이지)
+  - [3. 아티클 카드](#3-아티클-카드)
+  - [4. Footer 콘텐츠](#4-footer-콘텐츠)
+- [📈 Improvements](#improvements)
+    - [reading time UI 변경](#reading-time-ui-변경)
+    - [🔗 UI 선정 및 개선 과정](#-ui-선정-및-개선-과정)
+    - [\<기존안\>](#기존안)
+    - [\<개선안\>](#개선안)
+- [🎯 Challenges](#-challenges)
+  - [**1. 어떻게 단일 테스트로 다양한 사용자들의 읽기속도를 특정할 수 있을까?**](#1-어떻게-단일-테스트로-다양한-사용자들의-읽기속도를-특정할-수-있을까)
+    - [1-1.  기준과 근거를 가진 기본 평균 범위 설정](#1-1--기준과-근거를-가진-기본-평균-범위-설정)
+    - [1-2. 실제 사용자 테스트를 통한 유효한 범위 설정](#1-2-실제-사용자-테스트를-통한-유효한-범위-설정)
+    - [1-3. 실제 사용 환경과 유사한 테스트 구현](#1-3-실제-사용-환경과-유사한-테스트-구현)
+  - [2. 어떻게 시멘틱 구조의 페이지에서 본문에 해당하는 텍스트만 추출할 수 있을까?](#2-어떻게-시멘틱-구조의-페이지에서-본문에-해당하는-텍스트만-추출할-수-있을까)
+    - [2-1. 시멘틱 구조에서 본문 판별하기](#2-1-시멘틱-구조에서-본문-판별하기)
+    - [2-2. 불필요한 요소를 제외하자](#2-2-불필요한-요소를-제외하자)
+    - [2-3. 코드 블록내의 단어는 어떻게 처리해야할까?](#2-3-코드-블록내의-단어는-어떻게-처리해야할까)
+  - [**3. 시멘틱 태그가 없는 사이트의 스크래핑 방법?**](#3-시멘틱-태그가-없는-사이트의-스크래핑-방법)
+- [🗓️ Schedule](#️schedule)
+- [👏 Memoir](#memoir)
 
 ## 🧲 Motivation
 
@@ -584,9 +599,41 @@
 </div>
 
 ## 👏 Memoir
+<details>
+<summary>이재훈</summary>
+팀 프로젝트를 통해 개발자 개인의 취향을 우선하는 것이 아닌 사용자를 위한 서비스가 어떤것인지 깊게 고민해보고 분석하고 구현해내는 경험을 할 수 기회가 있어서 좋았습니다.
 
-### 이재훈
+사용자의 필요를 우선하는 결정을 고민하고 적용하면서 서비스의 품질이 크게 향상되는 것을 느낄 수 있었습니다.
 
-### 오지은
+팀원들과 서로 조율하고 배려하는 것도 물론 중요했지만 때로는 의견을 내 서로 부딪히고 의견을 좁혀가는 것도 각자가 아닌 하나의 팀으로써 하나의 프로젝트를 만들어 가는 과정이라고 느꼈습니다.
 
-### 이창호
+프로젝트가 진행될수록 의사 결정 시간이 점점 짧아지고 팀원들과 서로 동기화되고 있다는걸 느끼는 순간들이 재밌다고 생각했고, 서로에게 많은 도움을 주고 받으며 성장한 것 같아서 즐거운 시간이었습니다.
+
+팀 프로젝트 기간동안 기술적 성장 외에도 소통 능력에 있어서도 많은 것을 배울 수 있었고 이번 경험을 바탕으로 질적으로 성장된 개발과 협업을 할 수 있을 것 같아 앞으로가 더 기대가 됩니다.
+</details>
+
+<br/>
+
+<details>
+<summary>오지은</summary>
+이번 팀 프로젝트를 진행하면서 얻은 경험과 배움이 많았습니다.
+
+우선 팀원들과의 협업을 통해 각기 다른 의견을 조율하고 조화롭게 통합하는 법을 배웠습니다. 서로 다른 아이디어를 존중하고, 더 나은 해결책을 찾기 위해 토론하고 합의하는 과정은 매우 유익했습니다. 이러한 경험은 팀워크의 중요성을 다시 한 번 느끼게 했습니다.
+
+또한 프로젝트를 진행하면서 기술적인 문제뿐만 아니라 시간 관리, 우선순위 설정, 사용자 중심 서비스 개발의 중요성 등 여러 가지 측면에서 배운 점이 많았습니다.
+
+마지막으로 Git 전략, 오류 처리,  HTML 태그, nest.js 등 유용한 기술들을 익히는 데 도움이 되었고, 이를 통해 개인적으로도 성장을 이룰 수 있었습니다.
+</details>
+
+<br/>
+
+<details>
+<summary>이창호</summary>
+묵묵히 진행하다보면 개발자의 취향과 의도에만 묻히게 되는 단점을 팀원들과의 대화를 통해 극복할 수 있었습니다.
+
+기능 및 UI/UX 구현 시 항상 사용자 입장에서 생각하는 태도가 중요했습니다. 이를 위해 팀원들과 지속적으로 의견을 나누며, 사용자의 편의성과 경험을 최우선으로 고려하는 개발을 진행했습니다.
+
+또한, 개발 과정에 막막했던 기능들을 구현할 때는 누군가 한 명이 낸 아이디어를 구체화 하여 극복하는 경험은 저에게 새로운 경험과 지식을 쌓게 해주었으며, 앞으로도 최신 기술 트렌드 및 대표적인 기술 스택의 공부해야하는 필요성을 느낄 수 있었습니다.
+
+항시 최종적으로 만들어낼 기능에 대해 다른길로 빠지지 않도록 서로 길잡이가 되었으며, 사용자를 우선시하는 태도로 개발을 진행하는 경험은 앞으로 혼자 개발을 하게 되더라도 우선해야할 개념을 상기시킬 수 있는 자산이 된 시간이었습니다.
+</details>

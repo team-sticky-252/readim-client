@@ -72,9 +72,45 @@
 
 ![Javascript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white) ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)  ![Tailwind](https://img.shields.io/badge/tailwindCSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)
 
+<details>
+  <summary>Why TailWind CSS?</summary>
+
+사용하지 않는 CSS를 제거하는 purgeCSS 를 통해 파일 사이즈를 줄이고 로딩 속도를 향상시킬 수 있습니다.
+
+미리 정의된 유틸리티 클래스들을 사용하여 별도의 CSS 파일을 작성하고 관리할 필요가 없어 개발 속도가 향상됩니다.
+
+설정 파일을 통해 색상, 간격, 글꼴 등을 한 번에 관리할 수 있기 때문에 디자인 일관성 유지가 용이합니다.
+</details>
+
 ### Server
 
 ![Javascript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white)  ![NODE.JS](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)  ![NEST.JS](https://img.shields.io/badge/nestjs-E0234E?style=for-the-badge&logo=nestjs&logoColor=white)  ![JSDOM](https://img.shields.io/badge/JSDOM-d7c146.svg?style=for-the-badge&logoColor=white)
+
+
+<details>
+  <summary>Why NestJS?</summary>
+TypeScript 를 기본 언어로 지원합니다. 테스트 기능이 내장(jest)되어 있고 유닛, 통합 테스트를 작성할 수 있습니다.
+
+<br/>
+
+모듈화된 아키텍처를 강조하여 프로젝트 구조를 일관성 있게 유지할 수 있습니다.
+
+저희는 추후 TypeScript로 마이그레이션 예정이고, 사용자가 추가로 구성해야 할 구조가 적고 러닝 커브가 낮은 점이 있어 선택하였습니다.
+</details>
+
+<details>
+  <summary>Why JSDOM?</summary>
+JSDOM을 선택한 주된 이유는 성능과 효율성 때문입니다.
+
+<br/>
+
+JSDOM은 Puppeteer에 비해 상당히 빠른 처리 속도를 제공합니다. 이는 우리 서비스의 응답 시간을 크게 개선하여 사용자 경험을 향상시킵니다.
+
+물론, JSDOM이 클라이언트 사이드 렌더링(CSR)을 사용하는 웹사이트의 동적 콘텐츠를 처리하는 데 어려움이 있다는 점은 인지하고 있습니다.
+
+하지만 아티클이 있는 블로그 사이트의 경우 대부분 서버 사이드 렌더링(SSR)을 하기 때문에 여러가지를 고려한 결과 JSDOM의 속도 이점이 CSR 관련 제한사항을 크게 상회한다고 판단했습니다.
+</details>
+
 
 ### Test
 

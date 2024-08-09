@@ -60,7 +60,7 @@ export default {
         115: "1.15",
       },
       screens: {
-        "max-mobile": { max: "640px" },
+        "max-mobile": { max: "768px" },
       },
       keyframes: {
         "slide-top": {

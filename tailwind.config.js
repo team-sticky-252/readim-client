@@ -59,6 +59,9 @@ export default {
       scale: {
         115: "1.15",
       },
+      screens: {
+        "max-mobile": { max: "640px" },
+      },
       keyframes: {
         "slide-top": {
           "0%": { transform: "translateY(100px)" },

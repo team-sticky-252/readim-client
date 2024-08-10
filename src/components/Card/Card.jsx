@@ -31,6 +31,9 @@ function Card({
     "tistory.com",
   ];
 
+  const cardResponsiveStyle = "max-mobile:w-[40dvw] h-[40dvw] hover:scale-100";
+  const cardTextResponsiveStyle = " max-mobile:mt-4 text-xs";
+
   const isCertifiedSite = () => {
     return CERTIFICATED_SITE.some((site) => url.includes(site));
   };
@@ -66,7 +69,7 @@ function Card({
 
   return (
     <li
-      className={`relative flex flex-col content-center w-48 list-none transition-all bg-white shadow-md ${isDeleted ? "animate-fade-out" : "animate-scale-in-center"} h-52 shadow-black/25 rounded-3xl group hover:scale-115`}
+      className={`${cardResponsiveStyle} relative flex flex-col content-center w-48 list-none transition-all bg-white shadow-md ${isDeleted ? "animate-fade-out" : "animate-scale-in-center"} h-52 shadow-black/25 rounded-3xl group hover:scale-115`}
       data-test="test-articleCard"
     >
       <a
@@ -92,7 +95,9 @@ function Card({
           )}
         </div>
         <ReadingTime readingTime={readingTime} />
-        <p className="mt-6 mr-1 text-sm group-hover:pointed-title font-extralight title-ellipsis">
+        <p
+          className={`${cardTextResponsiveStyle} mt-6 mr-1 text-sm group-hover:pointed-title font-extralight title-ellipsis`}
+        >
           {articleTitle}
         </p>
       </a>

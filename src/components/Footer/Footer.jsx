@@ -10,25 +10,33 @@ function Footer() {
     siteName: "Readim",
   };
 
+  const footerResponsiveStyle =
+    "max-mobile:w-full bottom-0 pt-0 h-36 box-border";
+  const warrantyIconResponsiveStyle = "max-mobile:align-middle inline-flex";
+
   return (
-    <footer className="bottom-0 w-full mt-auto text-sm font-thin tracking-normal text-center pt-36 h-80 bg-gradient-to-t from-white">
-      <div className="flex items-center justify-center">
+    <footer
+      className={`${footerResponsiveStyle} bottom-0 w-full mt-auto text-sm font-thin tracking-normal text-center pt-36 h-80 bg-gradient-to-t from-white`}
+    >
+      <div className="flex items-center justify-center max-mobile:block">
         <span className="font-bold text-transparent bg-gradient-to-r from-pastel-purple via-blush-pink to-sunset-orange bg-clip-text">
           Readim
         </span>
         은 다음 사이트에 최적화
-        <span>
+        <span className={`${warrantyIconResponsiveStyle}`}>
           <GradientPatchCheckIcon />
         </span>
         &nbsp;되어 있어요.
-        {OPTIMIZED_SITE_LIST.map(({ href, faviconSrc, siteName }) => (
-          <OptimizedSiteLink
-            key={siteName}
-            href={href}
-            faviconSrc={faviconSrc}
-            siteName={siteName}
-          />
-        ))}
+        <span className="justify-center max-mobile:flex">
+          {OPTIMIZED_SITE_LIST.map(({ href, faviconSrc, siteName }) => (
+            <OptimizedSiteLink
+              key={siteName}
+              href={href}
+              faviconSrc={faviconSrc}
+              siteName={siteName}
+            />
+          ))}
+        </span>
       </div>
       <div className="mt-1">
         피드백이 있으시다면

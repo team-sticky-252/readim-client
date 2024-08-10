@@ -33,7 +33,7 @@ function Card({
 
   const cardResponsiveStyle =
     "max-mobile:w-[40dvw] max-mobile:h-[40dvw] max-mobile:hover:scale-100";
-  const cardTextResponsiveStyle = " max-mobile:mt-4 max-mobile:text-xs";
+  const cardTextResponsiveStyle = " max-mobile:mt-2 max-mobile:text-xs";
 
   const isCertifiedSite = () => {
     return CERTIFICATED_SITE.some((site) => url.includes(site));

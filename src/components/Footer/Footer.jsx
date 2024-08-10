@@ -11,7 +11,7 @@ function Footer() {
   };
 
   const footerResponsiveStyle =
-    "max-mobile:w-full max-mobile:bottom-0 max-mobile:pt-0 max-mobile:h-36 max-mobile:box-border";
+    "max-mobile:w-[80dvw] max-mobile:pt-0 max-mobile:h-36 max-mobile:bg-none";
   const warrantyIconResponsiveStyle =
     "max-mobile:align-middle max-mobile:inline-flex";
 
@@ -49,7 +49,7 @@ function Footer() {
         </a>
         로 제안해 주세요.
       </div>
-      <p className="flex items-center justify-center mt-6">
+      <p className="flex items-center justify-center mt-6 whitespace-nowrap">
         Copyright © 2024
         <OptimizedSiteLink
           key={READIM_INFO.siteName}

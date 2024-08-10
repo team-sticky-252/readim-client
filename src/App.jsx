@@ -93,7 +93,7 @@ function App() {
   return (
     <div className="relative flex flex-col items-center justify-between min-h-screen">
       <div className="flex justify-center h-auto min-h-full mb-auto">
-        <div className="w-216">
+        <div className="w-216 max-mobile:w-dvw">
           {articleDataList.length === 0 && <Welcome />}
           <SummaryContainer
             articleSummaryData={articleSummaryData}

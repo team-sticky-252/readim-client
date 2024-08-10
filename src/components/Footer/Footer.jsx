@@ -11,14 +11,15 @@ function Footer() {
   };
 
   const footerResponsiveStyle =
-    "max-mobile:w-full bottom-0 pt-0 h-36 box-border";
-  const warrantyIconResponsiveStyle = "max-mobile:align-middle inline-flex";
+    "max-mobile:w-full max-mobile:bottom-0 max-mobile:pt-0 max-mobile:h-36 max-mobile:box-border";
+  const warrantyIconResponsiveStyle =
+    "max-mobile:align-middle max-mobile:inline-flex";
 
   return (
     <footer
       className={`${footerResponsiveStyle} bottom-0 w-full mt-auto text-sm font-thin tracking-normal text-center pt-36 h-80 bg-gradient-to-t from-white`}
     >
-      <div className="flex items-center justify-center max-mobile:block">
+      <div className="flex items-center justify-center whitespace-nowrap max-mobile:block">
         <span className="font-bold text-transparent bg-gradient-to-r from-pastel-purple via-blush-pink to-sunset-orange bg-clip-text">
           Readim
         </span>
@@ -27,7 +28,7 @@ function Footer() {
           <GradientPatchCheckIcon />
         </span>
         &nbsp;되어 있어요.
-        <span className="justify-center max-mobile:flex">
+        <span className="flex justify-center">
           {OPTIMIZED_SITE_LIST.map(({ href, faviconSrc, siteName }) => (
             <OptimizedSiteLink
               key={siteName}

@@ -10,7 +10,7 @@ function CardContainer({
   setIsSummaryClosed,
 }) {
   const mobileResponsiveStyle =
-    "max-mobile:grid-cols-2 w-10/12 min-w-0 gap-y-2 gap-x-[3dvw] pb-10 m-auto";
+    "max-mobile:grid-cols-2 max-mobile:w-10/12 max-mobile:min-w-0 max-mobile:gap-y-2 max-mobile:gap-x-[3dvw] max-mobile:pb-10 max-mobile:m-auto";
 
   return (
     <main

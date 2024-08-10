@@ -31,8 +31,9 @@ function Card({
     "tistory.com",
   ];
 
-  const cardResponsiveStyle = "max-mobile:w-[40dvw] h-[40dvw] hover:scale-100";
-  const cardTextResponsiveStyle = " max-mobile:mt-4 text-xs";
+  const cardResponsiveStyle =
+    "max-mobile:w-[40dvw] max-mobile:h-[40dvw] max-mobile:hover:scale-100";
+  const cardTextResponsiveStyle = " max-mobile:mt-4 max-mobile:text-xs";
 
   const isCertifiedSite = () => {
     return CERTIFICATED_SITE.some((site) => url.includes(site));

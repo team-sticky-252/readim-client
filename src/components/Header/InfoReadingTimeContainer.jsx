@@ -4,7 +4,7 @@ import InfoReadingTimeText from "./InfoReadingTimeText";
 function InfoReadingTimeContainer({ totalReadTime }) {
   return (
     <div
-      className="flex items-end justify-center text-xl font-thin"
+      className="flex items-end justify-center text-xl font-thin max-mobile:text-lg"
       data-testid="total-reading-time"
     >
       약&nbsp;

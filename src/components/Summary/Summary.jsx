@@ -78,7 +78,7 @@ function Summary({
 
   return (
     <div
-      className={`relative m-auto flex w-136 flex-col backdrop-blur-xl col-span-4 p-8 transition-all shadow-md rounded-3xl group shadow-black/25 ${messageFadeAnimation}`}
+      className={`relative m-auto flex w-136 flex-col backdrop-blur-xl col-span-4 p-8 transition-all shadow-md rounded-3xl group shadow-black/25 ${messageFadeAnimation} max-mobile:w-4/5 max-mobile:ml-0`}
       ref={summaryRef}
     >
       <div>

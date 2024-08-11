@@ -38,7 +38,7 @@ function App() {
 
     if (!storedWpm) {
       window.localStorage.setItem("wpm", DEFAULT_WPM);
-      navigate("/modal/welcome");
+      navigate("/service/welcome");
 
       return;
     }

@@ -2,18 +2,16 @@ import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 
-import Modal from "../shared/Modal/Modal";
+import Service from "../shared/Service/Service";
 
-import CONTENTS from "../../utils/ModalContents";
-import { allowScroll, preventScroll } from "../../utils/scrollUtils";
+import CONTENTS from "../../utils/ServiceContents";
 
-function TestModal({ navigateNextPage }) {
+function TestService({ navigateNextPage }) {
   const [isScrolledToBottom, setIsScrolledToBottom] = useState(false);
   const testTextAreaRef = useRef(null);
   const navigate = useNavigate();
 
   const title = CONTENTS.title.test;
-  const nextButtonText = CONTENTS.button.test;
   const message = CONTENTS.message.test;
 
   const updateScroll = () => {
@@ -44,26 +42,25 @@ function TestModal({ navigateNextPage }) {
   }, []);
 
   return (
-    <Modal
+    <Service
       title={title}
-      onCloseButtonClick={() => navigate("/modal/warning")}
-      nextButtonText={nextButtonText}
+      onCloseButtonClick={() => navigate("/service/warning")}
       onNextButtonClick={() => navigateNextPage("test")}
       isDisabledButton={!isScrolledToBottom}
     >
       <div
-        className="pr-4 mt-4 mb-4 overflow-y-scroll text-base leading-7 prose prose-lg whitespace-pre-line modal-textarea-shadow-inner h-140 max-w-none"
+        className="pr-4 mt-4 mb-4 overflow-y-auto text-base leading-7 prose prose-lg whitespace-pre-line service-textarea-shadow-inner h-132 max-w-none max-mobile:text-sm max-mobile:leading-6 mobile-content"
         ref={testTextAreaRef}
         data-test="test-area"
       >
         {message}
       </div>
-    </Modal>
+    </Service>
   );
 }
 
-export default TestModal;
+export default TestService;
 
-TestModal.propTypes = {
+TestService.propTypes = {
   navigateNextPage: PropTypes.func.isRequired,
 };

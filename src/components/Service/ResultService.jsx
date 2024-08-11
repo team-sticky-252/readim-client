@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import useLocalStorage from "../../hooks/useLocalStorage";
 
 import Pie from "../shared/Chart/PieChart";
-import Modal from "../shared/Modal/Modal";
+import Service from "../shared/Service/Service";
 
 import {
   DEFAULT_WPM,
@@ -15,7 +15,7 @@ import {
   getTestResultMessage,
 } from "../../utils/readTimeTest";
 
-function ResultModal({ clickTimeDifferenceMs, navigateNextPage }) {
+function ResultService({ clickTimeDifferenceMs, navigateNextPage }) {
   const [wpmInStorage] = useLocalStorage("wpm", DEFAULT_WPM);
   const navigate = useNavigate();
 
@@ -40,9 +40,8 @@ function ResultModal({ clickTimeDifferenceMs, navigateNextPage }) {
   }, [clickTimeDifferenceMs]);
 
   return (
-    <Modal
+    <Service
       onCloseButtonClick={navigateNextPage}
-      nextButtonText="닫기"
       onNextButtonClick={navigateNextPage}
       isDisabledButton={false}
     >
@@ -65,13 +64,13 @@ function ResultModal({ clickTimeDifferenceMs, navigateNextPage }) {
           </p>
         </div>
       </div>
-    </Modal>
+    </Service>
   );
 }
 
-export default ResultModal;
+export default ResultService;
 
-ResultModal.propTypes = {
+ResultService.propTypes = {
   clickTimeDifferenceMs: PropTypes.number.isRequired,
   navigateNextPage: PropTypes.func.isRequired,
 };

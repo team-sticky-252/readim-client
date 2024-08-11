@@ -17,7 +17,7 @@ function Footer() {
 
   return (
     <footer
-      className={`${footerResponsiveStyle} bottom-0 w-full mt-auto text-sm font-thin tracking-normal text-center pt-36 h-80 bg-gradient-to-t from-white`}
+      className={`${footerResponsiveStyle} bottom-0 w-full mt-auto text-sm font-thin tracking-normal text-center h-56 pt-16 bg-gradient-to-t from-white`}
     >
       <div className="flex items-center justify-center whitespace-nowrap max-mobile:block">
         <span className="font-bold text-transparent bg-gradient-to-r from-pastel-purple via-blush-pink to-sunset-orange bg-clip-text">

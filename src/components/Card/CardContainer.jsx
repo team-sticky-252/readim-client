@@ -9,9 +9,11 @@ function CardContainer({
   isSummaryClosed,
   setIsSummaryClosed,
 }) {
+  const mobileResponsiveStyle = "max-mobile:grid-cols-2 max-mobile:min-w-0";
+
   return (
     <main
-      className="grid justify-center grid-cols-4 gap-5 bg-fixed bg-right-bottom bg-no-repeat min-w-160 justify-items-center"
+      className={`grid justify-center grid-cols-4 gap-5 bg-fixed bg-right-bottom bg-no-repeat min-w-160 justify-items-center ${mobileResponsiveStyle}`}
       data-test="test-cardContainer"
     >
       {articleDataList.map((article) => (

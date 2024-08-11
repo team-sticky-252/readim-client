@@ -9,8 +9,7 @@ function CardContainer({
   isSummaryClosed,
   setIsSummaryClosed,
 }) {
-  const mobileResponsiveStyle =
-    "max-mobile:grid-cols-2 max-mobile:w-10/12 max-mobile:min-w-0 max-mobile:gap-y-2 max-mobile:gap-x-[3dvw] max-mobile:pb-10 max-mobile:m-auto";
+  const mobileResponsiveStyle = "max-mobile:grid-cols-2 max-mobile:min-w-0";
 
   return (
     <main

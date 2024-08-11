@@ -97,7 +97,7 @@ function Card({
         </div>
         <ReadingTime readingTime={readingTime} />
         <p
-          className={`${cardTextResponsiveStyle} mt-6 mr-1 text-sm group-hover:pointed-title font-extralight title-ellipsis`}
+          className={`${cardTextResponsiveStyle} max-mobile:mr-4 mt-6 mr-1 text-sm group-hover:pointed-title font-extralight title-ellipsis`}
         >
           {articleTitle}
         </p>

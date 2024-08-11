@@ -28,7 +28,7 @@ function Footer() {
           <GradientPatchCheckIcon />
         </span>
         &nbsp;되어 있어요.
-        <span className="flex justify-center max-mobile:flex-wrap">
+        <div className="flex justify-center max-mobile:flex-wrap">
           {OPTIMIZED_SITE_LIST.map(({ href, faviconSrc, siteName }) => (
             <OptimizedSiteLink
               key={siteName}
@@ -37,7 +37,7 @@ function Footer() {
               siteName={siteName}
             />
           ))}
-        </span>
+        </div>
       </div>
       <div className="mt-1">
         피드백이 있으시다면

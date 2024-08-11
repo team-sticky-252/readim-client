@@ -91,7 +91,7 @@ function App() {
   };
 
   return (
-    <div className="relative flex flex-col items-center justify-between min-h-screen">
+    <div className="relative flex flex-col items-center justify-between min-h-screen overflow-x-hidden">
       <div className="flex justify-center h-auto min-h-full mb-auto">
         <div className="w-216 min-w-90 max-mobile:w-dvw max-mobile:flex max-mobile:flex-col max-mobile:justify-center max-mobile:p-5 max-mobile:pb-14">
           {articleDataList.length === 0 && <Welcome />}

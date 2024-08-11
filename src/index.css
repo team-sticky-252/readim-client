@@ -75,13 +75,6 @@
 }
 
 @layer components {
-  .modal-position {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-
   .title-ellipsis {
     text-overflow: ellipsis;
     overflow: hidden;
@@ -101,29 +94,25 @@
     -webkit-box-orient: vertical;
   }
 
-  .abled-modal-button {
-    width: 5rem;
-    height: 2.5rem;
-    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.25);
+  .abled-service-button {
+    width: 7rem;
+    height: 2rem;
     border-radius: 0.75rem;
-    background-color: #ffffff;
     color: #000000;
   }
 
-  .disabled-modal-button {
-    width: 5rem;
-    height: 2.5rem;
-    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.25);
+  .disabled-service-button {
+    width: 7rem;
+    height: 2rem;
     border-radius: 0.75rem;
-    background-color: #e5e5e5;
     color: #afadad;
   }
 
-  .abled-modal-button:hover {
+  .abled-service-button:hover {
     background-color: #e5e5e5;
   }
 
-  .modal-textarea-shadow-inner {
+  .service-textarea-shadow-inner {
     --tw-shadow: inset 0px -36px 59px -67px rgb(0 0 0 / 0.2);
     --tw-shadow-colored: inset 0 2px 4px 0 var(--tw-shadow-color);
     box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
@@ -192,4 +181,3 @@ textarea:disabled {
   left: 80%;
   top: 25%;
 }
-

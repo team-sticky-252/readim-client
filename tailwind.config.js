@@ -51,6 +51,7 @@ export default {
         216: "54rem",
       },
       minWidth: {
+        90: "22.5rem",
         160: "40rem",
       },
       zIndex: {

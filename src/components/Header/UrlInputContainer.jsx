@@ -67,7 +67,7 @@ function UrlInputContainer({
 
   return (
     <div
-      className={`flex relative items-center justify-center m-auto mx-auto bottom-4 ${isLoading ? "bg-[#fafafa]" : "bg-white"} border shadow-md mb-14 border-light-gray w-fit rounded-xl`}
+      className={`flex relative items-center justify-center m-auto mx-auto bottom-4 ${isLoading ? "bg-[#fafafa]" : "bg-white"} border shadow-md mb-14 border-light-gray w-136 max-mobile:w-[96%] max-mobile:mb-6 rounded-xl`}
     >
       <textarea
         ref={textareaRef}
@@ -75,7 +75,7 @@ function UrlInputContainer({
         onChange={() => handleResizeHeight(textareaRef)}
         onKeyDown={handleURLInput}
         onPaste={handleURLInput}
-        className="my-3 ml-5 text-base font-thin outline-none resize-none w-118"
+        className="w-full my-3 ml-5 text-base font-thin outline-none resize-none"
         placeholder="URL을 입력해 주세요."
         data-test="test-inputWindow"
         disabled={isLoading}

@@ -18,7 +18,7 @@ describe("Readim 첫 방문시 초기화면", () => {
     });
 
     it("읽기 측정 테스트를 진행하는 모달창이 보여야 한다.", () => {
-      cy.visit("/modal/test");
+      cy.visit("/service/test");
 
       cy.getBySel("test-header").should("have.text", "Hello World!");
       cy.getBySel("test-next-button").should("have.text", "완료");
@@ -27,7 +27,7 @@ describe("Readim 첫 방문시 초기화면", () => {
     });
 
     it("읽기 측정 테스트를 진행하는 모달창에서 하단으로 스크롤하면 버튼이 활성화된다.", () => {
-      cy.visit("/modal/test");
+      cy.visit("/service/test");
 
       cy.getBySel("test-next-button").should("be.disabled");
       cy.getBySel("test-area").scrollTo("bottom", { duration: 300 });
@@ -35,7 +35,7 @@ describe("Readim 첫 방문시 초기화면", () => {
     });
 
     it("읽기 측정 테스트를 30초에 완료하면 wpm은 406이다.", () => {
-      completeReadingTest(30000, "406", "/modal/result");
+      completeReadingTest(30000, "406", "/service/result");
     });
 
     it("읽기 측정 테스트를 24초에 완료하면 wpm은 기본값인 202다.", () => {
@@ -43,7 +43,7 @@ describe("Readim 첫 방문시 초기화면", () => {
     });
 
     it("읽기 측정 테스트를 2분 25초에 완료하면 wpm은 84이다.", () => {
-      completeReadingTest(145000, "84", "/modal/result");
+      completeReadingTest(145000, "84", "/service/result");
     });
 
     it("읽기 측정 테스트를 2분 26초에 완료하면 wpm은 기본값인 202다.", () => {
@@ -52,7 +52,7 @@ describe("Readim 첫 방문시 초기화면", () => {
   });
 
   const completeReadingTest = (tickTime, expectedWpm, path) => {
-    cy.visit("/modal/test");
+    cy.visit("/service/test");
 
     cy.clock();
 

@@ -10,7 +10,7 @@ function OptionButton({ hasArticles }) {
         aria-label="open options"
         type="button"
         data-hover="읽기 속도 재측정"
-        onClick={() => navigate("/modal/guide")}
+        onClick={() => navigate("/service/guide")}
       >
         <IoSettingsSharp
           color="white"

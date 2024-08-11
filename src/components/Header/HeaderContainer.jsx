@@ -15,7 +15,7 @@ function HeaderContainer({
 
   return (
     <header className="grid w-full text-center text-centerborder-solid grid-row-3">
-      <OptionContainer />
+      <OptionContainer hasArticles={articleDataList.length > 0} />
       <InfoTextContainer totalReadTime={totalReadTime} />
       <UrlInputContainer
         articleDataList={articleDataList}

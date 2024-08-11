@@ -1,11 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 
-import Modal from "../shared/Modal/Modal";
+import Service from "../shared/Service/Service";
 
-import CONTENTS from "../../utils/ModalContents";
+import CONTENTS from "../../utils/ServiceContents";
 
-function DescriptionModal({ navigateNextPage, statement }) {
+function DescriptionService({ navigateNextPage, statement }) {
   const navigate = useNavigate();
 
   const title = CONTENTS.title[statement];
@@ -16,36 +16,36 @@ function DescriptionModal({ navigateNextPage, statement }) {
     navigate("/");
   };
 
-  const moveToWaringModal = () => {
-    navigate("/modal/warning");
+  const moveToWaringService = () => {
+    navigate("/service/warning");
   };
 
   const handleCloseButtonClick = () => {
     if (statement === "warning") {
       moveToMainPage();
     } else {
-      moveToWaringModal();
+      moveToWaringService();
     }
   };
 
   return (
-    <Modal
+    <Service
       title={title}
       onCloseButtonClick={handleCloseButtonClick}
       nextButtonText={nextButtonText}
       onNextButtonClick={() => navigateNextPage(statement)}
       isDisabledButton={false}
     >
-      <div className="h-40 mb-4 overflow-y-scroll leading-7 max-w-none">
+      <div className="h-48 mb-4 overflow-y-scroll leading-7 max-w-none max-mobile:text-sm">
         <p className="mt-3 whitespace-pre-line">{message}</p>
       </div>
-    </Modal>
+    </Service>
   );
 }
 
-export default DescriptionModal;
+export default DescriptionService;
 
-DescriptionModal.propTypes = {
+DescriptionService.propTypes = {
   navigateNextPage: PropTypes.func.isRequired,
   statement: PropTypes.string.isRequired,
 };

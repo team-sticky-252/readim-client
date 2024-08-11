@@ -1,0 +1,5 @@
+@media (max-width: 430px) {
+  .mobile-content {
+    height: calc(100% - 120px) !important;
+  }
+}

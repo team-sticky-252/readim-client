@@ -37,6 +37,7 @@ export default {
       },
       height: {
         50: "12.5rem",
+        132: "33rem",
         140: "35rem",
       },
       maxHeight: {
@@ -46,7 +47,7 @@ export default {
         48: "12rem",
         90: "22.5rem",
         118: "29.5rem",
-        136: "34rem",
+        128: "32rem",
         200: "50rem",
         216: "54rem",
       },

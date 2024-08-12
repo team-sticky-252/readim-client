@@ -1,19 +1,14 @@
 import { render } from "@testing-library/react";
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 
 import PieChart from "../components/shared/Chart/PieChart";
+import animateStar from "../utils/chart";
 
-vi.mock("../../../utils/chart", () => ({
+vi.mock("../utils/chart", () => ({
   default: vi.fn(),
 }));
 
-describe("PieChart", () => {
-  const animateStartMock = require("../utils/chart").default;
-
-  beforeEach(() => {
-    vi.clearAllMocks();
-  });
-
+describe("PieChart", async () => {
   it("renders correctly with given size and value", () => {
     const size = 200;
     const value = 75;
@@ -30,11 +25,6 @@ describe("PieChart", () => {
 
     expect(getByText("wpm")).toBeInTheDocument();
 
-    expect(animateStartMock).toHaveBeenCalledWith(
-      svgElement,
-      size,
-      size / 8,
-      value,
-    );
+    expect(animateStar).toHaveBeenCalledWith(svgElement, size, size / 8, value);
   });
 });

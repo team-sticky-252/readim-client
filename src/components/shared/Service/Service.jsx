@@ -1,8 +1,9 @@
 import { useEffect } from "react";
 import PropTypes from "prop-types";
 
-import { allowScroll, preventScroll } from "../../../utils/scrollUtils";
 import Footer from "../../Footer/Footer";
+
+import { allowScroll, preventScroll } from "../../../utils/scrollUtils";
 
 import "./service.css";
 

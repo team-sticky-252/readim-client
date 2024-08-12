@@ -36,7 +36,7 @@ function DescriptionService({ navigateNextPage, statement }) {
       onNextButtonClick={() => navigateNextPage(statement)}
       isDisabledButton={false}
     >
-      <div className="h-48 mb-4 overflow-y-scroll leading-7 max-w-none max-mobile:text-sm">
+      <div className="h-48 mb-4 overflow-y-scroll leading-7 max-w-none max-mobile:text-sm max-mobile:h-fit">
         <p className="mt-3 whitespace-pre-line">{message}</p>
       </div>
     </Service>

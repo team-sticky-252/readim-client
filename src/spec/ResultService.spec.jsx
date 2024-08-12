@@ -20,6 +20,7 @@ describe("Test ResultService Component", () => {
     );
 
     const timeElement = screen.getByText(/\d+초/);
+
     expect(timeElement).toBeInTheDocument();
     expect(timeElement.classList.contains("highlight")).toBe(true);
   });

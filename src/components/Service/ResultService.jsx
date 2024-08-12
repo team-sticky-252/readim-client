@@ -41,6 +41,7 @@ function ResultService({ clickTimeDifferenceMs, navigateNextPage }) {
 
   return (
     <Service
+      title=""
       onCloseButtonClick={navigateNextPage}
       onNextButtonClick={navigateNextPage}
       isDisabledButton={false}

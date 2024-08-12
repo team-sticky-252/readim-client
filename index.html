@@ -1,17 +1,19 @@
 <!doctype html>
 <html lang="ko">
   <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GY51KER3SF"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-GY51KER3SF');
+    </script>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/x-icon" href="/readimFavicon.png" />
     <meta property="og:image" content="https://readim.netlify.app/readimShare.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta property="og:site_name" content="Readim" />
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-NMDC9RMM');
-    </script>
     <title>Readim: Reading Time of Your Articles!</title>
     <style>
       body {
@@ -24,9 +26,6 @@
     </style>
   </head>
   <body>
-    <noscript>
-      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NMDC9RMM" height="0" width="0" style="display:none;visibility:hidden"></iframe>
-    </noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

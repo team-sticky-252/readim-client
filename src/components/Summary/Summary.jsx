@@ -102,7 +102,10 @@ function Summary({
           />
         </div>
         <Suspense fallback={<SummarySkeleton />}>
-          <SummaryResult summaryText={summaryText} error={summaryError} />
+          <SummaryResult
+            summaryText={summaryText}
+            summaryError={summaryError}
+          />
         </Suspense>
       </div>
     </div>

@@ -18,5 +18,6 @@ test("DescriptionService renders with isDisabledButton set to false", () => {
   );
 
   const serviceComponent = getByTestId("service-component");
+
   expect(serviceComponent.dataset.disabled).toBe("false");
 });

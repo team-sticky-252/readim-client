@@ -5,16 +5,13 @@ import OPTIMIZED_SITE_LIST from "../utils/optimizedSiteList";
 import Footer from "../components/Footer/Footer";
 
 describe("Footer", () => {
-  let getByText;
-
   beforeEach(() => {
     const rendered = render(<Footer />);
-    getByText = rendered.getByText;
   });
 
   it("Footer has shown all OptimizedSites", () => {
     OPTIMIZED_SITE_LIST.forEach((OptimizedSite) => {
-      const linkElement = getByText(OptimizedSite.siteName);
+      const linkElement = screen.getByText(OptimizedSite.siteName);
 
       expect(linkElement).toBeInTheDocument();
     });

@@ -11,42 +11,34 @@
 </div>
 
 ## 🔗 Links
-  [Deployed website](https://readim.netlify.app/) | [Frontend Repository](https://github.com/team-sticky-252/readim-client) | [Backend Repository](https://github.com/team-sticky-252/readim-server/)
-
+<div align="center">
+  <a href="https://readim.site/">Deployed website</a> |
+  <a href="https://github.com/team-sticky-252/readim-client">Frontend Repository</a> |
+  <a href="https://github.com/team-sticky-252/readim-server">Backend Repository</a>
+</div>
 
 ## 🗂️ Index
-- [ Readim](#-readim)
-- [🔗 Links](#links)
-- [🗂️ Index](#️index)
-- [🧲 Motivation](#motivation)
-- [⚒️ Tech Stacks](#️tech-stacks)
-  - [Client](#client)
-  - [Server](#server)
-  - [Test](#test)
-  - [Deployment](#deployment)
-  - [Third party API](#third-party-api)
-- [🔍 Features](#features)
-  - [1. 모달창](#1-모달창)
+- [**🧲 Motivation**](#motivation)
+- [**⚒️ Tech Stacks**](#️tech-stacks)
+- [**🔍 Features**](#features)
+  - [1. 랜딩 페이지](#1-랜딩-페이지)
   - [2. 메인 페이지](#2-메인-페이지)
   - [3. 아티클 카드](#3-아티클-카드)
   - [4. Footer 콘텐츠](#4-footer-콘텐츠)
-- [📈 Improvements](#improvements)
+- [**📈 Improvements**](#improvements)
     - [reading time UI 변경](#reading-time-ui-변경)
-    - [🔗 UI 선정 및 개선 과정](#-ui-선정-및-개선-과정)
-    - [\<기존안\>](#기존안)
-    - [\<개선안\>](#개선안)
-- [🎯 Challenges](#-challenges)
+- [**🎯 Challenges**](#-challenges)
   - [**1. 어떻게 단일 테스트로 다양한 사용자들의 읽기속도를 특정할 수 있을까?**](#1-어떻게-단일-테스트로-다양한-사용자들의-읽기속도를-특정할-수-있을까)
     - [1-1.  기준과 근거를 가진 기본 평균 범위 설정](#1-1--기준과-근거를-가진-기본-평균-범위-설정)
     - [1-2. 실제 사용자 테스트를 통한 유효한 범위 설정](#1-2-실제-사용자-테스트를-통한-유효한-범위-설정)
     - [1-3. 실제 사용 환경과 유사한 테스트 구현](#1-3-실제-사용-환경과-유사한-테스트-구현)
-  - [2. 어떻게 시멘틱 구조의 페이지에서 본문에 해당하는 텍스트만 추출할 수 있을까?](#2-어떻게-시멘틱-구조의-페이지에서-본문에-해당하는-텍스트만-추출할-수-있을까)
+  - [**2. 어떻게 시멘틱 구조의 페이지에서 본문에 해당하는 텍스트만 추출할 수 있을까?**](#2-어떻게-시멘틱-구조의-페이지에서-본문에-해당하는-텍스트만-추출할-수-있을까)
     - [2-1. 시멘틱 구조에서 본문 판별하기](#2-1-시멘틱-구조에서-본문-판별하기)
     - [2-2. 불필요한 요소를 제외하자](#2-2-불필요한-요소를-제외하자)
     - [2-3. 코드 블록내의 단어는 어떻게 처리해야할까?](#2-3-코드-블록내의-단어는-어떻게-처리해야할까)
   - [**3. 시멘틱 태그가 없는 사이트의 스크래핑 방법?**](#3-시멘틱-태그가-없는-사이트의-스크래핑-방법)
-- [🗓️ Schedule](#️schedule)
-- [👏 Memoir](#memoir)
+- [**🗓️ Schedule**](#️schedule)
+- [**👏 Memoir**](#memoir)
 
 ## 🧲 Motivation
 
@@ -126,184 +118,210 @@ JSDOM은 Puppeteer에 비해 상당히 빠른 처리 속도를 제공합니다. 
 
 ## 🔍 Features
 
-### 1. 모달창
-<h4>1-1. Welcom모달</h4>
-<details>
-<summary>
-  🖥️ 미리보기
-</summary>
-  <img src="https://github.com/user-attachments/assets/bbf05062-313f-4495-bb58-5fbdebaff461" width="600" />
-</details>
+### 1. 랜딩 페이지
 
-- 가장 처음 방문할 시 마주할 수 있는 화면입니다.
-
-- 환영 모달창을 통해 저희 Readim의 간단한 소개를 보실 수 있습니다.
-
-<h4>1-2. 읽기 속도 측정 모달</h4>
-<details>
-<summary>
-  🖥️ 미리보기
-</summary>
-  <img src="https://github.com/user-attachments/assets/1fae649e-784b-414c-80c2-8a7a94387a31" width="600" />
-</details>
-
-- 해당 모달을 통해 여러분 개개인의 읽기 속도를 측정할 수 있습니다.
-
-- 사용자는 테스트 아티클을 이해하려 하지 않고, 편안하게 본인 만의 속도로 본문을 읽습니다.
-
-- 스크롤이 아티클 끝에 닿으면 ‘완료’ 버튼을 클릭할 수 있습니다.
-
-<h4>1-3. 읽기 속도 결과 모달</h4>
-<details>
-<summary>
-  🖥️ 미리보기
-</summary>
-<img src="https://github.com/user-attachments/assets/402ee483-3302-421d-b5d0-eee471f0baff" width="600" />
-</details>
-
-- 결과 모달창에서 사용자 본인의 읽기 속도를 알 수 있습니다.
-
-- 이 모달창에서 사용자는 본인의 읽기 속도가 빠른지, 평균인지, 조금 느린지의 세가지 척도로 확인할 수 있습니다.
-
-- 해당 결과 모달창에 표시되는 읽기 속도(WPM)을 바탕으로 리딩 타임을 계산해 제공해드립니다.
-
-- 테스트에 응하지 않거나, 정상 설정 범위 (20초 ~ 2분 25초)를 벗어나는 결과일 경우 기본 읽기 속도(202WPM)으로 설정됩니다.
-
-<h4>1-4. 읽기 속도 재측정</h4>
-<details>
-<summary>
-  🖥️ 미리보기
-</summary>
-  <img width="600" alt="retry_1" src="https://github.com/user-attachments/assets/f2b3e8ef-0c2a-4e87-a138-520c2061e267"/>
-</details>
-
-- 우측 상단의 톱니바퀴 모양의 버튼을 hover할 경우, ‘읽기 속도 재측정’ 안내 문구를 보실 수 있습니다.
-
-- 해당 버튼을 클릭함으로써 사용자는 첫 방문 시 모달창을 통해 측정했던 읽기 속도를 재측정 할 수 있습니다.
-
-<details>
-<summary>
- 🖥️ 미리보기
-</summary>
-  <div style="display: flex; justify-content: space-around;">
-    <img width="45%" alt="retry_2" src="https://github.com/user-attachments/assets/5979764e-3e6d-4fe8-95eb-5320f8035066"/>
-    <img width="45%" alt="retry_3" src="https://github.com/user-attachments/assets/f529cda2-3358-44cf-8dca-65e83bdcec08"/>
+<table>
+    <tr>
+    <td width="50%">
+      <h3>1-1. Welcome</h3>
+  </td>
+  <td width="50%">
+      <h3>1-2. 읽기 속도 측정</h3>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%">
+        <img width="100%" alt="환영합니다" src="https://github.com/user-attachments/assets/ef05ecce-3407-4144-bd3e-61e958ec3370">
+        <details>
+          <summary>
+            자세히...
+          </summary>
+          - 가장 처음 방문할 시 마주할 수 있는 화면입니다.<br/>
+          - 환영 랜딩 페이지을 통해 저희 Readim의 간단한 소개를 보실 수 있습니다.
+        </details>
+  </td>
+  <td width="50%">
+      <img width="100%" alt="읽기시간측정" src="https://github.com/user-attachments/assets/60211857-2c59-4f0e-a3ee-c544632c680c">
+      <details>
+      <summary>
+        자세히...
+      </summary>
+        - 해당 페이지를 통해 여러분 개개인의 읽기 속도를 측정할 수 있습니다.<br/>
+        - 사용자는 테스트 아티클을 이해하려 하지 않고, 편안하게 본인 만의 속도로 본문을 읽습니다.<br/>
+        - 스크롤이 아티클 끝에 닿으면 ‘완료’ 버튼을 클릭할 수 있습니다.
+      </details>
+    </td>
+  </tr>
+    <tr>
+    <td width="50%">
+    <h3>1-3. 읽기 속도 결과</h3>
+    </td>
+    <td width="50">
+      <h3>1-4. 읽기 속도 재측정</h3>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%">
+    <img width="600" alt="결과" src="https://github.com/user-attachments/assets/facaeaec-5926-4dac-882a-2cb42f981f09">
+    <details>
+    <summary>
+      자세히
+    </summary>
+    - 결과 랜딩 페이지에서 사용자 본인의 읽기 속도를 알 수 있습니다.<br/>
+    - 이 랜딩 페이지에서 사용자는 본인의 읽기 속도가 빠른지, 평균인지, 조금 느린지의 세가지 척도로 확인할 수 있습니다.<br/>
+    - 해당 결과 랜딩 페이지에 표시되는 읽기 속도(WPM)을 바탕으로 리딩 타임을 계산해 제공해드립니다.<br/>
+    - 테스트에 응하지 않거나, 정상 설정 범위 (20초 ~ 2분 25초)를 벗어나는 결과일 경우 기본 읽기 속도(202WPM)으로 설정됩니다.
+    </details>
+    </td>
+    <td width="50">
+      <img width="600" alt="retry_1" src="https://github.com/user-attachments/assets/f2b3e8ef-0c2a-4e87-a138-520c2061e267"/>
+      <details>
+      <summary>
+      자세히...
+      </summary>
+      - 우측 상단의 톱니바퀴 모양의 버튼을 hover할 경우, ‘읽기 속도 재측정’ 안내 문구를 보실 수 있습니다.<br/>
+      - 해당 버튼을 클릭함으로써 사용자는 첫 방문 시 랜딩 페이지을 통해 측정했던 읽기 속도를 재측정 할 수 있습니다.<br/><br/>
+  <div align="center" style="display: flex; justify-content: space-around;">
+<img width="45%" alt="당신에게 맞춘 리딩타임" src="https://github.com/user-attachments/assets/d56f81bb-9474-4169-b46b-cace8e5dd3ea">
+<img width="45%" alt="읽기시간측정" src="https://github.com/user-attachments/assets/60211857-2c59-4f0e-a3ee-c544632c680c">
   </div> 
-</details>
-
-- 사용자가 재측정 기능을 이용하는 경우는 다음과 같이 가정했습니다.
-
-  1. 아티클들을 접하며 사용자 본인의 읽기 능력이 상승하여 속도를 다시금 보정하기 위해.
-  2. 초기에 읽기 속도 측정을 하지 않아 지정된 기본 읽기 속도를 본인의 읽기 속도로 바꾸기 위해.
-
+- 사용자가 재측정 기능을 이용하는 경우는 다음과 같이 가정했습니다.<br/>
+  &nbsp;&nbsp;&nbsp;&nbsp;1. 아티클들을 접하며 사용자 본인의 읽기 능력이 상승하여 속도를 다시금 보정하기 위해.<br/>
+  &nbsp;&nbsp;&nbsp;&nbsp;2. 초기에 읽기 속도 측정을 하지 않아 지정된 기본 읽기 속도를 본인의 읽기 속도로 바꾸기 위해.<br/>
 - 해당 재측정 기능을 통해, 사용자는 다시금 정확한 리딩 타임을 제공받을 수 있습니다.
-  
+      </details>
+    </td>
+  </tr>
+</table>
+
 <br/>
 
 ### 2. 메인 페이지
-
+<img src="https://github.com/user-attachments/assets/1d0f85e3-1497-4868-9cb7-d3e61f48c5b6" width="600" />
 <details>
-<summary>
-  🖥️ 미리보기
-</summary>
-  <img src="https://github.com/user-attachments/assets/1d0f85e3-1497-4868-9cb7-d3e61f48c5b6" width="600" />
-</details>
-
-- 읽기 속도 측정을 모두 마치고난 뒤, 처음으로 마주하실 수 있는 페이지입니다.
-
-- 상단을 보시면, 사용자에게 궁극적으로 제공하고자 하는 컨셉들을 순환시키며 보여드리고 있습니다.
-
+  <summary>
+    자세히...
+  </summary>
+- 읽기 속도 측정을 모두 마치고난 뒤, 처음으로 마주하실 수 있는 페이지입니다.<br/>
+- 상단을 보시면, 사용자에게 궁극적으로 제공하고자 하는 컨셉들을 순환시키며 보여드리고 있습니다.<br/>
 - 바로 하단의 URL 입력창에 사용자가 읽으려고 생각해둔 아티클의 주소를 입력하여 아티클 카드를 생성할 수 있습니다.
+</details>
 
 <br/>
 
 ### 3. 아티클 카드
 
-<h4>3-1. URL 입력(아티클 카드 생성)</h4>
-<details>
-<summary>
-  🖥️ 미리보기
-</summary>
-  <img src="https://github.com/user-attachments/assets/ba357884-93f1-4036-b8d4-d995c8c43dff" width="600" />
-</details>
-
-- 사용자는 붙여넣기, 직접 입력하기, 북마크 폴더를 가져다 놓기의 상호작용을 통해 아티클 URL을 입력할 수 있습니다.
-
-- URL을 입력한 후, Enter 혹은 입력창 옆의 버튼을 클릭하면 Node 서버에 리딩 타임 등의 정보를 요청합니다.
-
-- 정보가 정상적으로 수신 될 경우 해당 아티클의 리딩 타임이 카드 형태로 추가됩니다.
-
-<details>
-<summary>
-  🖥️ 미리보기
-</summary>
-  <img src="https://github.com/user-attachments/assets/09ab7b50-b3bf-4212-8818-86a6c0822e3f" width="600" />
-</details>
-
-- 대응할 수 없는 사이트의 URL일 경우, 우측 하단에 토스트 메시지를 팝업합니다.
-
-<h4>3-2. 아티클 카드</h4>
-<details>
-<summary>
-  🖥️ 미리보기
-</summary>
-  <div style="display: flex; justify-content: space-around;">
-    <img width="45%" alt="article_card1" src="https://github.com/user-attachments/assets/11ac7d93-a40d-4318-b9cc-c988c9747240" />
-    <img width="45%" alt="article_card2" src="https://github.com/user-attachments/assets/5dd451bd-f6eb-4a6a-bad9-bf5640176885" />
-  </div>
-</details>
-
-- 등록된 url의 카드에는 다음과 같은 내용이 포함되어 있습니다.
-
-  - 사이트 관련 정보: 사이트명, 사이트 파비콘
-  - 아티클: 제목, 예상 읽기 시간
-  - 버튼: 삭제 버튼, AI 요약 버튼
-  - 최적화 인증 마크
-
-- 카드 hover 시, 선택된 카드의 크기가 커지는 애니메이션이 적용됩니다.
-
-  - 카드의 크기와 내용이 전체적으로 커집니다.
-  - 삭제 버튼이 나타납니다.
-  - 카드 클릭 시 아티클 페이지로 이동합니다.
-
-<h4>3-3. 아티클 페이지 이동</h4>
-<details>
-<summary>
-  🖥️ 미리보기
-</summary>
-  <img src="https://github.com/user-attachments/assets/a6037f2d-b8e3-47ec-bd05-daa414950828" width="600" />    
-</details>
-
-- 추가된 아티클 카드를 클릭할 경우 해당 아티클 페이지로 이동할 수 있습니다.
-
-<h4>3-4. Chat GPT 요약</h4>
-<details>
-<summary>
-  🖥️ 미리보기
-</summary>
-  <img src="https://github.com/user-attachments/assets/496bd3c2-6474-468a-8085-6b68a47a8060" width="600" />
-</details>
-
-- 아티클 카드 내 요약 버튼 hover 할 경우 ‘본문 요약’ 문구를 확인할 수 있습니다.
-- 아티클 카드 내 요약 버튼을 클릭할 경우 Chat GPT를 통해 요약된 본문 내용을 확인할 수 있습니다.
+<table>
+  <tr>
+    <td width="50%">
+      <h3>3-1-1. URL 입력(아티클 카드 생성)</h3>
+    </td>
+    <td width="50%">
+      <h3>3-1-2. URL 입력(토스트 메시지)</h3>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%">
+      <img width="100%" alt="URL 입력_아티클 카드 생성" src="https://github.com/user-attachments/assets/ba357884-93f1-4036-b8d4-d995c8c43dff" />
+      <details>
+        <summary>
+          자세히...
+        </summary>
+        - 사용자는 붙여넣기, 직접 입력하기, 북마크 폴더를 가져다 놓기의 상호작용을 통해 아티클 URL을 입력할 수 있습니다.<br />
+        - URL을 입력한 후, Enter 혹은 입력창 옆의 버튼을 클릭하면 Node 서버에 리딩 타임 등의 정보를 요청합니다.<br />
+        - 정보가 정상적으로 수신 될 경우 해당 아티클의 리딩 타임이 카드 형태로 추가됩니다.
+      </details>
+    </td>
+    <td width="50%">
+      <img width="100%" alt="대응할 수 없는 사이트의 URL_토스트 메시지" src="https://github.com/user-attachments/assets/09ab7b50-b3bf-4212-8818-86a6c0822e3f" />
+      <details>
+        <summary>
+          자세히...
+        </summary>
+        - 대응할 수 없는 사이트의 URL일 경우, 우측 하단에 토스트 메시지를 팝업합니다.
+      </details>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h3>3-2-1. 아티클 카드</h3>
+    </td>
+    <td>
+      <h3>3-2-2. 아티클 카드(애니메이션)</h3>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img width="100%" alt="아티클 카드 1" src="https://github.com/user-attachments/assets/11ac7d93-a40d-4318-b9cc-c988c9747240" />
+      <details>
+        <summary>
+          자세히...
+        </summary>
+        - 등록된 url의 카드에는 다음과 같은 내용이 포함되어 있습니다.<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;1. 사이트 관련 정보: 사이트명, 사이트 파비콘<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;2. 아티클: 제목, 예상 읽기 시간<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;3. 버튼: 삭제 버튼, AI 요약 버튼<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;4. 최적화 인증 마크
+      </details>
+    </td>
+    <td>
+      <img width="100%" alt="아티클 카드 1" src="https://github.com/user-attachments/assets/5dd451bd-f6eb-4a6a-bad9-bf5640176885" />
+      <details>
+        <summary>
+          자세히...
+        </summary>
+        - 카드 hover 시, 선택된 카드의 크기가 커지는 애니메이션이 적용됩니다.<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;1. 카드의 크기와 내용이 전체적으로 커집니다.<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;2. 삭제 버튼이 나타납니다.<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;3. 카드 클릭 시 아티클 페이지로 이동합니다.
+      </details>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h3>3-3. 아티클 페이지 이동</h3>
+    </td>
+    <td>
+      <h3>3-4. Chat GPT 요약</h3>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img width="100%" alt="아티클 페이지 이동" src="https://github.com/user-attachments/assets/a6037f2d-b8e3-47ec-bd05-daa414950828" />
+      <details>
+        <summary>
+          자세히...
+        </summary>
+        - 추가된 아티클 카드를 클릭할 경우 해당 아티클 페이지로 이동할 수 있습니다.
+      </details>
+    </td>
+    <td>
+      <img width="100%" alt="Chat GPT 요약" src="https://github.com/user-attachments/assets/496bd3c2-6474-468a-8085-6b68a47a8060" />
+      <details>
+        <summary>
+          자세히...
+        </summary>
+        - 아티클 카드 내 요약 버튼 hover 할 경우 '본문 요약' 문구를 확인할 수 있습니다.<br />
+        - 아티클 카드 내 요약 버튼을 클릭할 경우 Chat GPT를 통해 요약된 본문 내용을 확인할 수 있습니다.
+      </details>
+    </td>
+  </tr>
+</table>
 
 <br/>
 
 ### 4. Footer 콘텐츠
 
+<img width="600" alt="Footer" src="https://github.com/user-attachments/assets/d96ba5dc-4de0-4e00-926c-e1939262e159">
 <details>
-<summary>
-  🖥️ 미리보기
-</summary>
-  <img width="600" alt="Footer" src="https://github.com/user-attachments/assets/d96ba5dc-4de0-4e00-926c-e1939262e159">
+  <summary>
+    자세히...
+  </summary>
+- 페이지 하단(footer)에는 기타 정보를 표시하고 있습니다.<br/>
+  &nbsp;&nbsp;&nbsp;&nbsp;1. 현재 정식적으로 대응하고 있는 6개의 사이트를 사용자에게 알려줍니다.<br/>
+  &nbsp;&nbsp;&nbsp;&nbsp;2. 피드백 사항이 있을 경우 연락하실 수 있는 연락처를 표시합니다.<br/>
+  &nbsp;&nbsp;&nbsp;&nbsp;3. Readim의 저작권 고지를 표시합니다.
 </details>
-
-- 페이지 하단(footer)에는 기타 정보를 표시하고 있습니다.
-
-  1. 현재 정식적으로 대응하고 있는 6개의 사이트를 사용자에게 알려줍니다.
-  2. 피드백 사항이 있을 경우 연락하실 수 있는 연락처를 표시합니다.
-  3. Readim의 저작권 고지를 표시합니다.
-
 <br/>
 
 ## 📈 Improvements
@@ -616,7 +634,7 @@ JSDOM은 Puppeteer에 비해 상당히 빠른 처리 속도를 제공합니다. 
         &nbsp;&nbsp;&nbsp;&nbsp;- 메인 페이지 구현<br>
         &nbsp;&nbsp;&nbsp;&nbsp;- 헤더 구현<br>
         &nbsp;&nbsp;&nbsp;&nbsp;- 토스트 메시지 구현<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;- 모달 구현<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;- 랜딩 페이지 구현<br>
         - 알고리즘 작성<br>
         &nbsp;&nbsp;&nbsp;&nbsp;- 본문 판별 알고리즘 구현<br>
         &nbsp;&nbsp;&nbsp;&nbsp;- reading time 알고리즘 구현<br>

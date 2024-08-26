@@ -4,21 +4,11 @@ import PropTypes from "prop-types";
 
 import Service from "../shared/Service/Service";
 import CONTENTS from "../../utils/ServiceContents";
-import { DEFAULT_WPM } from "../../utils/readTimeTest";
-import codeHighlighter from "../../utils/HighlightCodeBlock";
-
-const MIN_READ_TIME_FACTOR = 0.5;
-
-const calculateMinReadTime = (content) => {
-  const numOfWords = content.split(" ").length;
-  const baseTime = (numOfWords / DEFAULT_WPM) * 60;
-
-  return Math.max(Math.round(baseTime * MIN_READ_TIME_FACTOR), 2);
-};
+import { calculateMinReadTime, renderContent } from "../../utils/readTimeTest";
 
 function TestService({ navigateNextPage }) {
   const [currentContentIndex, setCurrentContentIndex] = useState(0);
-  const [buttonEnabled, setButtonEnabled] = useState(false);
+  const [isNextButtonDisabled, setIsNextButtonDisabled] = useState(false);
   const [startTime, setStartTime] = useState(null);
   const [readingTimes, setReadingTimes] = useState([]);
   const [countdown, setCountdown] = useState(0);
@@ -31,11 +21,9 @@ function TestService({ navigateNextPage }) {
   const updateCountdown = useCallback(() => {
     setCountdown((prevCountdown) => {
       if (prevCountdown <= 1) {
-        setButtonEnabled(true);
-
+        setIsNextButtonDisabled(true);
         return 0;
       }
-
       return prevCountdown - 1;
     });
   }, []);
@@ -72,7 +60,7 @@ function TestService({ navigateNextPage }) {
 
     if (currentContentIndex < contents.length - 1) {
       setCurrentContentIndex(currentContentIndex + 1);
-      setButtonEnabled(false);
+      setIsNextButtonDisabled(false);
     } else {
       navigateNextPage("test");
     }
@@ -80,58 +68,18 @@ function TestService({ navigateNextPage }) {
 
   const progress = ((currentContentIndex + 1) / contents.length) * 100;
 
-  const renderCodeTags = (str) => {
-    const tags = str.split(/(<code>.*?<\/code>)/);
-
-    return tags.map((part) => {
-      if (part.startsWith("<code>") && part.endsWith("</code>")) {
-        const codeContent = part.slice(6, -7);
-
-        return (
-          <code key={crypto.randomUUID()} className="code code-inline">
-            {codeContent.replace(/&lt;/g, "<").replace(/&gt;/g, ">")}
-          </code>
-        );
-      }
-
-      return part.replace(/&lt;/g, "<").replace(/&gt;/g, ">");
-    });
-  };
-
-  const renderContent = (content) => {
-    if (content.type === "code") {
-      const highlightedCode = codeHighlighter({ code: content.content });
-
-      if (highlightedCode === null) {
-        return <p>코드를 표시할 수 없습니다.</p>;
-      }
-
-      return (
-        <pre className="p-4 overflow-x-auto text-sm bg-gray-100 rounded-md">
-          <code className="code-block">{highlightedCode}</code>
-        </pre>
-      );
-    }
-
-    return <p>{renderCodeTags(content.content)}</p>;
-  };
-
   const customButtonArea = (
     <div className="flex items-center justify-between w-4/5 m-auto mt-4 max-mobile:w-full">
-      <p className="m-0 mt-auto text-base text-gray">
+      <p className="m-0 mt-auto text-base text-gray max-mobile:text-sm">
         {countdown > 0
           ? `다음 글까지 ${countdown}초 남았어요.`
           : "다음 버튼을 눌러주세요."}
       </p>
       <button
         onClick={handleNextContent}
-        disabled={!buttonEnabled}
+        disabled={!isNextButtonDisabled}
         data-test="test-next-button"
-        className={
-          buttonEnabled
-            ? "px-4 py-2 text-white bg-dark-gray rounded-lg hover:bg-black max-mobile:text-sm"
-            : "px-4 py-2 text-white bg-medium-gray rounded-lg max-mobile:text-sm"
-        }
+        className={`px-4 py-2 text-white rounded-lg max-mobile:text-sm ${isNextButtonDisabled ? "bg-dark-gray hover:bg-black" : "bg-medium-gray"}`}
       >
         다음
       </button>
@@ -143,7 +91,7 @@ function TestService({ navigateNextPage }) {
       title={currentTitle}
       onCloseButtonClick={() => navigate("/service/warning")}
       onNextButtonClick={handleNextContent}
-      isDisabledButton={!buttonEnabled}
+      isDisabledButton={!isNextButtonDisabled}
       customButtonArea={customButtonArea}
     >
       <div className="w-full mb-4">

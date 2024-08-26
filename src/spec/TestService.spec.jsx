@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, act } from "@testing-library/react";
 import { vi } from "vitest";
 import TestService from "../components/Service/TestService";
 
@@ -6,16 +6,29 @@ vi.mock("react-router-dom", () => ({
   useNavigate: () => vi.fn(),
 }));
 
+vi.mock("../../utils/highlightCodeBlock", () => ({
+  __esModule: true,
+  default: vi.fn((code) => code),
+}));
+
 describe("Test TestService Component", () => {
-  it("renders all content correctly", () => {
+  beforeEach(() => {
+    vi.useFakeTimers();
+  });
+
+  afterEach(() => {
+    vi.useRealTimers();
+  });
+
+  it("enables the button after countdown", async () => {
     render(<TestService navigateNextPage={() => {}} />);
 
-    expect(screen.getByText("Hello World!")).toBeTruthy();
+    const nextButton = screen.getByText("다음");
 
-    expect(
-      screen.getByText(/여러분이 읽고 있는 이 파트는/, { exact: false }),
-    ).toBeTruthy();
+    act(() => {
+      vi.advanceTimersByTime(5000);
+    });
 
-    expect(screen.getByText("✔️ 확인했어요")).toBeTruthy();
+    expect(nextButton).toBeEnabled();
   });
 });

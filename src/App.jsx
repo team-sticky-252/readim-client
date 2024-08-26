@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Outlet, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import HeaderContainer from "./components/Header/HeaderContainer";
 import CardContainer from "./components/Card/CardContainer";
@@ -8,16 +8,9 @@ import Footer from "./components/Footer/Footer";
 import Welcome from "./components/Welcome";
 import SummaryContainer from "./components/Summary/SummaryContainer";
 
-import {
-  DEFAULT_WPM,
-  ARTICLE_WORD_COUNT,
-  MIN_READING_TIME_MS,
-  MAX_READING_TIME_MS,
-} from "./utils/readTimeTest";
+import { DEFAULT_WPM } from "./utils/readTimeTest";
 
 function App() {
-  const [firstClickTimeMs, setFirstClickTimeMs] = useState(0);
-  const [clickTimeDifferenceMs, setClickTimeDifferenceMs] = useState(0);
   const [messageList, setMessageList] = useState([]);
   const [articleDataList, setArticleDataList] = useState([]);
   const [articleSummaryData, setArticleSummaryData] = useState({
@@ -39,23 +32,8 @@ function App() {
     if (!storedWpm) {
       window.localStorage.setItem("wpm", DEFAULT_WPM);
       navigate("/service/welcome");
-
-      return;
     }
-
-    if (
-      clickTimeDifferenceMs &&
-      clickTimeDifferenceMs >= MIN_READING_TIME_MS &&
-      clickTimeDifferenceMs <= MAX_READING_TIME_MS
-    ) {
-      const wpm = Math.floor(
-        (ARTICLE_WORD_COUNT / clickTimeDifferenceMs) * 60 * 1000,
-      );
-      window.localStorage.setItem("wpm", wpm);
-    } else {
-      window.localStorage.setItem("wpm", storedWpm);
-    }
-  }, [clickTimeDifferenceMs, window.localStorage.getItem("wpm")]);
+  }, [window.localStorage.getItem("wpm")]);
 
   useEffect(() => {
     const storedURLs = JSON.parse(window.localStorage.getItem("URLs"));
@@ -116,12 +94,6 @@ function App() {
             messageList={messageList}
             deleteMessage={deleteMessage}
             deleteAllMessages={deleteAllMessages}
-          />
-          <Outlet
-            context={
-              ([firstClickTimeMs, setFirstClickTimeMs],
-              [clickTimeDifferenceMs, setClickTimeDifferenceMs])
-            }
           />
         </div>
       </div>

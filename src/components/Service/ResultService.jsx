@@ -36,6 +36,8 @@ function ResultService({ clickTimeDifferenceMs, navigateNextPage }) {
       clickTimeDifferenceMs > MAX_READING_TIME_MS
     ) {
       navigate("/");
+    } else {
+      window.localStorage.setItem("wpm", wpm);
     }
   }, [clickTimeDifferenceMs]);
 

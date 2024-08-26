@@ -24,6 +24,7 @@ export default {
         "light-gray": "#FBFBFB",
         gray: "#AFADAD",
         "medium-gray": "#E5E5E5",
+        "dark-gray": "#4B4B4B",
         "pastel-purple": "#D2C2F4",
         "blush-pink": "#FFA2CD",
         "sunset-orange": "#FFBB9A",
@@ -37,6 +38,7 @@ export default {
       },
       height: {
         50: "12.5rem",
+        76: "19rem",
         132: "33rem",
         140: "35rem",
       },

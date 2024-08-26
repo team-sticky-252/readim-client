@@ -58,7 +58,7 @@ const tokenize = (code) => {
   return tokens;
 };
 
-function codeHighlighter({ code }) {
+const codeHighlighter = ({ code }) => {
   if (typeof code !== "string" || code.length === 0) {
     return null;
   }
@@ -70,6 +70,6 @@ function codeHighlighter({ code }) {
       {token.content}
     </span>
   ));
-}
+};
 
 export default codeHighlighter;

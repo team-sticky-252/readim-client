@@ -112,6 +112,7 @@ function TestService({ navigateNextPage }) {
         </pre>
       );
     }
+
     return <p>{renderCodeTags(content.content)}</p>;
   };
 

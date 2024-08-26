@@ -7,7 +7,13 @@ import { allowScroll, preventScroll } from "../../../utils/scrollUtils";
 
 import "./service.css";
 
-function Service({ title, onNextButtonClick, isDisabledButton, children }) {
+function Service({
+  title,
+  onNextButtonClick,
+  isDisabledButton,
+  children,
+  customButtonArea,
+}) {
   useEffect(() => {
     const prevScrollY = preventScroll();
 
@@ -30,20 +36,22 @@ function Service({ title, onNextButtonClick, isDisabledButton, children }) {
               </h1>
             )}
             {children}
-            <div className="w-full text-center">
-              <button
-                onClick={onNextButtonClick}
-                disabled={isDisabledButton}
-                data-test="test-next-button"
-                className={
-                  isDisabledButton
-                    ? "disabled-service-button"
-                    : "abled-service-button"
-                }
-              >
-                ✔️ 확인했어요
-              </button>
-            </div>
+            {customButtonArea || (
+              <div className="w-full text-center">
+                <button
+                  onClick={onNextButtonClick}
+                  disabled={isDisabledButton}
+                  data-test="test-next-button"
+                  className={
+                    isDisabledButton
+                      ? "disabled-service-button"
+                      : "abled-service-button"
+                  }
+                >
+                  ✔️ 확인했어요
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -57,7 +65,14 @@ export default Service;
 
 Service.propTypes = {
   title: PropTypes.string.isRequired,
-  onNextButtonClick: PropTypes.func.isRequired,
-  isDisabledButton: PropTypes.bool.isRequired,
+  onNextButtonClick: PropTypes.func,
+  isDisabledButton: PropTypes.bool,
   children: PropTypes.node.isRequired,
+  customButtonArea: PropTypes.node,
+};
+
+Service.defaultProps = {
+  onNextButtonClick: () => {},
+  isDisabledButton: false,
+  customButtonArea: null,
 };

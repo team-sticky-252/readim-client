@@ -33,7 +33,7 @@ function App() {
       window.localStorage.setItem("wpm", DEFAULT_WPM);
       navigate("/service/welcome");
     }
-  }, [window.localStorage.getItem("wpm")]);
+  }, []);
 
   useEffect(() => {
     const storedURLs = JSON.parse(window.localStorage.getItem("URLs"));

@@ -669,7 +669,7 @@ JSDOM은 Puppeteer에 비해 상당히 빠른 처리 속도를 제공합니다. 
 - **순서도**
 
 <div align="center">
-  <img width="400" alt="Non-semantic-parsing" src="https://github.com/user-attachments/assets/444503c7-8596-4d3d-b58f-399a741f584a">
+  <img width="300" alt="Non-semantic-parsing" src="https://github.com/user-attachments/assets/444503c7-8596-4d3d-b58f-399a741f584a">
 </div>
 
 ## 🗓️ Schedule

@@ -17,6 +17,7 @@
   <a href="https://github.com/team-sticky-252/readim-server">Backend Repository</a>
 </div>
 
+## 🗂️ Index
 - [**🧲 Motivation**](#motivation)
 - [**⚒️ Tech Stacks**](#️tech-stacks)
 - [**🔍 Features**](#features)

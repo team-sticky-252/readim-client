@@ -49,17 +49,18 @@ function UrlInputContainer({
         }
       };
 
-      inputValues.forEach(async (input) => {
-        const result = await handleSingleURL(
-          input,
-          articleDataList,
-          setMessageList,
-        );
+      const requests = inputValues.map((input) =>
+        handleSingleURL(input, articleDataList, setMessageList),
+      );
+      const results = await Promise.allSettled(requests);
 
-        handleSingleResult(result);
-        setIsLoading(false);
+      results.forEach((result) => {
+        if (result.status === "fulfilled") {
+          handleSingleResult(result.value);
+        }
       });
 
+      setIsLoading(false);
       textareaRef.current.value = "";
       handleResizeHeight(textareaRef);
     }

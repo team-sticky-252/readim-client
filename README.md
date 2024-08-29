@@ -437,19 +437,19 @@ JSDOM은 Puppeteer에 비해 상당히 빠른 처리 속도를 제공합니다. 
 #### <기존안>
 **`Promise.all` 사용**
 
-<img height="100" src="https://github.com/user-attachments/assets/20bb245d-d5cc-40cc-8218-f9789abff592">
+<img height="80" src="https://github.com/user-attachments/assets/20bb245d-d5cc-40cc-8218-f9789abff592">
 
 - Promise.all의 경우, 모든 URL요청의 응답이 도착을 기다린 후 사용자에게 결과를 표시합니다.</br>
   하지만, 이 경우 요청한 URL 중 유효하지 않은 URL이 포함된 경우, 모든 URL이 `catch`구문으로 넘어가 전체가 실패한 것으로 처리됩니다.</br>
   또한, URL을 개별적으로 대응할 수 없으므로 응답이 없는 URL과 같은 Edge Case에 대응할 수 없습니다.</br>
 
 #### <개선안>
-**`forEach` + `aync/await` 사용**
+**`Promise.allSettled` 사용**
 
-<img height="200" src="https://github.com/user-attachments/assets/af261a4f-aa8a-43cd-ac19-b0d6a2712896">
+<img height="80" src="https://github.com/user-attachments/assets/c5dbb675-f54f-4317-84d8-af5ed6b9b38f">
 
-- 위와 같은 문제점을 해결하기 위해 `forEach`와 `async/await`를 사용하여 각 URL에 대해 개별적으로 비동기 요청을 병렬로 수행하는 방식을 적용했습니다.</br>
-  이 방식으로, 각 URL 요청이 독립적으로 처리되기 때문에 하나의 URL이 실패하더라도 다른 요청에는 영향을 주지 않습니다.</br>
+- 위와 같은 문제점을 해결하기 위해 `Promise.allSettled`를 사용하여 비동기 요청을 병렬로 수행하며, 각 응답 결과를 조회 가능한 방식을 적용했습니다.</br>
+  각 요청의 응답 결과를 배열로 반환하기 때문에, 각 케이스에 개별로 대응할 수 있습니다.</br>
   또한, 각 요청에 대해 개별적인 대응이 가능하므로, AbortController를 사용해 타임아웃을 설정할 수 있으며, 모든 예외 케이스를 사용자에게 Toast 메시지로 즉시 알릴 수 있습니다.</br>
   결과적으로 사용자는 요청에 대한 즉각적인 피드백을 받을 수 있어, 전반적인 사용자 경험이 개선되었습니다.
 

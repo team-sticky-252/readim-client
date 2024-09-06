@@ -72,7 +72,7 @@ export const handleSingleURL = async (url, articleDataList, setMessageList) => {
   };
   const fetchTimer = setTimeout(() => {
     controller.abort();
-  }, 8000);
+  }, 20000);
 
   try {
     const articleData = await requestURL(url, controlloerOption);

@@ -1,7 +1,8 @@
 const OPTIMIZED_SITE_LIST = [
   {
     href: "https://developer.mozilla.org/ko/",
-    faviconSrc: "https://developer.mozilla.org/favicon-48x48.cbbd161b.png",
+    faviconSrc:
+      "https://developer.mozilla.org/favicon-48x48.bc390275e955dacb2e65.png",
     siteName: "MDN",
   },
   {
